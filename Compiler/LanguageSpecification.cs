@@ -8,14 +8,14 @@
     {
         Invalid = 0,
 
-        [PatternAtom(@"^([_a-zA-Z][_a-zA-Z0-9]*)$", RegexOptions.Compiled, AtomAttribute.PatternType.Identifier)]
+        [PatternAtom(@"^([_a-zA-Z][_a-zA-Z0-9]{0,249})$", RegexOptions.Compiled, AtomAttribute.PatternType.Identifier)]
         Identifier,
 
         [PatternAtom(@"^(0|[1-9]\d*)$", RegexOptions.Compiled, AtomAttribute.PatternType.Constant)]
         NumericConstant,
         [EnclosedAtom("\"", "\"", AtomAttribute.EnclosureType.Constant)]
         StringConstant,
-        [EnclosedAtom("'", "'", AtomAttribute.EnclosureType.Constant)]
+        [EnclosedAtom("'", "'", AtomAttribute.EnclosureType.Constant, innerSequenceLength: 1)]
         CharConstant,
 
         [PatternAtom(@"\#.*\n", RegexOptions.Compiled, AtomAttribute.PatternType.Ignore)]

@@ -88,7 +88,7 @@
 
                             if (enclosedAtomAttribute != null)
                             {
-                                enclosures[enclosedAtomAttribute.AtomType].Add(new Compiler<TCode>.Enclosure(enclosedAtomAttribute.OpeningSymbol, enclosedAtomAttribute.ClosingSymbol), fieldValue);
+                                enclosures[enclosedAtomAttribute.AtomType].Add(new Compiler<TCode>.Enclosure(enclosedAtomAttribute.OpeningSymbol, enclosedAtomAttribute.ClosingSymbol, enclosedAtomAttribute.InnerSequenceLength), fieldValue);
                                 if (enclosedAtomAttribute.AtomType == AtomAttribute.EnclosureType.Comment)
                                     codesToIgnore.Add(fieldValue);
                             }

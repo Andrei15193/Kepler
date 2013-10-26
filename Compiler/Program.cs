@@ -21,7 +21,7 @@
                         {
                             string sourceCode = string.Join(Environment.NewLine, File.ReadAllLines(sourceFile));
                             Compiler<LanguageSpecification>.LexicalAnalysisResult lexicalAnalysisResult = compiler.LexicallyAnalyze(sourceCode);
-                          
+
                             using (StreamWriter streamWriter = new StreamWriter(File.Open(sourceFile + ".fip.txt", FileMode.Create)))
                                 foreach (var scannedAtom in lexicalAnalysisResult.ScannedAtoms)
                                     streamWriter.WriteLine("{0},{1},{2}", scannedAtom.Code.ToString(), (uint)scannedAtom.Code, scannedAtom.Value);

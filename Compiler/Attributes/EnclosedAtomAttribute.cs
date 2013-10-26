@@ -14,6 +14,7 @@
                             _openingSymbol = openingSymbol;
                             _closingSymbol = closingSymbol;
                             _atomType = atomType;
+                            _innerSequenceLength = null;
                         }
                         else
                             throw new ArgumentException("The length of the closingSymbol cannot be zero.");
@@ -23,6 +24,12 @@
                     throw new ArgumentNullException("closingSymbol");
             else
                 throw new ArgumentNullException("openingSymbol");
+        }
+
+        public EnclosedAtomAttribute(string openingSymbol, string closingSymbol, AtomAttribute.EnclosureType atomType, uint innerSequenceLength)
+            : this(openingSymbol, closingSymbol, atomType)
+        {
+            _innerSequenceLength = innerSequenceLength;
         }
 
         public string OpeningSymbol
@@ -49,6 +56,15 @@
             }
         }
 
+        public uint? InnerSequenceLength
+        {
+            get
+            {
+                return _innerSequenceLength;
+            }
+        }
+
+        private readonly uint? _innerSequenceLength;
         private readonly AtomAttribute.EnclosureType _atomType;
         private readonly string _openingSymbol;
         private readonly string _closingSymbol;
