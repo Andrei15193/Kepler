@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Andrei15193.Kepler.Compiler&lt;TCode&gt;">
+    <Position X="9" Y="3.75" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Andrei15193.Kepler.Compiler&lt;TCode&gt;.SplitBasedLexicalAnalyser" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Compiler.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <AssociationLine Name="DefaultLexicalAnalyser" Type="Andrei15193.Kepler.Language.Lexis.ILexicalAnalyser&lt;TCode&gt;">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.06" Y="-0.234" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAgQBAACABAAAAAAAAAAAAABAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Compiler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DefaultLexicalAnalyser" />
+      <Property Name="LexicalAnalyser" />
+      <Property Name="Language" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Andrei15193.Kepler.Language.Lexis.Enclosure">
+    <Position X="7.5" Y="10" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAiBAAgAAAAAABAEEAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Language\Lexis\Enclosure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Andrei15193.Kepler.Language.Lexis.LexicalAnalysisResult&lt;TCode&gt;">
+    <Position X="10.75" Y="7.25" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAgAAAAAAAAAgBAAAAAAIAAAI=</HashCode>
+      <FileName>Language\Lexis\LexicalAnalysisResult.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ScannedAtoms" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Andrei15193.Kepler.Language.Lexis.ScannedAtom&lt;TCode&gt;">
+    <Position X="5" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAIAAAABhAAAABAAAAAAAAAAgAAAhAAA=</HashCode>
+      <FileName>Language\Lexis\ScannedAtom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Andrei15193.Kepler.Language.Attributes.AtomAttribute">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Andrei15193.Kepler.Language.Attributes.AtomAttribute.PatternType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Language\Attributes\AtomAttribute.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Andrei15193.Kepler.Language.Attributes.AtomAttribute.LiteralType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Language\Attributes\AtomAttribute.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Andrei15193.Kepler.Language.Attributes.AtomAttribute.EnclosureType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Language\Attributes\AtomAttribute.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Language\Attributes\AtomAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Andrei15193.Kepler.Language.Attributes.EnclosedAtomAttribute">
+    <Position X="6" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAiAAAAAAAAAABAEAAAAAAEAAAAAAAgAAAAAAAI=</HashCode>
+      <FileName>Language\Attributes\EnclosedAtomAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Andrei15193.Kepler.Language.Attributes.LiteralAtomAttribute">
+    <Position X="0.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAYAAQAAAAAAgAAEAAAAAAAAAQAAAAAAAAAIAAAAAAI=</HashCode>
+      <FileName>Language\Attributes\LiteralAtomAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Andrei15193.Kepler.Language.Attributes.PatternAtomAttribute">
+    <Position X="3.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAIAAAAAAAI=</HashCode>
+      <FileName>Language\Attributes\PatternAtomAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Andrei15193.Kepler.Language.RegexLanguage&lt;TCode&gt;" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="7.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAARgAEAEAQAAAAAAgBAAgOCIACCAAEAIAAEIIBA=</HashCode>
+      <FileName>Language\RegexLanguage.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Enclosures" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Andrei15193.Kepler.Language.Lexis.ILexicalAnalyser&lt;TCode&gt;">
+    <Position X="2.75" Y="6.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Language\Lexis\ILexicalAnalyser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Andrei15193.Kepler.Language.ILanguage&lt;TCode&gt;">
+    <Position X="12.5" Y="10.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAEAQAAAAAAABAAAIAAACCAAAAIAAEAIAA=</HashCode>
+      <FileName>Language\ILanguage.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Enclosures" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Enum Name="Andrei15193.Kepler.Language.Lexis.Lexicon">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IiIAAQBEUOCgQGIAgQAAJIQJKAAAkAAgsSgC5AAAMGA=</HashCode>
+      <FileName>Language\Lexis\Lexicon.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

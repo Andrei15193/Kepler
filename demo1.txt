@@ -1,0 +1,18 @@
+predicate Main
+    begin
+        try
+        begin
+            System::Console::Write("Introduceti raza cercului: ").
+            razaCerc : System::Int32 = System::Int32::Parse(System::Console::ReadLine()).
+            PerimetruCerc(razaCerc).
+            ArieCerc(razaCerc).
+        end
+        catch
+            System::Console::WriteLine("Nu ati introdus un numar!").
+    end
+
+predicate PerimetruCerc(razaCerc : System::Int32)
+    System::Console::WriteLine(2 * razaCerc * 3.14).
+
+predicate ArieCerc(razaCerc : System::Int32)
+    System::Console::WriteLine(System::Math::Pow(razaCerc, 2) * 3.14).

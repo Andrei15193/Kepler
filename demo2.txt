@@ -1,0 +1,20 @@
+predicate Main
+    begin
+        try
+        begin
+            System::Console::Write("Introduceti numerele: ").
+            Cmmdc(System::Int32::Parse(System::Console::ReadLine()),
+                  System::Int32::Parse(System::Console::ReadLine())).
+        end
+        catch
+            System::Console::WriteLine("Nu ati introdus numere!").
+    end
+
+predicate Cmmdc(a : System::Int32, b : System::Int32)
+    when a = 0
+        System::Console::WriteLine("Cmmdc: " + b::ToString()).
+    else
+        when (a < b)
+            Cmmdc(b - a, a).
+        else
+            Cmmdc(b, a).

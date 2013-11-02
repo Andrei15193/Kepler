@@ -1,0 +1,2922 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="4f96ea5c-505b-4c1c-9751-01e375a50f84"
+  name="Attributes"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="d36df8be-7bda-4211-92df-c88cc7073fae"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DAndrei15193.Kepler.Language.Attributes"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <enumeration
+        Id="1c2ac79b-c5aa-48e7-9733-225b9d4631ae"
+        name="EnclosureType"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="dc0e9840-290d-4675-8d94-0f652328d195"
+            handle="viewcode://./CodeSchema_Enum?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="b201c922-83b0-44a9-a4b7-d93ff73f8234"
+            name="enum"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="27fcdfba-fe34-431e-8492-022e10123e8a">
+                <propertyInstance
+                  Id="a2fec6cd-57d6-4d3b-a252-cd198a29098c"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="df091186-f86f-487f-bfcd-347987bd1da6">
+                <propertyInstance
+                  Id="a162224c-a577-4801-b801-65fab2e27769"
+                  name="BaseType"
+                  value="int" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b408011a-3b5c-4627-8cf7-6f43da20bf08">
+                <propertyInstance
+                  Id="401d54f1-42cc-4870-9806-6fc869f28dea"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="6b64b2a9-d657-4d84-85b6-aeb5f0137fd8"
+            name="Comment">
+            <referencesInternal>
+              <reference
+                Id="0d81a581-4a04-4ee9-8bf4-9346f47f75da"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute) Member%3DComment"
+                tag="ViewCode" />
+            </referencesInternal>
+          </enumerationLiteral>
+          <enumerationLiteral
+            Id="b5f1041c-2ea2-4e79-be03-43ac4821c963"
+            name="Constant">
+            <referencesInternal>
+              <reference
+                Id="5726e779-7b4a-422e-a872-96b1b16683f1"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute) Member%3DConstant"
+                tag="ViewCode" />
+            </referencesInternal>
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="4010a705-60c4-4916-924a-fd5887badb1e"
+        name="LiteralType"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="5b824c55-a8e0-4849-8585-7a4c6c8316d1"
+            handle="viewcode://./CodeSchema_Enum?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DLiteralType ParentType%3DAtomAttribute)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="0c6e7524-39e4-40f0-9fc4-3ccc7bda0220"
+            name="enum"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d1ff81aa-2fc4-4187-8ba8-b584e1dd1ed0">
+                <propertyInstance
+                  Id="d74d823e-d9c5-498d-9eae-2f74c9e31def"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e8df0d03-44de-45e8-b2da-c613b5221898">
+                <propertyInstance
+                  Id="df5fbf24-ee91-42b3-82fd-0779518b05b8"
+                  name="BaseType"
+                  value="int" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e8adda4f-ea1d-46ba-a735-8ebd9e46333c">
+                <propertyInstance
+                  Id="7a00f12a-c374-4afe-ad43-d42737bad87a"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="b1fa94e1-ed23-4b4c-aaaf-5096d0b8db71"
+            name="KeyWord">
+            <referencesInternal>
+              <reference
+                Id="bc7f95e6-8ee2-4cf3-9f6f-a4c62098e1d5"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DLiteralType ParentType%3DAtomAttribute) Member%3DKeyWord"
+                tag="ViewCode" />
+            </referencesInternal>
+          </enumerationLiteral>
+          <enumerationLiteral
+            Id="963f75a4-043e-4ecb-9863-9fb4b2edc7fa"
+            name="Operator">
+            <referencesInternal>
+              <reference
+                Id="9cc36e6d-08f2-403c-ab9a-cfec98a43966"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DLiteralType ParentType%3DAtomAttribute) Member%3DOperator"
+                tag="ViewCode" />
+            </referencesInternal>
+          </enumerationLiteral>
+          <enumerationLiteral
+            Id="ba92d342-3f1f-4340-996a-69cbb7f2fe27"
+            name="Separator">
+            <referencesInternal>
+              <reference
+                Id="57d3ebb0-97d4-4a84-86b2-10c2d4ffef4e"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DLiteralType ParentType%3DAtomAttribute) Member%3DSeparator"
+                tag="ViewCode" />
+            </referencesInternal>
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="02a59dc1-6ce6-4437-b40b-cb04ae77582a"
+        name="PatternType"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="5b2a1ed5-f701-452d-a43c-77b464e61729"
+            handle="viewcode://./CodeSchema_Enum?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DPatternType ParentType%3DAtomAttribute)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="304b1cfe-86ba-411c-923c-8ca2709e1ca1"
+            name="enum"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d795d1db-1fdf-4c5a-a874-b8399cfa4507">
+                <propertyInstance
+                  Id="02af438d-cb13-4821-a4c3-733cb6f36808"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="630072c3-55d5-4a69-b814-2e662beb30f0">
+                <propertyInstance
+                  Id="68b2ebf6-7c85-4d0a-afb8-60c39ed08ea3"
+                  name="BaseType"
+                  value="int" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e24abcff-1619-4518-9c11-71447be7f214">
+                <propertyInstance
+                  Id="53dc077a-ea79-4ac5-9834-f96bcdc3d134"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="801687db-d205-4239-9d72-0004b7aa9015"
+            name="Constant">
+            <referencesInternal>
+              <reference
+                Id="256c6ace-f810-4eb5-84d8-1ebd39aafb1c"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DPatternType ParentType%3DAtomAttribute) Member%3DConstant"
+                tag="ViewCode" />
+            </referencesInternal>
+          </enumerationLiteral>
+          <enumerationLiteral
+            Id="ddaba7a5-4d37-47f5-ba55-4c26b80a00b8"
+            name="Identifier">
+            <referencesInternal>
+              <reference
+                Id="0d3cc164-7181-45c4-a8bf-bccd1e61c1b5"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DPatternType ParentType%3DAtomAttribute) Member%3DIdentifier"
+                tag="ViewCode" />
+            </referencesInternal>
+          </enumerationLiteral>
+          <enumerationLiteral
+            Id="47db15c4-a32a-404e-886e-830d53637623"
+            name="Ignore">
+            <referencesInternal>
+              <reference
+                Id="11000b7a-b5f1-48c7-b60f-c7dd325e06dc"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DPatternType ParentType%3DAtomAttribute) Member%3DIgnore"
+                tag="ViewCode" />
+            </referencesInternal>
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7ccb24ca-68bf-4a01-85d9-acdaf43db81b"
+        name="AtomAttribute"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="3ebea261-6da5-42f0-bd81-d9aa28326710"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DAtomAttribute"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="c4ec8cac-f06d-4ef2-a142-6d39cab979f0"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e02d21f8-b19a-4f55-9f4f-7aa7586744d6">
+                <propertyInstance
+                  Id="d1051afc-4272-4255-85f2-1f0d62685e9f"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c2cf5654-d4b4-40cd-b2fc-273bd1993bd6">
+                <propertyInstance
+                  Id="72b8aabf-78b4-4903-9e8b-4baf438de975"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5ae68bba-9ffc-4b0f-b05b-d6163d810a5b">
+                <propertyInstance
+                  Id="4d09ef53-5063-4e96-af8f-8c8d58acb625"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bb49ed6c-74ac-485a-8580-6b6df54df52f">
+                <propertyInstance
+                  Id="dcee3f3e-17ed-4a0c-886b-3ba87a3c1b42"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fde1d150-ca86-4200-baeb-94d940fb1a52">
+                <propertyInstance
+                  Id="8fce4330-f804-49c4-ac27-8101f6d807d2"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="97a1e8a4-0051-4583-b857-fb128a6ed76f"
+            isSubstitutable="false">
+            <classMoniker
+              Id="f6d7d759-c3b7-46ff-9e89-860e03d44cd8"
+              LastKnownName="Attribute"
+              LastKnownLocation="Package4_2202.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="7beb1f16-a33b-44fe-ad21-286d47faa5cf"
+            name="AtomAttribute"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="701251ab-755b-410c-b3af-25058dda1003"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DAtomAttribute Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d9e5bf41-7a2c-4951-be59-33046c8fa762"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2811c905-a5c6-4725-8956-e87701d9c703">
+                    <propertyInstance
+                      Id="7af6381b-48a0-4628-bbb7-569843c29660"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="540a8cea-7934-4f89-b3e9-4244a09955fd">
+                    <propertyInstance
+                      Id="12b33e37-4e32-43df-be71-cedd66357ac0"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5cd709ed-9b57-452b-98a5-6b7380c04c94">
+                    <propertyInstance
+                      Id="076f3ce4-2965-4f7d-a711-78d62761e274"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="667f4de1-9d3e-4da6-85c2-473081087162">
+                    <propertyInstance
+                      Id="f68a3e4f-2bde-46a3-bedf-a17a561bfe18"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a0a14468-83ec-4162-aee3-bc8de02097b0">
+                    <propertyInstance
+                      Id="38f5b25a-1d58-426d-a446-c3f31a779268"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5bc6ff95-931a-4e96-83ac-b91373f965ea">
+                    <propertyInstance
+                      Id="a3fb9ac2-3e15-4cd2-9453-d4b1275579cd"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8ea5f68e-cdde-4fc4-b93c-119bab062822"
+        name="EnclosedAtomAttribute"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="4eac1215-160b-46e9-940e-180363889132"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="bb63346e-d08c-47a8-8450-626c32973548"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ddc6bc1c-391a-4b2c-8423-69180aaad9f0">
+                <propertyInstance
+                  Id="5ceca956-781d-497a-9d04-94312a2dc840"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3ed95a58-5f37-438a-9ff0-f565ef2991eb">
+                <propertyInstance
+                  Id="dc213462-18f0-4a32-adc5-dd1dad4b3cf3"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5f41a6c6-9a32-4960-bf15-1aeb84511283">
+                <propertyInstance
+                  Id="3293a264-ac23-40cc-acf3-f4a906665ee5"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6308abce-2d66-41f1-8b75-7b272d0689a2">
+                <propertyInstance
+                  Id="06fbd903-e5f1-4b8f-aeb9-5ff70b2d15a6"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="940e70f6-5f24-486a-9088-c8cd36417ded">
+                <propertyInstance
+                  Id="8144fd78-cadc-472e-bdb9-961f85d06782"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="4cb9b6a2-069a-4e90-b942-059baae08beb"
+            isSubstitutable="false">
+            <classMoniker
+              Id="7ccb24ca-68bf-4a01-85d9-acdaf43db81b"
+              LastKnownName="AtomAttribute"
+              LastKnownLocation="Package10_2202.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="263ef176-bfd4-43b1-ae91-c6b566a40e8e"
+            isDerived="false"
+            sourceEndRoleName="EnclosedAtomAttribute"
+            targetEndRoleName="AtomType"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="1c2ac79b-c5aa-48e7-9733-225b9d4631ae"
+              LastKnownName="EnclosureType"
+              LastKnownLocation="Package10_2202.uml" />
+            <description>Property AtomType references type EnclosureType.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c88c800e-d384-43fe-bd00-998af7605a9e"
+                  name="EnclosedAtomAttribute"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d7af8d87-d1a3-40bd-9b5f-decf437fe020"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="a2b620f7-b2ca-4852-9c85-34553ca7a92b"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a9930379-8527-4869-a938-74fbfef7fa70"
+                  name="AtomType"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="27bfecca-6644-4b94-a3c2-227179312b48"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="f476b0a4-b044-4a50-b4b9-93e9cec87d14"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="2081f80b-d1d9-4238-a8e3-d01815e571b3"
+            isDerived="false"
+            sourceEndRoleName="EnclosedAtomAttribute"
+            targetEndRoleName="InnerSequenceLength"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="72596a9f-375a-4747-b7bb-3467bb0628fa"
+              LastKnownName="Nullable&lt;UInt32‎&gt;"
+              LastKnownLocation="Package4_2202.uml" />
+            <description>Property InnerSequenceLength references type Nullable&lt;UInt32‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cdeaafcb-daad-431e-81c3-41e34dcb7943"
+                  name="EnclosedAtomAttribute"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="b6874451-2635-4900-ab9d-db434d6feb8e"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="52fb030b-d7c5-4027-a72b-c84e4a244122"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="edb34c52-720c-4c13-9c20-6a0ad9ccec98"
+                  name="InnerSequenceLength"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="6fee38e7-3070-4b55-9050-322692076b53"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="307a8878-4e3f-4dc9-a259-1b66ee4ac42b"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="388bf911-5d1f-41cc-ad5d-fcfec6b68702"
+            name="AtomType"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="c2037537-06ac-4745-aaef-218aa453ec44"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3DAtomType"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="64d1cc58-7ab9-4080-b7bf-f5d81e281625"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a33537e7-44c5-4e5b-8af1-8998918c1ddc">
+                    <propertyInstance
+                      Id="43d5a2c6-c886-4c0e-896b-5a91c715aec1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="74ed2f6d-dd3b-4006-8a98-ddd9eaae07e1">
+                    <propertyInstance
+                      Id="ddf033df-5468-4514-91b3-64b9b525f041"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="53a4ea7b-033e-492e-b4e2-0cbb917754de">
+                    <propertyInstance
+                      Id="9c9a3716-d299-45a2-925e-066c5a19adad"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="18d9a55f-28f5-45b0-89e7-0199d5d2c7da">
+                    <propertyInstance
+                      Id="d0d08ece-95fe-4975-b391-e63e95f38d24"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0ac8e197-90d9-49d3-b6d1-7f30b2818af0">
+                    <propertyInstance
+                      Id="fcb4017f-a6d2-4e7e-aba6-75575310600d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e376b83a-c8f8-4d50-874b-b38f7deb0451">
+                    <propertyInstance
+                      Id="b9aa46b1-4dca-41bb-a1f5-c5f524f00e61"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d22b8d4e-8bba-4c89-b024-fbced30577a0">
+                    <propertyInstance
+                      Id="db2106c1-071a-4777-8771-7b828edcf484"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="1c2ac79b-c5aa-48e7-9733-225b9d4631ae"
+                LastKnownName="EnclosureType"
+                LastKnownLocation="Package10_2202.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="af92a4dc-c8a7-409f-868b-3370d52020bb"
+            name="ClosingSymbol"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="aa11da9e-ad69-4cf1-a073-5458061ef170"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3DClosingSymbol"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="172dce0a-6fd4-47d4-8d40-41393eecd1d5"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ec01f8cb-ab1d-4e3e-b9e6-cacbca51f597">
+                    <propertyInstance
+                      Id="1b53b1b8-88c1-4827-b199-30fcaf8e8d53"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b8a5110e-62c7-49a0-9a40-f1a5c8e28068">
+                    <propertyInstance
+                      Id="0bcf1dc8-51b3-4d51-bea2-1a6522142344"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f9b8cd7e-160a-4b19-b9a7-702ecd971a22">
+                    <propertyInstance
+                      Id="473ee503-3ff5-4e26-a084-c7e8038d3ae6"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ab9e639f-f22a-426c-8c3f-82162ffd0d97">
+                    <propertyInstance
+                      Id="6b43bef6-b937-4cc9-9d0f-502624ac023f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bf08c20f-69d3-4735-b659-fc13bd6ccf12">
+                    <propertyInstance
+                      Id="55cf6a0e-6a94-4485-bbb7-72afeaf9dc45"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd391626-d973-4b44-86a0-0372af3fc1cd">
+                    <propertyInstance
+                      Id="d85632ad-308e-47f4-9917-5289c8f7a827"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ec816750-1c8b-4685-ab0b-2f2a5451749b">
+                    <propertyInstance
+                      Id="1d56d609-686e-46bb-92f6-b37104dc34e9"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="Kepler.Design.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ccd75f9b-bc07-4f44-a94f-85833666cef1"
+            name="InnerSequenceLength"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="c03ac6d6-e904-49ae-8e1d-0512f14041d7"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3DInnerSequenceLength"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="19860c11-6b16-403b-9c12-ee790328fdd6"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bab26dc0-4e4e-4969-bad8-7b5991adefee">
+                    <propertyInstance
+                      Id="86adcf43-03c3-49b0-9ebf-c3ca9965e2ca"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="abfb235e-f8f9-4543-82fc-f3c741096ee9">
+                    <propertyInstance
+                      Id="f7f65cef-c3a6-44ad-8be7-7e4348cd85d3"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e1d8c0d7-49c6-430e-8898-909c2bc46247">
+                    <propertyInstance
+                      Id="ef92770e-3197-4e38-b431-4a6ed8ae1b82"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="949a45f0-229c-483b-918c-72710d676750">
+                    <propertyInstance
+                      Id="ae579e45-536f-4803-9573-148008e69105"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d6fa308e-669d-4142-9361-553402c0c045">
+                    <propertyInstance
+                      Id="5e7af76c-a8b7-4ed9-bb01-9d3402225280"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="803cec74-2337-4a15-9a26-ab74632b05b1">
+                    <propertyInstance
+                      Id="f8a0bbaf-bcf2-4080-9ea3-1dbf0350946d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="32e61b8c-ab61-487b-8f4c-64017ba00fbb">
+                    <propertyInstance
+                      Id="e4ae8196-3368-44c9-8877-60c2c330c942"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="72596a9f-375a-4747-b7bb-3467bb0628fa"
+                LastKnownName="Nullable&lt;UInt32‎&gt;"
+                LastKnownLocation="Package4_2202.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="df051c09-268c-4fd6-8816-704bb13530b3"
+            name="OpeningSymbol"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e973c487-9bf2-4be7-9c5c-3c4c01942770"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3DOpeningSymbol"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="34732cb1-f3e5-4b84-9437-6f78e0b174b0"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8a0f60d1-15b4-48cd-929b-6fcabe9576fb">
+                    <propertyInstance
+                      Id="b483e778-e272-4593-9275-bd2bb9dcf46a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9d2c1f10-9bdd-439a-94c2-62c65a10b65c">
+                    <propertyInstance
+                      Id="90e56726-27b3-49e9-90dd-057fc15a6ce7"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f6595a17-04cc-4ccd-846a-067dadb701c8">
+                    <propertyInstance
+                      Id="5f26f9b8-6d8b-45d1-86e2-897404d3fb4b"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1f7f6fc6-c09d-4f4c-82fa-04e4183b61ec">
+                    <propertyInstance
+                      Id="f832fc64-87c5-403a-bbe6-7d98eb3e6af3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c822ff30-0236-4cc5-9e84-6aeab64903a9">
+                    <propertyInstance
+                      Id="7e0e6a3f-7896-43ce-a325-d58a35e86815"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2d0cd4f6-b524-48f8-88cf-c17dec5a0791">
+                    <propertyInstance
+                      Id="34349d8d-dbd5-4d0c-a69a-a397ef9048bb"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="78634c96-be5e-4c2b-af98-60e7b607971f">
+                    <propertyInstance
+                      Id="30944f35-d9fb-4dbd-9591-82a01c6b65a0"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="Kepler.Design.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="29209802-ddbb-43d7-95a3-b32a71b6d519"
+            name="_atomType"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="76e2286e-2b66-4a5f-bc97-3a8d183b6026"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D_atomType"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1e09fd4a-e71f-4b80-b618-54c3d45390ee"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="87ba0782-6f6a-4ce7-afe8-7578d30201ff">
+                    <propertyInstance
+                      Id="98ef7838-452b-401d-a3f4-7c5db2d55872"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="510397cf-34ee-47bc-b016-1eaa51a0097b">
+                    <propertyInstance
+                      Id="0f17e81f-6b47-406b-a174-6267d559a8e4"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="45326cc8-c858-4cf4-ab3e-0e38f2581474">
+                    <propertyInstance
+                      Id="91be0661-d4f9-429b-bbda-a77249454f66"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="16adaad0-a0a9-45bf-967e-bfae55aaee0b">
+                    <propertyInstance
+                      Id="5bde8cc8-9290-48fd-9c95-e124ae2da8fe"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8641d3ec-6eac-49eb-a569-0381eec8f264">
+                    <propertyInstance
+                      Id="bc27ead5-7c47-4b93-9c6e-b99bcf32ba3f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="1c2ac79b-c5aa-48e7-9733-225b9d4631ae"
+                LastKnownName="EnclosureType"
+                LastKnownLocation="Package10_2202.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f44a7e71-e7e2-469c-a95f-96661118ebdb"
+            name="_closingSymbol"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="3eb2e020-a26a-43bd-ac4a-5085b248f817"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D_closingSymbol"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f5be43e8-6298-444a-8c57-adec8f08663b"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4a3ac213-aa27-4951-a494-877a48a778fe">
+                    <propertyInstance
+                      Id="9d429590-4388-41e5-ad9a-955296c903bb"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7f86bdc2-b343-4e4f-9541-6540a433652f">
+                    <propertyInstance
+                      Id="a4b98b8e-e14e-4cdb-884e-40da6fffe301"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="682815cd-092f-4d16-9231-f8a47b668879">
+                    <propertyInstance
+                      Id="adca8958-dfa2-46b5-a639-268eb2af1f71"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6634183f-3c89-490b-b512-5c0ef2391478">
+                    <propertyInstance
+                      Id="2eef8485-a5f6-436c-81b4-41cb998f5d1f"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4f219231-9995-4474-bd57-dacfcf31f4a1">
+                    <propertyInstance
+                      Id="56daa460-e805-4c3f-8c55-d0ed68d3de48"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="Kepler.Design.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="0239fadb-7c18-4758-b75a-d7280abc44a3"
+            name="_innerSequenceLength"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="3813ddea-d592-4b02-b9bf-83dc94923da7"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D_innerSequenceLength"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="980fb030-3b65-4966-b6d6-2b479705b6a9"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c5f59b3d-c975-4393-a3c7-5b9a6de0d3a8">
+                    <propertyInstance
+                      Id="f73bc0b9-2b71-4b45-9a61-c8e192c79247"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d6e5a6a1-92d1-4ccb-895e-ea79dabc4427">
+                    <propertyInstance
+                      Id="8a29fb59-4f94-4ac1-9152-9b9e2caf7723"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="84d628af-6e6e-43b4-acf7-6a800373450b">
+                    <propertyInstance
+                      Id="a221fb07-2479-46fd-8464-b919ce2112a2"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c1fe0a35-1403-4157-9bd6-71faadca5b76">
+                    <propertyInstance
+                      Id="dbf5aae0-e854-43e4-b029-e91f81602a4e"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9622d9ec-05b0-41c0-ad5f-5477e236756f">
+                    <propertyInstance
+                      Id="e20df464-b4a1-414e-a181-cd11516dece0"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="72596a9f-375a-4747-b7bb-3467bb0628fa"
+                LastKnownName="Nullable&lt;UInt32‎&gt;"
+                LastKnownLocation="Package4_2202.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f4eafec6-a98f-4552-bd87-a57a9742ab9e"
+            name="_openingSymbol"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="1fbd07df-9269-48f4-b575-b378212e9ec6"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D_openingSymbol"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="909b34e5-1cc8-4678-8c52-659cfe781bd9"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="caff8dba-40b0-475f-a90d-d9d491805941">
+                    <propertyInstance
+                      Id="47697e6e-b46e-4a6c-9536-6ec331ff5268"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1a21f890-4e3f-4e2f-ab5e-fc78ffa3e740">
+                    <propertyInstance
+                      Id="c79059b1-7f6f-4f7b-bb4b-971601d9fc59"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="53e5c652-e630-44a9-8a7d-eea102e653c6">
+                    <propertyInstance
+                      Id="fa959422-e8ee-4a0b-9f18-1078b1dd9bb6"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ff5dd183-0ca9-479d-95e2-0eb5ab10c26a">
+                    <propertyInstance
+                      Id="6c81fca7-adaf-4fbf-ac96-a164eabc4fa0"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d2e8db4f-9e4f-4633-953b-818fca2fe4bf">
+                    <propertyInstance
+                      Id="ea3289b0-98d3-493d-8955-b941c2281e83"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="Kepler.Design.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="c52f1bae-5974-459d-a759-74742ab45278"
+            name="EnclosedAtomAttribute"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="72ca770a-ab67-4b52-aea2-d44d211e4053"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DUInt32)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bda21c58-3ae4-4e4f-aef7-5662883e12f2"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b40f2c20-a066-4f23-a71d-a42f9665c1a0">
+                    <propertyInstance
+                      Id="3ee20649-5ea8-4852-bca9-b2c8d828ab50"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b4d672bb-41af-4619-8099-02b864db18e7">
+                    <propertyInstance
+                      Id="39a46434-7ba3-4056-bc92-7e37f80d9147"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="92ad4163-c0af-426f-8fc2-8f7d51616c89">
+                    <propertyInstance
+                      Id="03952e65-d1bc-45ff-abd8-8dee1920912b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="461d55ac-12de-4b64-8c8b-a0fb902d6dbb">
+                    <propertyInstance
+                      Id="701c59d0-4938-4860-8789-41a6886a1fe2"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9f61f11c-6fa4-45ec-aa3c-141586b95fbf">
+                    <propertyInstance
+                      Id="0d6d19ce-50d6-4b85-8205-32c0a6112a0c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a262a05b-bc46-48cb-a1db-2b114619598f">
+                    <propertyInstance
+                      Id="c18a14c5-f720-40fb-92ff-6d489462df27"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6888adde-39f4-498c-9376-20cc57bd39ff"
+                  name="openingSymbol"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="abd056c0-c27f-4c8b-baf5-2ff7d254adfd"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DUInt32)]) ParameterIdentifier%3DopeningSymbol"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="Kepler.Design.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2cfffef0-f522-4eb8-8852-602fb1444a3c"
+                  name="closingSymbol"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="971a8446-36c7-4338-a8ca-8e0a8a8f594e"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DUInt32)]) ParameterIdentifier%3DclosingSymbol"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="Kepler.Design.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="84bb09bc-e859-441f-a962-fa714472d88f"
+                  name="atomType"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="4443ae73-2a94-4164-ac80-f95d8f6f9105"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DUInt32)]) ParameterIdentifier%3DatomType"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="1c2ac79b-c5aa-48e7-9733-225b9d4631ae"
+                      LastKnownName="EnclosureType"
+                      LastKnownLocation="Package10_2202.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="baf9251f-6604-4fa8-8741-cde444ef3de9"
+                  name="innerSequenceLength"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="b380de34-6ebc-4678-815e-d8546f66ab44"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DUInt32)]) ParameterIdentifier%3DinnerSequenceLength"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2da2707c-d476-469a-ab09-5cf0d3e1be1d"
+                      LastKnownName="UInt32"
+                      LastKnownLocation="Package4_2202.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="ca27964a-251b-488d-9337-e385ae682d4e"
+            name="EnclosedAtomAttribute"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="1091d62a-5ed2-4275-95ce-e1a784927df7"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="88837882-31de-4384-a2d3-d37c0a833a15"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="73061ec7-815f-4dae-9afb-df366efde039">
+                    <propertyInstance
+                      Id="20e2d0bb-4cd8-4712-8419-1134509ab079"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="77d463ab-babb-422f-a062-20b1ae2ef423">
+                    <propertyInstance
+                      Id="4aa9215a-5fbf-4e32-87e3-48381e9cb305"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6b8c9c0b-8354-4fc3-b395-4c27b2748516">
+                    <propertyInstance
+                      Id="c37538a5-0177-4481-a884-2daed608663a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6b11e7a4-03ef-4679-bded-3af4efe7d2bf">
+                    <propertyInstance
+                      Id="57d30f5d-89a6-45f0-a902-aa25a33280f8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c8a036ef-ea6b-4a43-b5d7-e49789e12f74">
+                    <propertyInstance
+                      Id="dc2a98ed-a3aa-41a0-9fba-4e2a7481df57"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="31e92b72-245a-488a-b8b9-7b3e39d0832c">
+                    <propertyInstance
+                      Id="2bbfc189-6197-4369-847d-0dc0702b23c0"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="efc5bd21-c39d-40c5-a117-04895cdf79a1"
+                  name="openingSymbol"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="9e86f33f-4489-401a-a525-d7471c094549"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute))]) ParameterIdentifier%3DopeningSymbol"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="Kepler.Design.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="360dbcb6-0dfb-4675-b4e7-b18f6fa3990d"
+                  name="closingSymbol"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="85ac2067-afbd-46d2-b95f-0c7cf983a4e0"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute))]) ParameterIdentifier%3DclosingSymbol"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="Kepler.Design.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="09f5e38f-df12-4a7c-929e-201a3fc430e9"
+                  name="atomType"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="73136f07-daa5-4e6a-bac7-7f82d392c4be"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DEnclosedAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DEnclosureType ParentType%3DAtomAttribute))]) ParameterIdentifier%3DatomType"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="1c2ac79b-c5aa-48e7-9733-225b9d4631ae"
+                      LastKnownName="EnclosureType"
+                      LastKnownLocation="Package10_2202.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="dde080b6-2380-47a4-b8aa-bdbbdc72dc9a"
+        name="LiteralAtomAttribute"
+        isAbstract="false"
+        isLeaf="true"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="865188f1-baf2-4259-875d-613b2bf7a5bf"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="165ae409-dc5c-48be-ba49-36582de1b89f"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bfe4096e-6548-4cc3-a4ab-99024d3315ea">
+                <propertyInstance
+                  Id="4a247530-733e-4c0a-957f-456e7f07d77b"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ee150498-37ce-4dc5-ad96-a424c56555c4">
+                <propertyInstance
+                  Id="2ef9f09f-8d4b-4d07-a02c-e80fd1a0e1e4"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="805a04bf-25c9-4f50-8adf-e0ed745ae66f">
+                <propertyInstance
+                  Id="0094d72c-49ab-4f0e-a682-061f49cf5af0"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1bf1929e-3a04-4fbf-b2f9-7774d37aae8e">
+                <propertyInstance
+                  Id="2c3a442b-380a-4af5-8664-d734c6aa2013"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ef6f70c3-75c5-4c56-932a-9d8f6c4d9b98">
+                <propertyInstance
+                  Id="b30a1b35-f574-4d25-a9c6-f75cdda1a8e0"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="cc4ba63d-1772-4ac0-8d2b-34e7bddbaeb8"
+            isSubstitutable="false">
+            <classMoniker
+              Id="7ccb24ca-68bf-4a01-85d9-acdaf43db81b"
+              LastKnownName="AtomAttribute"
+              LastKnownLocation="Package10_2202.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="8e5be897-db14-42d6-ad86-5999006010fc"
+            isDerived="false"
+            sourceEndRoleName="LiteralAtomAttribute"
+            targetEndRoleName="AtomType"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="4010a705-60c4-4916-924a-fd5887badb1e"
+              LastKnownName="LiteralType"
+              LastKnownLocation="Package10_2202.uml" />
+            <description>Property AtomType references type LiteralType.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3fda788d-c508-45a0-b8da-6f7a94e7195d"
+                  name="LiteralAtomAttribute"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0da9e4f4-3a62-4373-9d7a-84f77f9947f7"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="56a7505a-94ba-4866-8f13-6daedd777237"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d58e190a-2496-49eb-9c48-3bfe7409b8b9"
+                  name="AtomType"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="27753626-78a2-43e5-b420-1033a8b692b2"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="a8bb5bf9-b2d3-46e1-91c7-5d1e41a5cbe5"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="fd7c6767-44f1-4ac7-843e-79010fcd9342"
+            name="AtomType"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e5f57bcb-14de-4b58-b99a-46547fe5a737"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3DAtomType"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="5cd9e8ed-515a-4c99-a248-f03cc144149a"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8ca697f3-30df-47f9-ac1d-633347bae165">
+                    <propertyInstance
+                      Id="03fd7071-1fd8-48ea-b604-8b385c1862cc"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ad981162-4c2f-46d4-99da-dca79462d6d7">
+                    <propertyInstance
+                      Id="ce51cc56-336d-47da-8aee-af42ee910cc5"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="464feb76-5896-480c-b9db-e71b398d7fbd">
+                    <propertyInstance
+                      Id="8bfee664-95f1-4656-b4ca-73eaa3610e88"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b630a3b3-164f-4875-8a1c-1be4f1c83ea1">
+                    <propertyInstance
+                      Id="71af192f-57d4-473e-b3a1-610a6c7b568c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d36c71a2-9a93-4d16-8710-211d3003f881">
+                    <propertyInstance
+                      Id="49e4fe0f-3369-4ef4-af23-d09e8d9837b4"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="695315bb-3fe4-4016-830d-87886045bea7">
+                    <propertyInstance
+                      Id="f2eb2194-6655-41e7-aa20-137423657931"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fbb49d1a-73e8-4d58-bd5c-236a0a0f85cf">
+                    <propertyInstance
+                      Id="14d577fa-7b8b-4189-afff-39609b8558a0"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="4010a705-60c4-4916-924a-fd5887badb1e"
+                LastKnownName="LiteralType"
+                LastKnownLocation="Package10_2202.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="8f9b08ab-a8de-4d52-a788-509bc8f88053"
+            name="ConsiderAtom"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="c9d7a28f-30d6-424c-98e6-0a279b9b59dd"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3DConsiderAtom"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="400864bc-6be1-456c-a6ee-ba0355722f5c"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e8ebb2e4-492f-41d7-aee4-171a8aa6c02b">
+                    <propertyInstance
+                      Id="3323f6eb-bcc3-433b-9fba-ddb0f09734ea"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1ebd3cb7-dee5-4aff-9e35-7fe7717f63b5">
+                    <propertyInstance
+                      Id="230546d8-c704-4d3c-9048-da3e69fd1a3b"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cd8f5b7c-a99e-402e-912e-020cea200bba">
+                    <propertyInstance
+                      Id="97ce8ed9-b107-4898-9760-a31c864f7f29"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="64e7e05b-6ff4-4fd8-b5b1-bb95b8ac3399">
+                    <propertyInstance
+                      Id="6ba61aa3-8b4b-4a35-82a2-8e88af95829a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="487622f6-c881-41a3-8f5d-96438cded051">
+                    <propertyInstance
+                      Id="f03a2d2b-0e69-46a6-b0e0-e2fefa3d278a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="262e4449-a6ad-449b-90e9-c6cbd9f51d2b">
+                    <propertyInstance
+                      Id="ea24228c-88c9-4e4b-9dda-d30c8d30eea3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="49708bb3-3cd9-4280-a017-d9843a1ae17b">
+                    <propertyInstance
+                      Id="a349b4c8-e394-4e33-8b93-ea3fdf89e111"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="Kepler.Design.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="dd90cb36-ab17-4b11-a47a-6c031a772896"
+            name="IsReservedWord"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e1dce985-89fb-4994-ad1c-d48bd9d08c76"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3DIsReservedWord"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f3fa008e-b23c-42cd-93e8-a1fdb2634f92"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a7ddb27c-f790-4095-8b71-a5dc23a7f335">
+                    <propertyInstance
+                      Id="80c23a44-e12c-4880-8c4b-213d768bae21"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b263b8c9-bbba-43bb-abce-484b12403005">
+                    <propertyInstance
+                      Id="fc6f1e78-8a47-4e62-b966-287d5ece5bbd"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="23a465a7-5d60-40df-a95f-2a9c4432daa5">
+                    <propertyInstance
+                      Id="79d506c5-fe2f-4168-ac4b-2cd371030cc1"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c94630d1-1458-40bb-9ea6-db0536344918">
+                    <propertyInstance
+                      Id="3576a8a0-d82f-4e73-9ae6-37494732cc55"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="43b4827d-51fb-429f-8860-beb8000f2184">
+                    <propertyInstance
+                      Id="e17d217a-02a8-4308-9da9-c38550ee76a0"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f541de0d-b439-4e76-8644-aaf5b68fb6ff">
+                    <propertyInstance
+                      Id="5d68fc6b-cd27-41dd-a6f0-b3acd22e5d08"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bdec4fa3-af62-45cd-85f4-15ccfa622e4f">
+                    <propertyInstance
+                      Id="4609e53e-c0b7-45be-9d03-b4716997d597"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="Kepler.Design.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="75850fae-ab64-4e56-8c05-7a09b176219a"
+            name="Literal"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="09c2f25b-9771-4770-849e-23dd061f9206"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3DLiteral"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="91cb2ce1-c963-493d-b02e-f3e63801e6e7"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b8a8f548-44d8-47ab-8208-8bcc3da97e86">
+                    <propertyInstance
+                      Id="af65b3cb-bec6-4628-aee1-6d69b2a47d50"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bc17b49d-819c-4588-a2ce-e0984fd8dcdd">
+                    <propertyInstance
+                      Id="9927a898-f96e-4981-b253-3904ea25c402"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eab74390-e377-434a-a42e-d71b76fc53d6">
+                    <propertyInstance
+                      Id="60f74a39-827a-4d45-8e5d-e77ecaa62da7"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="12b657d9-f5a1-413e-9224-61e0680abb7f">
+                    <propertyInstance
+                      Id="f810b2c1-075e-41a0-a45b-977593efabc6"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c7a048dd-fa69-4220-a54e-47672c68e468">
+                    <propertyInstance
+                      Id="9ae83abc-bec4-4d2b-982a-6ff269c35439"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="811abce3-5d10-4a59-a440-e879d1ba0f57">
+                    <propertyInstance
+                      Id="323425bb-4e40-4dae-8b57-bf27abe1f7c6"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="06182878-92b5-44c1-9707-3477ebe1f1d6">
+                    <propertyInstance
+                      Id="2c54afdd-654f-45ed-9bb5-723a2e26e420"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="Kepler.Design.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="021f670d-d54b-4281-9699-c8eb717c8bda"
+            name="_atomType"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="1c08d69b-71e6-4226-a38e-d41cc49f1d56"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3D_atomType"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="006a530d-de8b-4c8b-99a7-1d64c63375a2"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3504b626-713d-46a9-a2f9-6fa1e98939fd">
+                    <propertyInstance
+                      Id="aabb5901-f8e0-495c-943b-5640a6316827"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8b20e867-a804-4a45-9a7f-140524d359a7">
+                    <propertyInstance
+                      Id="23dd03a2-cc58-4630-8e6e-65c18d01058b"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1e980c43-65b5-4dee-83ae-f8023d595df0">
+                    <propertyInstance
+                      Id="c4e521fa-dc61-4b9b-bed1-5fce596dfe95"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="73662477-b08a-4bc8-b399-433d2f23905e">
+                    <propertyInstance
+                      Id="678a90d8-a569-4617-b5a9-8851d13a4c92"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="422c5b15-0336-4bc5-86e0-367088cd92c2">
+                    <propertyInstance
+                      Id="f44d6c86-ee8b-495d-9088-141f2d82eb30"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="4010a705-60c4-4916-924a-fd5887badb1e"
+                LastKnownName="LiteralType"
+                LastKnownLocation="Package10_2202.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="9f70cfdb-ff28-468d-b426-36e2c3fc57fb"
+            name="_considerAtom"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="21c3c26e-cf47-4810-93c3-9bb1decaf54f"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3D_considerAtom"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2edf5555-3a6f-4332-9a46-349c59557837"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f9bc2143-0357-49be-8f9b-00128a1bf235">
+                    <propertyInstance
+                      Id="ea393e7a-58b5-4b9c-a8b8-7e9e2f19d33a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4a55e02c-cb38-41b8-9075-1a203b368424">
+                    <propertyInstance
+                      Id="832492d6-2553-4b4b-b947-3b3645b1b6f6"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ca9b3b8f-d6dd-4e7e-867a-6d67f8d9e455">
+                    <propertyInstance
+                      Id="0f06993f-8d46-49a5-9f8e-e7de4e8a0c95"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5510f194-1cfa-461a-a93d-04829385f20a">
+                    <propertyInstance
+                      Id="916d0ddc-eb89-4e07-b7d2-593727f4e4ea"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fb66fa16-ddc0-4785-a7bc-4df00b5eb20e">
+                    <propertyInstance
+                      Id="e003321c-6384-4aa3-80f5-7af2799ca29e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="Kepler.Design.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ebdf7cf9-fc94-4ed4-b13e-2a0c940d98f6"
+            name="_isReservedWord"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e8b13a9d-d2b8-4da1-874d-a55d790eaae8"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3D_isReservedWord"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3eb4c9cf-355d-4385-929a-fb363382de45"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="28b5e9d4-a74b-4f0b-897c-e3a084e997ad">
+                    <propertyInstance
+                      Id="4c58d7e1-bda1-4727-abf1-1d82808ccc54"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9d23231b-178d-4f3a-b46c-445a33593acf">
+                    <propertyInstance
+                      Id="e0a05af9-2145-4356-9b29-3fb570ba312a"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bb5c74c6-f734-4275-9231-5d58ab05f8b8">
+                    <propertyInstance
+                      Id="4a345eb5-993c-4bf9-9b0a-c843c37228cc"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a9393d62-81e0-4f40-9889-a692a607f6fa">
+                    <propertyInstance
+                      Id="7e830c5c-48b7-4d59-be95-c69da8fd7324"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f4afcac9-1c6c-4e2b-8439-4df82b4df217">
+                    <propertyInstance
+                      Id="57fa762c-08be-490e-b4d1-a30d6199bbba"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="Kepler.Design.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="bb2219bd-4724-4f62-9939-2fde4db5ea02"
+            name="_literal"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0c8338a6-1e38-4359-a1e6-b35dd1edf3fb"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3D_literal"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2894c349-c7d3-43f6-8442-186f83c98ec3"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="23be9ce1-98c9-456a-b5e5-2e8599c106d7">
+                    <propertyInstance
+                      Id="e2460f62-75f1-49da-a18b-2064aa66ce26"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9d0c529c-8bdd-4e54-997b-c9035011a1a1">
+                    <propertyInstance
+                      Id="336587d3-ab66-433e-9e02-1cd27a158605"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cce26dc8-3c3a-4237-aae4-aacf5f66e9a8">
+                    <propertyInstance
+                      Id="5b4bb0c7-2e0b-40fb-a131-6f14ff95dc41"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b0d4bb88-aaad-4b26-8c85-aa006fe4436c">
+                    <propertyInstance
+                      Id="a2628cf3-d54d-492c-9ce0-6c83516abb3d"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9bb819ce-2a91-41ef-8bd6-ffcf6df86826">
+                    <propertyInstance
+                      Id="5f4d1326-42a1-4710-9425-9e024cd07c4d"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="Kepler.Design.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="e67977eb-cee6-497e-8ab1-5c6a280b07cd"
+            name="LiteralAtomAttribute"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="175a1793-a441-41af-9981-0c83abc16421"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DLiteralType ParentType%3DAtomAttribute))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="52981360-d895-4a38-8a9e-7bab4195b790"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da9477fe-38bc-45e4-a92b-e6a4d3c55b54">
+                    <propertyInstance
+                      Id="7275d334-3c8a-444b-83d7-7d7f959ea732"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2fb70d5c-d566-4ac2-b909-e935fd8c84ae">
+                    <propertyInstance
+                      Id="5725f9ad-399a-4764-aab4-cdac3cf49b02"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="16c7c36c-23eb-4b7f-84db-df9938cf5ac9">
+                    <propertyInstance
+                      Id="724de5c8-daee-41b9-938f-75387315e259"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a9cb3b7d-72ec-4d88-850d-7b8c5bffe038">
+                    <propertyInstance
+                      Id="ddad2dd3-2f0b-4e3b-8815-9447c35ca658"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="faed27d8-0371-4dfa-b73d-5979c2e0694a">
+                    <propertyInstance
+                      Id="3c532af0-f828-4c8d-838f-cf35d6b9bc6b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7e9a84de-cc81-4488-b829-2972468c372c">
+                    <propertyInstance
+                      Id="a7d2e712-b8c5-48fb-bfe4-bcb4e4c2182a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c7ddd2d5-63a7-403e-acd3-1906623ab401"
+                  name="literal"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="7424138a-d931-403c-a8d6-11fe7798f0ad"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DLiteralType ParentType%3DAtomAttribute))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)]) ParameterIdentifier%3Dliteral"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="Kepler.Design.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d3434646-9134-48dc-90d8-e95ee1acd2bb"
+                  name="atomType"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="b58d0ec7-adcd-4516-b30f-f0d0f1f7df8c"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DLiteralType ParentType%3DAtomAttribute))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)]) ParameterIdentifier%3DatomType"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="4010a705-60c4-4916-924a-fd5887badb1e"
+                      LastKnownName="LiteralType"
+                      LastKnownLocation="Package10_2202.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="737e7e54-2287-4197-846c-307b5b10e745"
+                  name="isReservedWord"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="963eb5c4-3b1b-47c4-af49-82eb9df0757c"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DLiteralType ParentType%3DAtomAttribute))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)]) ParameterIdentifier%3DisReservedWord"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="Kepler.Design.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="df2b9c1c-030f-40e5-9f0f-e08e2e175f2d"
+                  name="consider"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="928f9804-5ac1-4264-8365-a1a86bda55ba"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DLiteralAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DLiteralType ParentType%3DAtomAttribute))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DBoolean)]) ParameterIdentifier%3Dconsider"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="Kepler.Design.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0f917413-2999-4aad-baef-7b201b68d22e"
+        name="PatternAtomAttribute"
+        isAbstract="false"
+        isLeaf="true"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="62e6ddd7-2ea0-4d33-8cbf-524a1a2c4452"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DPatternAtomAttribute"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="d377187b-f235-4015-816c-18a73e99cf13"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d075fb2d-1258-4e34-a1ca-a95bf7475330">
+                <propertyInstance
+                  Id="78ba4c9e-73b2-409f-8fdf-3e1b641cab18"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6a263ae7-a212-40c9-ac7f-d6cbc478906a">
+                <propertyInstance
+                  Id="3336fd1b-02b5-4f49-8659-6e076fe9b783"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f51dcb2d-37fd-4800-ac85-9baa51053cb4">
+                <propertyInstance
+                  Id="daeb0989-a308-49a2-8ebe-01be163464d6"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="aa8b46dd-4735-44e2-9648-8c379b27f1e0">
+                <propertyInstance
+                  Id="dced9a77-4204-4781-b4b1-b1b713d05951"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="35932412-8138-42aa-897a-515c7c6be190">
+                <propertyInstance
+                  Id="d748d511-2224-406d-a4d0-61dc534b3762"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="e327907e-43ff-4ade-ae0f-462cf07c93aa"
+            isSubstitutable="false">
+            <classMoniker
+              Id="7ccb24ca-68bf-4a01-85d9-acdaf43db81b"
+              LastKnownName="AtomAttribute"
+              LastKnownLocation="Package10_2202.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="6a480449-1b82-4173-85e5-36e04db6b992"
+            isDerived="false"
+            sourceEndRoleName="PatternAtomAttribute"
+            targetEndRoleName="AtomType"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="02a59dc1-6ce6-4437-b40b-cb04ae77582a"
+              LastKnownName="PatternType"
+              LastKnownLocation="Package10_2202.uml" />
+            <description>Property AtomType references type PatternType.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bb20a09c-0fb1-476d-958e-62b2c78b9583"
+                  name="PatternAtomAttribute"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="de1b6e44-2cc3-4350-bab4-fff34957cac7"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="9d1d59ae-130a-4f27-b63d-95d1f0748919"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5f4187ee-ca86-4421-a5c3-32093d3917c3"
+                  name="AtomType"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="81fda264-eb97-4101-8f7a-8cb5a2bd696f"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="a00903b5-2719-4fe9-b4b0-211ffdf9a99d"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="5af70492-afdc-4628-aadb-95eae47ea5df"
+            isDerived="false"
+            sourceEndRoleName="PatternAtomAttribute"
+            targetEndRoleName="Regex"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="b317d03b-6c9b-412c-b60c-1aa2c63cb35a"
+              LastKnownName="Regex"
+              LastKnownLocation="Package8_2202.uml" />
+            <description>Property Regex references type Regex.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4d583588-0f31-4923-a6f7-4ed8566bd366"
+                  name="PatternAtomAttribute"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f94ef9ea-2580-4537-b4e0-9ec7ce333343"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="dc1e407f-5ce5-4ec9-b4fd-4d4a08de25d8"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0de5bf8c-1671-4e67-aade-07487e13924d"
+                  name="Regex"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1c197403-846d-477b-a189-22d197aa1fc6"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7a08a03a-5dd8-4c2d-af0d-38dbf31e4c55"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="0a78f5e9-c672-4e8d-b850-bac4d37d85fb"
+            name="AtomType"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e904e486-22a9-413b-8b9b-f8c3cd65cde3"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DPatternAtomAttribute Member%3DAtomType"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6c737b7f-f99b-4eba-b5e5-68b263c9fbd3"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="077ac4aa-f1ca-4ae9-b76a-321762d7f3a0">
+                    <propertyInstance
+                      Id="ad5002c7-7523-45fe-9cc3-7dddbdb652f9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="be99f9fa-ea83-4f12-8aa0-f197c706396c">
+                    <propertyInstance
+                      Id="463950db-4558-43c2-881f-8d9a6dc65dac"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5a922f96-1366-4060-b725-93bc830a3ff4">
+                    <propertyInstance
+                      Id="970a6326-e450-440f-90c3-3f8949954591"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d4709311-5f70-45e1-9f05-2aa020795154">
+                    <propertyInstance
+                      Id="87249e68-1d2b-482c-94ca-9947fd5dfd1b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4b086955-59fd-4fdb-8fa1-a24a5ea72868">
+                    <propertyInstance
+                      Id="b87fb9b6-da27-4cbb-8518-c38140b54400"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="62cbd926-79d7-4fab-8016-6fb4a31911f9">
+                    <propertyInstance
+                      Id="fc580f14-aa78-40c4-b863-800fe06afc26"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7cec229b-40e9-4676-9663-a0f72a73a1dd">
+                    <propertyInstance
+                      Id="147f2cf4-549f-452a-a96e-666c7c254bc1"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="02a59dc1-6ce6-4437-b40b-cb04ae77582a"
+                LastKnownName="PatternType"
+                LastKnownLocation="Package10_2202.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a4d3537d-c0de-48f5-8571-639adeb15670"
+            name="Regex"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="7655e82e-f1dd-4072-ac44-90ee62b32d5d"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DPatternAtomAttribute Member%3DRegex"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="252d382d-e7f9-4784-9dd7-8dad19dcf4e7"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d7c19bd0-9f60-4c75-a8f3-01bf7b0d6305">
+                    <propertyInstance
+                      Id="9fe27a15-4b92-4deb-89e2-110c54c553f3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4c70b9bd-0fe2-4e21-9260-736a8ec75d81">
+                    <propertyInstance
+                      Id="33566378-3090-49f2-866f-8d8680688c21"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="99d5aad1-5604-4216-859e-eb726b8d6b58">
+                    <propertyInstance
+                      Id="64201663-7caa-45e5-9b7c-477aa0eb52e3"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8cb74aff-7a4f-420b-9619-4107117a29f0">
+                    <propertyInstance
+                      Id="79580b6d-3eae-4cd5-b7b1-9288c9b5e470"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7dcd7b82-d4e8-45e3-ae5d-0921168f23b4">
+                    <propertyInstance
+                      Id="48cc0410-ec9c-495b-b153-14aedf101d90"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="77422fff-a0e4-4a86-8c04-db624da46858">
+                    <propertyInstance
+                      Id="4e5eb5a1-09dc-41d5-abe6-b6d93757892c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aff3d3d3-9703-439c-ac6f-a626bb80fdc3">
+                    <propertyInstance
+                      Id="02121aca-ac1d-4f65-8a6a-7688a50c52d5"
+                      name="Set"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="b317d03b-6c9b-412c-b60c-1aa2c63cb35a"
+                LastKnownName="Regex"
+                LastKnownLocation="Package8_2202.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f9ce4313-1b2f-4446-8894-0f2cca51d07d"
+            name="_atomType"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="000f4657-9af8-478a-92e5-ec225b5ba980"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DPatternAtomAttribute Member%3D_atomType"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d4e6fe09-3c67-40d3-a5b3-799b9e150e24"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6b3c63a2-127c-495e-b989-1a067a91d1bc">
+                    <propertyInstance
+                      Id="3c35eba8-09a7-4fbf-808a-9e6243658b55"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="81da6562-6750-4da9-9ed7-4e45edd772a5">
+                    <propertyInstance
+                      Id="24820453-5eb9-4e3d-beca-26072a9e9095"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8f01d228-b5e4-4523-bd0e-dc9601cec14e">
+                    <propertyInstance
+                      Id="299a9a7d-91e5-4270-b7de-d0dcfbce6e44"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="56d03b6e-ca70-4d3b-81f4-ba6a8d637fbf">
+                    <propertyInstance
+                      Id="394a4861-4ab6-44e2-9112-b523c616d0c9"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d8a33d89-3223-4fa5-9085-fd5882578731">
+                    <propertyInstance
+                      Id="c2552ca4-6b1d-4561-9f1e-62380ab83241"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="02a59dc1-6ce6-4437-b40b-cb04ae77582a"
+                LastKnownName="PatternType"
+                LastKnownLocation="Package10_2202.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="26758d67-4d8e-42c4-9f7b-d0dc1958bc9a"
+            name="_regex"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="cbc722d5-466d-48be-a150-85a46d6ae769"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DPatternAtomAttribute Member%3D_regex"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bdad06d8-f9ed-44fe-853d-86dea8986e38"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1d775585-9fc0-42a4-ac66-9c88f5ea4d92">
+                    <propertyInstance
+                      Id="9b77cd46-94cf-4863-9a6c-0bd890afefd4"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6bfc38d2-a4da-41f6-811e-ae1e151dc650">
+                    <propertyInstance
+                      Id="41619a82-e2dc-42ff-9f8a-ea4fffdd5a58"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d2fa05d5-0944-45fe-a09f-b55130ec98ee">
+                    <propertyInstance
+                      Id="be79bf80-e308-4a7b-88e3-2e5cec1542d8"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="09ec0305-21ea-4181-8894-47fb96843e5c">
+                    <propertyInstance
+                      Id="47a0c1c7-7f70-4fbc-9bde-c1ae3e188d39"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7a6cacc8-59b2-49e7-88f6-fae9f0b3dbcb">
+                    <propertyInstance
+                      Id="b134d7dc-ef44-4614-9a9e-014f3d4266f8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="b317d03b-6c9b-412c-b60c-1aa2c63cb35a"
+                LastKnownName="Regex"
+                LastKnownLocation="Package8_2202.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="22a973f9-0212-4a59-aa8b-e971448699d9"
+            name="PatternAtomAttribute"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="a600d0e7-b079-4bb9-b656-13ad246ab70f"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DPatternAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.dll&quot; Namespace%3DSystem.Text.RegularExpressions Type%3DRegexOptions)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DPatternType ParentType%3DAtomAttribute))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8b181a8e-9e9b-4c01-b468-2914650fd50b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae3c5c8b-aa1b-4240-a7e6-de287b150578">
+                    <propertyInstance
+                      Id="e6afdc13-67f7-4578-ab68-19734ece7d6a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="374b279f-0936-486c-8d26-72d2228e0594">
+                    <propertyInstance
+                      Id="58eaf7dd-c95f-48b5-a3e7-9c1f37db5fab"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2ac448ed-f2aa-4eee-8c60-597eea5f9a4e">
+                    <propertyInstance
+                      Id="32aabeda-e631-4579-8252-8923c8ee4d8c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="52777007-79e3-4301-a5dd-5c52847f0542">
+                    <propertyInstance
+                      Id="f369b5fe-3267-46b6-ae0c-16de7be6a055"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4d5b985a-0132-4dc1-b630-dc129da1af17">
+                    <propertyInstance
+                      Id="0e57228e-6e7f-40a4-8283-8600c30f1079"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="291bb81e-91af-4b69-b4b2-38717ad73026">
+                    <propertyInstance
+                      Id="0b820f2d-a250-44c1-aa58-4db0627c132a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2c0a0d3a-0ea0-4e60-a756-3387ce77d6c6"
+                  name="pattern"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="5203fdd2-dfb0-450a-9e63-50b1b1966382"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DPatternAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.dll&quot; Namespace%3DSystem.Text.RegularExpressions Type%3DRegexOptions)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DPatternType ParentType%3DAtomAttribute))]) ParameterIdentifier%3Dpattern"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="Kepler.Design.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4e05c2d4-728f-41c8-9e84-119a79a34cb8"
+                  name="patternOptions"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="41966294-4216-41aa-ba58-2b13186b96a0"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DPatternAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.dll&quot; Namespace%3DSystem.Text.RegularExpressions Type%3DRegexOptions)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DPatternType ParentType%3DAtomAttribute))]) ParameterIdentifier%3DpatternOptions"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="5bf83254-40e5-4c86-9495-403cc675363c"
+                      LastKnownName="RegexOptions"
+                      LastKnownLocation="Package8_2202.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a95c547d-c161-4da2-b1b6-f1db672c6630"
+                  name="atomType"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="d0a58a41-fa2b-4a66-b8f2-d12db50a515b"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3DPatternAtomAttribute Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FSystem.dll&quot; Namespace%3DSystem.Text.RegularExpressions Type%3DRegexOptions)%2C(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FAndrei%2FDocuments%2FProjects%2FKepler%2FKepler%2Fbin%2FDebug%2FAndrei15193.Kepler.exe Namespace%3DAndrei15193.Kepler.Language.Attributes Type%3D(Name%3DPatternType ParentType%3DAtomAttribute))]) ParameterIdentifier%3DatomType"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="02a59dc1-6ce6-4437-b40b-cb04ae77582a"
+                      LastKnownName="PatternType"
+                      LastKnownLocation="Package10_2202.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

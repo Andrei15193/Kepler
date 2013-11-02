@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 11.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2013-10-31T22:10:59" Importance="High" Text="Reverse Engineering Started." />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '497752ce-ab66-42d5-947d-8dd59458118c' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '4aa65993-ad38-4660-9834-a1ca1576070d' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '7c13baf4-7df4-4212-bc8e-b8aa39c08660' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'b3336b9d-01b2-49b8-9628-8612748e6c69' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193' -  (Package)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler' -  (Package)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Medium" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler' -  (Class)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::_defaultLexicalAnalyser' -  (Property)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::_language' -  (Property)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::_lexicalAnalyser' -  (Property)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::Compiler' -  (Operation)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::Compiler::language' -  (Parameter)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::Compiler::lexicalAnalyser' -  (Parameter)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::DefaultLexicalAnalyser' -  (Property)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::Language' -  (Property)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::LexicalAnalyser' -  (Property)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::LexicallyAnalyse' -  (Operation)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Compiler::LexicallyAnalyse::text' -  (Parameter)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Language' -  (Package)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Language::ILanguage' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Language::ILanguage&lt;TCode‎&gt;' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Language::Lexis' -  (Package)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Language::Lexis::ILexicalAnalyser' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Language::Lexis::ILexicalAnalyser&lt;TCode‎&gt;' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Language::Lexis::LexicalAnalysisResult' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Kepler.Design::Andrei15193::Kepler::Language::Lexis::LexicalAnalysisResult&lt;TCode‎&gt;' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'String' -  (PrimitiveType)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: Kepler.Design::Andrei15193::Kepler::Compiler to Kepler.Design::Andrei15193::Kepler::Language::Lexis::ILexicalAnalyser&lt;TCode‎&gt; (Association)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: Kepler.Design::Andrei15193::Kepler::Compiler to Kepler.Design::Andrei15193::Kepler::Language::ILanguage&lt;TCode‎&gt; (Association)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: Kepler.Design::Andrei15193::Kepler::Compiler to Kepler.Design::Andrei15193::Kepler::Language::Lexis::ILexicalAnalyser&lt;TCode‎&gt; (Association)" />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="High" Text="(1) type(s) fully reverse engineered." />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="High" Text="(6) type(s) partially reverse engineered.  These types were not included in the original selection so their full definitions are not reverse engineered.  Instead, this shallow operation has simply ensured these types exist in the UML model because they are needed in order to fully describe other elements." />
+  <Message Timestamp="2013-10-31T22:11:00" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
+</Log>
