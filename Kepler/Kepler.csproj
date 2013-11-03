@@ -41,18 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Sublist.cs" />
     <Compile Include="Compiler.cs" />
+    <Compile Include="Extensions\IReadOnlyListExtensions.cs" />
     <Compile Include="Language\Lexis\LexicalAnalysisResult.cs" />
     <Compile Include="Language\Lexis\Lexicon.cs" />
-    <Compile Include="Language\Attributes\AtomAttribute.cs" />
-    <Compile Include="Language\Attributes\EnclosedAtomAttribute.cs" />
-    <Compile Include="Language\Attributes\LiteralAtomAttribute.cs" />
+    <Compile Include="Language\Lexis\Attributes\AtomAttribute.cs" />
+    <Compile Include="Language\Lexis\Attributes\EnclosedAtomAttribute.cs" />
+    <Compile Include="Language\Lexis\Attributes\LiteralAtomAttribute.cs" />
     <Compile Include="Language\Lexis\Enclosure.cs" />
     <Compile Include="Language\ILanguage.cs" />
     <Compile Include="Language\Lexis\ILexicalAnalyser.cs" />
     <Compile Include="Language\Lexis\ScannedAtom.cs" />
-    <Compile Include="Language\Attributes\PatternAtomAttribute.cs" />
+    <Compile Include="Language\Lexis\Attributes\PatternAtomAttribute.cs" />
     <Compile Include="Language\RegexLanguage.cs" />
+    <Compile Include="Language\Syntax\Identifier.cs" />
+    <Compile Include="Language\Syntax\Product.cs" />
+    <Compile Include="Language\Syntax\ProductType.cs" />
+    <Compile Include="Language\Syntax\QualifiedIdentifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

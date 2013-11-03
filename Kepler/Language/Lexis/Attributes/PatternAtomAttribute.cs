@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Andrei15193.Kepler.Language.Attributes
+namespace Andrei15193.Kepler.Language.Lexis.Attributes
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = false)]
     public sealed class PatternAtomAttribute

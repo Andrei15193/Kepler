@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Andrei15193.Kepler.Language.Attributes
+namespace Andrei15193.Kepler.Language.Lexis.Attributes
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = false)]
     public sealed class LiteralAtomAttribute
