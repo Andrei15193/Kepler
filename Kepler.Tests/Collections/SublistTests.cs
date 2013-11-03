@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Andrei15193.Kepler.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
