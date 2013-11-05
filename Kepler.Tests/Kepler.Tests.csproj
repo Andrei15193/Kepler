@@ -51,6 +51,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Collections\SublistTests.cs" />
+    <Compile Include="Language\Syntax\ProductTests.cs" />
+    <Compile Include="Language\Syntax\IdentifierTests.cs" />
+    <Compile Include="Language\Syntax\QualifiedIdentifierTests.cs" />
     <Compile Include="StatementTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,6 +62,9 @@
       <Project>{3cd3b964-5c86-4d48-a375-409df78473fe}</Project>
       <Name>Kepler</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Language\Lexis\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

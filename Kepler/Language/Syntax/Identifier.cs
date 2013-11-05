@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Andrei15193.Kepler.Language.Lexis;
 
 namespace Andrei15193.Kepler.Language.Syntax
@@ -28,7 +25,7 @@ namespace Andrei15193.Kepler.Language.Syntax
 
             return (identifier != null);
         }
-        
+
         public Identifier(IReadOnlyList<ScannedAtom<Lexicon>> atoms, out int length, int startIndex = 0)
             : base(ProductType.Identifier, isTerminal: true)
         {
@@ -68,6 +65,22 @@ namespace Andrei15193.Kepler.Language.Syntax
             get
             {
                 return _atom.Value;
+            }
+        }
+
+        public override uint Line
+        {
+            get
+            {
+                return _atom.Line;
+            }
+        }
+
+        public override uint Column
+        {
+            get
+            {
+                return _atom.Column;
             }
         }
 

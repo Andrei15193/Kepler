@@ -27,7 +27,7 @@ namespace Andrei15193.Kepler.Tests.Collections
         [TestMethod, ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestWhenArrayIsEmptyAndStartIndexOne()
         {
-            IReadOnlyList<string> sublist = new Sublist<string>(_emptyArray, startIndex: 1);
+            new Sublist<string>(_emptyArray, startIndex: 1);
         }
 
         [TestMethod]
@@ -125,14 +125,14 @@ namespace Andrei15193.Kepler.Tests.Collections
 
             Assert.AreEqual(1, sublist.Count);
             using (IEnumerator<string> sublistEnumerator = sublist.GetEnumerator())
-                for (sourceIndex = 0; sourceIndex < _twoElementArray.Length && sublistEnumerator.MoveNext(); sourceIndex++)
+                for (sourceIndex = 0; sourceIndex < 1 && sublistEnumerator.MoveNext(); sourceIndex++)
                     Assert.AreSame(_twoElementArray[sourceIndex], sublistEnumerator.Current);
             Assert.AreEqual(1, sourceIndex);
 
             {
                 IEnumerator sublistEnumerator = ((IEnumerable)sublist).GetEnumerator();
 
-                for (sourceIndex = 0; sourceIndex < _twoElementArray.Length && sublistEnumerator.MoveNext(); sourceIndex++)
+                for (sourceIndex = 0; sourceIndex < 1 && sublistEnumerator.MoveNext(); sourceIndex++)
                     Assert.AreSame(_twoElementArray[sourceIndex], (string)sublistEnumerator.Current);
                 Assert.AreEqual(1, sourceIndex);
             }
@@ -209,14 +209,14 @@ namespace Andrei15193.Kepler.Tests.Collections
 
             Assert.AreEqual(1, sublist.Count);
             using (IEnumerator<string> sublistEnumerator = sublist.GetEnumerator())
-                for (sourceIndex = 0; sourceIndex < _threeElementArray.Length && sublistEnumerator.MoveNext(); sourceIndex++)
+                for (sourceIndex = 0; sourceIndex < 1 && sublistEnumerator.MoveNext(); sourceIndex++)
                     Assert.AreSame(_threeElementArray[sourceIndex], sublistEnumerator.Current);
             Assert.AreEqual(1, sourceIndex);
 
             {
                 IEnumerator sublistEnumerator = ((IEnumerable)sublist).GetEnumerator();
 
-                for (sourceIndex = 0; sourceIndex < _threeElementArray.Length && sublistEnumerator.MoveNext(); sourceIndex++)
+                for (sourceIndex = 0; sourceIndex < 1 && sublistEnumerator.MoveNext(); sourceIndex++)
                     Assert.AreSame(_threeElementArray[sourceIndex], (string)sublistEnumerator.Current);
                 Assert.AreEqual(1, sourceIndex);
             }
@@ -230,14 +230,14 @@ namespace Andrei15193.Kepler.Tests.Collections
 
             Assert.AreEqual(1, sublist.Count);
             using (IEnumerator<string> sublistEnumerator = sublist.GetEnumerator())
-                for (sourceIndex = 1; sourceIndex < _threeElementArray.Length && sublistEnumerator.MoveNext(); sourceIndex++)
+                for (sourceIndex = 1; sourceIndex < 2 && sublistEnumerator.MoveNext(); sourceIndex++)
                     Assert.AreSame(_threeElementArray[sourceIndex], sublistEnumerator.Current);
             Assert.AreEqual(2, sourceIndex);
 
             {
                 IEnumerator sublistEnumerator = ((IEnumerable)sublist).GetEnumerator();
 
-                for (sourceIndex = 1; sourceIndex < _threeElementArray.Length && sublistEnumerator.MoveNext(); sourceIndex++)
+                for (sourceIndex = 1; sourceIndex < 2 && sublistEnumerator.MoveNext(); sourceIndex++)
                     Assert.AreSame(_threeElementArray[sourceIndex], (string)sublistEnumerator.Current);
                 Assert.AreEqual(2, sourceIndex);
             }
@@ -251,14 +251,14 @@ namespace Andrei15193.Kepler.Tests.Collections
 
             Assert.AreEqual(1, sublist.Count);
             using (IEnumerator<string> sublistEnumerator = sublist.GetEnumerator())
-                for (sourceIndex = 1; sourceIndex < _threeElementArray.Length && sublistEnumerator.MoveNext(); sourceIndex++)
+                for (sourceIndex = 1; sourceIndex < 2 && sublistEnumerator.MoveNext(); sourceIndex++)
                     Assert.AreSame(_threeElementArray[sourceIndex], sublistEnumerator.Current);
             Assert.AreEqual(2, sourceIndex);
 
             {
                 IEnumerator sublistEnumerator = ((IEnumerable)sublist).GetEnumerator();
 
-                for (sourceIndex = 1; sourceIndex < _threeElementArray.Length && sublistEnumerator.MoveNext(); sourceIndex++)
+                for (sourceIndex = 1; sourceIndex < 2 && sublistEnumerator.MoveNext(); sourceIndex++)
                     Assert.AreSame(_threeElementArray[sourceIndex], (string)sublistEnumerator.Current);
                 Assert.AreEqual(2, sourceIndex);
             }
@@ -277,7 +277,7 @@ namespace Andrei15193.Kepler.Tests.Collections
                 sublist = new Sublist<string>((IReadOnlyList<string>)sublist);
                 Assert.AreEqual(4, sublist.Count);
                 using (IEnumerator<string> sublistEnumerator = sublist.GetEnumerator())
-                    for (sourceIndex = 0; sourceIndex < _fiveElementArray.Length && sublistEnumerator.MoveNext(); sourceIndex++)
+                    for (sourceIndex = 0; sourceIndex < _fourElementArray.Length && sublistEnumerator.MoveNext(); sourceIndex++)
                         Assert.AreSame(_fiveElementArray[sourceIndex], sublistEnumerator.Current);
                 Assert.AreEqual(4, sourceIndex);
 
