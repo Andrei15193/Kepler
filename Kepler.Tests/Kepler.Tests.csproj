@@ -51,9 +51,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Collections\SublistTests.cs" />
-    <Compile Include="Language\Syntax\ProductTests.cs" />
-    <Compile Include="Language\Syntax\IdentifierTests.cs" />
-    <Compile Include="Language\Syntax\QualifiedIdentifierTests.cs" />
+    <Compile Include="Language\Syntax\SymbolTests.cs" />
+    <Compile Include="Language\Syntax\TerminalSymbols\IdentifierTests.cs" />
+    <Compile Include="Language\Syntax\NonTerminalSymbols\QualifiedIdentifierTests.cs" />
     <Compile Include="StatementTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

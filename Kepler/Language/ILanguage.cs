@@ -4,7 +4,7 @@ using Andrei15193.Kepler.Language.Lexis;
 namespace Andrei15193.Kepler.Language
 {
     public interface ILanguage<TCode>
-        where TCode: struct
+        where TCode : struct
     {
         bool TryGetIdentifierCode(string text, out TCode code);
 
@@ -14,13 +14,17 @@ namespace Andrei15193.Kepler.Language
 
         bool TryGetIgnoreCode(string text, out TCode code);
 
-        bool IsReservedWord(string text);
-
         bool CanIgnore(string text);
 
         bool CanIgnore(TCode code);
 
-        IReadOnlyDictionary<string, TCode> Operators
+        string GetSymbol(TCode code);
+
+        bool TryGetSymbol(TCode code, out string symbol);
+
+        bool IsReservedWord(string text);
+        
+        IReadOnlyDictionary<string, Operator<TCode>> Operators
         {
             get;
         }

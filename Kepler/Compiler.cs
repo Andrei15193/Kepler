@@ -284,7 +284,7 @@ namespace Andrei15193.Kepler
                     {
                         if (previousIndex < indexOfOp)
                             _AnalyzeTextLeaf(text.Substring(previousIndex, indexOfOp - previousIndex), language, builder);
-                        builder.AppendDelimiter(op, language.Operators[op]);
+                        builder.AppendDelimiter(op, language.Operators[op].Code);
                         previousIndex = indexOfOp + op.Length;
                     }
                     else

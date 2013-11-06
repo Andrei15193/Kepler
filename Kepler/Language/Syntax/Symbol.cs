@@ -4,7 +4,7 @@ using Andrei15193.Kepler.Language.Lexis;
 
 namespace Andrei15193.Kepler.Language.Syntax
 {
-    public abstract class Product
+    public abstract class Symbol
     {
         static protected class ExceptionFactory
         {
@@ -13,6 +13,17 @@ namespace Andrei15193.Kepler.Language.Syntax
                 if (symbol != null)
                     if (symbol.Length > 0)
                         return new ArgumentException(string.Format("Expected '{0}' at line: {1}, column: {2}", symbol, line, column));
+                    else
+                        throw new ArgumentException("The symbol cannot be missing (empty string)!");
+                else
+                    throw new ArgumentNullException("symbol");
+            }
+
+            static public Exception CreateUnexpectedSymbol(string symbol, uint line, uint column)
+            {
+                if (symbol != null)
+                    if (symbol.Length > 0)
+                        return new ArgumentException(string.Format("Unexpected '{0}' at line: {1}, column: {2}", symbol, line, column));
                     else
                         throw new ArgumentException("The symbol cannot be missing (empty string)!");
                 else
@@ -62,17 +73,17 @@ namespace Andrei15193.Kepler.Language.Syntax
             return exception;
         }
 
-        protected Product(ProductType productType, bool isTerminal)
+        protected Symbol(SymbolNodeType symbolNodeType, bool isTerminal)
         {
-            _productType = productType;
+            _symbolNodeType = symbolNodeType;
             _isTerminal = isTerminal;
         }
 
-        public ProductType ProductType
+        public SymbolNodeType SymbolNodeType
         {
             get
             {
-                return _productType;
+                return _symbolNodeType;
             }
         }
 
@@ -95,6 +106,6 @@ namespace Andrei15193.Kepler.Language.Syntax
         }
 
         private readonly bool _isTerminal;
-        private readonly ProductType _productType;
+        private readonly SymbolNodeType _symbolNodeType;
     }
 }

@@ -40,14 +40,15 @@ namespace Andrei15193.Kepler.Language
 
         public RegexLanguage()
         {
+            IDictionary<string, Operator<TCode>> operators = new SortedDictionary<string, Operator<TCode>>();
             IList<TCode> codesToIgnore = new List<TCode>();
             ISet<string> literalsToIgnore = new HashSet<string>();
             ISet<string> reservedWords = new HashSet<string>();
+            IDictionary<TCode, string> literalSymbols = new Dictionary<TCode, string>();
             var literals = new Dictionary<AtomAttribute.LiteralType, IDictionary<string, TCode>>();
             var patterns = new Dictionary<AtomAttribute.PatternType, IDictionary<Regex, TCode>>();
             var enclosures = new Dictionary<AtomAttribute.EnclosureType, IDictionary<Enclosure, TCode>>();
             literals.Add(AtomAttribute.LiteralType.KeyWord, new SortedDictionary<string, TCode>());
-            literals.Add(AtomAttribute.LiteralType.Operator, new SortedDictionary<string, TCode>());
             literals.Add(AtomAttribute.LiteralType.Separator, new SortedDictionary<string, TCode>());
             patterns.Add(AtomAttribute.PatternType.Constant, new Dictionary<Regex, TCode>());
             patterns.Add(AtomAttribute.PatternType.Identifier, new Dictionary<Regex, TCode>());
@@ -64,6 +65,7 @@ namespace Andrei15193.Kepler.Language
                     LiteralAtomAttribute literalAtomAttribute = atomAttribute as LiteralAtomAttribute;
                     if (literalAtomAttribute != null)
                     {
+                        literalSymbols.Add(fieldValue, literalAtomAttribute.Literal);
                         if (literalAtomAttribute.IsReservedWord)
                             reservedWords.Add(literalAtomAttribute.Literal);
                         if (!literalAtomAttribute.ConsiderAtom)
@@ -71,7 +73,10 @@ namespace Andrei15193.Kepler.Language
                             literalsToIgnore.Add(literalAtomAttribute.Literal);
                             codesToIgnore.Add(fieldValue);
                         }
-                        literals[literalAtomAttribute.AtomType].Add(literalAtomAttribute.Literal, fieldValue);
+                        if (literalAtomAttribute.AtomType == AtomAttribute.LiteralType.Operator)
+                            operators.Add(literalAtomAttribute.Literal, new Operator<TCode>(fieldValue, (fieldInfo.GetCustomAttribute<PriorityAttribute>() ?? PriorityAttribute.Default).Priority));
+                        else
+                            literals[literalAtomAttribute.AtomType].Add(literalAtomAttribute.Literal, fieldValue);
                     }
                     else
                     {
@@ -98,7 +103,7 @@ namespace Andrei15193.Kepler.Language
                 }
 
             _keyWords = new ReadOnlyDictionary<string, TCode>(literals[AtomAttribute.LiteralType.KeyWord]);
-            _operators = new ReadOnlyDictionary<string, TCode>(literals[AtomAttribute.LiteralType.Operator]);
+            _operators = new ReadOnlyDictionary<string, Operator<TCode>>(operators);
             _separators = new ReadOnlyDictionary<string, TCode>(literals[AtomAttribute.LiteralType.Separator]);
             _constants = new ReadOnlyDictionary<Regex, TCode>(patterns[AtomAttribute.PatternType.Constant]);
             _identifiers = new ReadOnlyDictionary<Regex, TCode>(patterns[AtomAttribute.PatternType.Identifier]);
@@ -112,6 +117,7 @@ namespace Andrei15193.Kepler.Language
             _ignoreCodes = new ReadOnlyCollection<TCode>(codesToIgnore);
             _enclosedConstants = new ReadOnlyDictionary<Enclosure, TCode>(enclosures[AtomAttribute.EnclosureType.Constant]);
             _enclosedComments = new ReadOnlyDictionary<Enclosure, TCode>(enclosures[AtomAttribute.EnclosureType.Comment]);
+            _literalSymbols = new ReadOnlyDictionary<TCode, string>(literalSymbols);
         }
 
         public bool TryGetIdentifierCode(string text, out TCode code)
@@ -142,48 +148,59 @@ namespace Andrei15193.Kepler.Language
 
         public bool TryGetIgnoreCode(string text, out TCode code)
         {
+            Operator<TCode> op;
             code = default(TCode);
 
             if (text != null)
-                if (_ignoreLiterals.Contains(text)
+            {
+                bool isLiteralIgnored = _ignoreLiterals.Contains(text);
+
+                if (isLiteralIgnored
                     && (_keyWords.TryGetValue(text, out code)
-                        || _operators.TryGetValue(text, out code)
                         || _separators.TryGetValue(text, out code)))
                     return true;
                 else
-                {
-                    string enclosedText;
-                    var firstEnclosure = _enclosedComments.Keys
-                                                          .FirstOrDefault(enclosure => (enclosure.IndexOfEnclosure(text, out enclosedText) != -1
-                                                                                        && enclosedText.Length == text.Length));
-
-                    if (firstEnclosure != null
-                        && _enclosedComments.TryGetValue(firstEnclosure, out code))
+                    if (isLiteralIgnored
+                        && _operators.TryGetValue(text, out op))
+                    {
+                        code = op.Code;
                         return true;
+                    }
                     else
-                        using (IEnumerator<KeyValuePair<Regex, TCode>> ignorePattern = _ignorePatterns.GetEnumerator())
-                        {
-                            bool hasCurrent = ignorePattern.MoveNext();
+                    {
+                        string enclosedText;
+                        var firstEnclosure = _enclosedComments.Keys
+                                                              .FirstOrDefault(enclosure => (enclosure.IndexOfEnclosure(text, out enclosedText) != -1
+                                                                                            && enclosedText.Length == text.Length));
 
-                            while (hasCurrent && !ignorePattern.Current.Key.IsMatch(text))
-                                hasCurrent = ignorePattern.MoveNext();
-
-                            if (hasCurrent)
+                        if (firstEnclosure != null
+                            && _enclosedComments.TryGetValue(firstEnclosure, out code))
+                            return true;
+                        else
+                            using (IEnumerator<KeyValuePair<Regex, TCode>> ignorePattern = _ignorePatterns.GetEnumerator())
                             {
-                                code = ignorePattern.Current.Value;
-                                return true;
+                                bool hasCurrent = ignorePattern.MoveNext();
+
+                                while (hasCurrent && !ignorePattern.Current.Key.IsMatch(text))
+                                    hasCurrent = ignorePattern.MoveNext();
+
+                                if (hasCurrent)
+                                {
+                                    code = ignorePattern.Current.Value;
+                                    return true;
+                                }
+                                else
+                                    return false;
                             }
-                            else
-                                return false;
-                        }
-                }
+                    }
+            }
             else
                 throw new ArgumentNullException("text");
         }
 
-        public bool IsReservedWord(string text)
+        public bool TryGetSymbol(TCode code, out string symbol)
         {
-            return _reservedWords.Contains(text);
+            return _literalSymbols.TryGetValue(code, out symbol);
         }
 
         public bool CanIgnore(string text)
@@ -198,7 +215,22 @@ namespace Andrei15193.Kepler.Language
             return _ignoreCodes.Contains(code);
         }
 
-        public IReadOnlyDictionary<string, TCode> Operators
+        public string GetSymbol(TCode code)
+        {
+            string symbol;
+
+            if (_literalSymbols.TryGetValue(code, out symbol))
+                return symbol;
+            else
+                throw new ArgumentException(code.ToString() + " does not represent a code for a literal symbol!");
+        }
+
+        public bool IsReservedWord(string text)
+        {
+            return _reservedWords.Contains(text);
+        }
+        
+        public IReadOnlyDictionary<string, Operator<TCode>> Operators
         {
             get
             {
@@ -237,12 +269,13 @@ namespace Andrei15193.Kepler.Language
         private readonly IReadOnlyCollection<string> _ignoreLiterals;
         private readonly IReadOnlyCollection<Regex> _patterns;
         private readonly IReadOnlyDictionary<string, TCode> _keyWords;
-        private readonly IReadOnlyDictionary<string, TCode> _operators;
+        private readonly IReadOnlyDictionary<string, Operator<TCode>> _operators;
         private readonly IReadOnlyDictionary<string, TCode> _separators;
         private readonly IReadOnlyDictionary<Regex, TCode> _constants;
         private readonly IReadOnlyDictionary<Regex, TCode> _identifiers;
         private readonly IReadOnlyDictionary<Regex, TCode> _ignorePatterns;
         private readonly IReadOnlyDictionary<Enclosure, TCode> _enclosedConstants;
         private readonly IReadOnlyDictionary<Enclosure, TCode> _enclosedComments;
+        private readonly IReadOnlyDictionary<TCode, string> _literalSymbols;
     }
 }

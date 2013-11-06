@@ -6,8 +6,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Andrei15193.Kepler.Tests.Language.Syntax
 {
     [TestClass]
-    public class ProductTests
-         : Product
+    public class SymbolTests
+         : Symbol
     {
         static private readonly ScannedAtom<Lexicon>[] _emptyAtomList = new ScannedAtom<Lexicon>[0];
         static private readonly ScannedAtom<Lexicon>[] _oneAtomList = new[]
@@ -198,8 +198,8 @@ namespace Andrei15193.Kepler.Tests.Language.Syntax
             Validate(null, 0, 0);
         }
 
-        public ProductTests()
-            : base(ProductType.Identifier, isTerminal: true)
+        public SymbolTests()
+            : base(SymbolNodeType.Identifier, isTerminal: true)
         {
         }
 

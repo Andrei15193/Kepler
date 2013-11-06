@@ -12,7 +12,9 @@ namespace Andrei15193.Kepler.Language.Lexis
         Identifier,
 
         [PatternAtom(@"^(0|[1-9]\d*)$", RegexOptions.Compiled, AtomAttribute.PatternType.Constant)]
-        NumericConstant,
+        IntegerNumericConstant,
+        [PatternAtom(@"^(0|[1-9]\d*\.\d*[1-9])$", RegexOptions.Compiled, AtomAttribute.PatternType.Constant)]
+        FloatNumericConstant,
         [EnclosedAtom("\"", "\"", AtomAttribute.EnclosureType.Constant)]
         StringConstant,
         [EnclosedAtom("'", "'", AtomAttribute.EnclosureType.Constant, innerSequenceLength: 1)]
@@ -60,32 +62,36 @@ namespace Andrei15193.Kepler.Language.Lexis
         [LiteralAtom("finally", AtomAttribute.LiteralType.KeyWord, isReservedWord: true)]
         Finally,
 
-        [LiteralAtom("+", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
-        Plus,
-        [LiteralAtom("-", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
-        Minus,
-        [LiteralAtom("*", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
-        Star,
-        [LiteralAtom("/", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
-        Slash,
-        [LiteralAtom("\\", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
-        Backslash,
-        [LiteralAtom("<=", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
-        LessThanOrEqualTo,
-        [LiteralAtom("=", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
-        Equal,
-        [LiteralAtom(">=", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
-        GreaterThanOrEqualTo,
-        [LiteralAtom("and", AtomAttribute.LiteralType.Operator, isReservedWord: true)]
-        And,
-        [LiteralAtom("or", AtomAttribute.LiteralType.Operator, isReservedWord: true)]
-        Or,
-        [LiteralAtom("!", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
-        Negation,
-        [LiteralAtom(":", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
-        Declaration,
-        [LiteralAtom("::", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        [Priority(1), LiteralAtom("::", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
         Scope,
+        [Priority(2), LiteralAtom("*", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        Star,
+        [Priority(2), LiteralAtom("%", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        Percentage,
+        [Priority(2), LiteralAtom("/", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        Slash,
+        [Priority(2), LiteralAtom("\\", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        Backslash,
+        [Priority(3), LiteralAtom("+", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        Plus,
+        [Priority(3), LiteralAtom("-", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        Minus,
+        [Priority(4), LiteralAtom("<", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        LessThan,
+        [Priority(4), LiteralAtom("<=", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        LessThanOrEqualTo,
+        [Priority(4), LiteralAtom("=", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        Equal,
+        [Priority(4), LiteralAtom(">=", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        GreaterThanOrEqualTo,
+        [Priority(4), LiteralAtom(">", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        GreaterThan,
+        [Priority(5), LiteralAtom("!", AtomAttribute.LiteralType.Operator, isReservedWord: false)]
+        Negation,
+        [Priority(6), LiteralAtom("and", AtomAttribute.LiteralType.Operator, isReservedWord: true)]
+        And,
+        [Priority(7), LiteralAtom("or", AtomAttribute.LiteralType.Operator, isReservedWord: true)]
+        Or,
 
         [LiteralAtom("(", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
         OpeningRoundParenthesis,
@@ -95,12 +101,12 @@ namespace Andrei15193.Kepler.Language.Lexis
         OpeningSquareParenthesis,
         [LiteralAtom("]", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
         ClosingSquareParenthesis,
-        [LiteralAtom("<", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
-        LessThan,
-        [LiteralAtom(">", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
-        GreaterThan,
-        [LiteralAtom(".", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
-        Dot,
+        //[LiteralAtom(".", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
+        //Dot,
+        [LiteralAtom(":", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
+        Colon,
+        [LiteralAtom(";", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
+        Semicolon,
         [LiteralAtom(",", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
         Comma,
         [LiteralAtom(" ", AtomAttribute.LiteralType.Separator, isReservedWord: false, consider: false)]

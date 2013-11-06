@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Andrei15193.Kepler.Language;
 using Andrei15193.Kepler.Language.Lexis;
+using Andrei15193.Kepler.Language.Syntax.NonTerminalSymbols;
 
 namespace Andrei15193.Kepler
 {
@@ -30,6 +31,45 @@ namespace Andrei15193.Kepler
 
 
             //Environment.Exit(0);
+
+            //var atoms = new[]
+            //{
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 0, 0, "a"),
+            //    new ScannedAtom<Lexicon>(Lexicon.LessThan, 1, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "b"),
+            //    new ScannedAtom<Lexicon>(Lexicon.Comma, 3, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 4, 0, "c"),
+            //    new ScannedAtom<Lexicon>(Lexicon.LessThan, 5, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 6, 0, "d"),
+            //    new ScannedAtom<Lexicon>(Lexicon.GreaterThan, 7, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Comma, 8, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 9, 0, "e"),
+            //    new ScannedAtom<Lexicon>(Lexicon.GreaterThan, 10, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.OpeningSquareParenthesis, 11, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.IntegerNumericConstant, 12, 0, "1"),
+            //    new ScannedAtom<Lexicon>(Lexicon.Comma, 12, 20),
+            //    new ScannedAtom<Lexicon>(Lexicon.IntegerNumericConstant, 12, 0, "2"),
+            //    new ScannedAtom<Lexicon>(Lexicon.ClosingSquareParenthesis, 12, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.OpeningSquareParenthesis, 13, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.IntegerNumericConstant, 12, 0, "3"),
+            //    new ScannedAtom<Lexicon>(Lexicon.ClosingSquareParenthesis, 14, 0)
+            //};
+
+            var atoms = new[]
+            {
+                new ScannedAtom<Lexicon>(Lexicon.Identifier, 0, 0, "a"),
+                new ScannedAtom<Lexicon>(Lexicon.Plus, 1, 0),
+                new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "b"),
+                new ScannedAtom<Lexicon>(Lexicon.Minus, 1, 0),
+                new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "c"),
+                new ScannedAtom<Lexicon>(Lexicon.Star, 2, 0),
+                new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "d"),
+                new ScannedAtom<Lexicon>(Lexicon.Plus, 2, 0),
+                new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "e")
+            };
+
+            var x = new ExpressionSymbol(atoms, new RegexLanguage<Lexicon>());
+
             if (args.Length > 0)
             {
                 int errorCount = 0;
