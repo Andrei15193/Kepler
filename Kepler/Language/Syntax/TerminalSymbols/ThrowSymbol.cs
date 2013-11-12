@@ -3,35 +3,21 @@ using Andrei15193.Kepler.Language.Lexis;
 
 namespace Andrei15193.Kepler.Language.Syntax.TerminalSymbols
 {
-    public sealed class NewSymbol
-        : TerminalSymbol
+    public sealed class ThrowSymbol
+         : TerminalSymbol
     {
-        public static bool TryCreate(ScannedAtom<Lexicon> scannedAtom, ILanguage<Lexicon> language, out NewSymbol newSymbol)
-        {
-            try
-            {
-                newSymbol = new NewSymbol(scannedAtom, language);
-            }
-            catch
-            {
-                newSymbol = null;
-            }
-
-            return (newSymbol != null);
-        }
-
-        public NewSymbol(ScannedAtom<Lexicon> atom, ILanguage<Lexicon> language)
-            : base(SymbolNodeType.New)
+        public ThrowSymbol(ScannedAtom<Lexicon> atom, ILanguage<Lexicon> language)
+            : base(SymbolNodeType.Throw)
         {
             if (atom != null)
                 if (language != null)
-                    if (atom.Code == Lexicon.New)
+                    if (atom.Code == Lexicon.Throw)
                     {
                         _symbol = language.GetSymbol(atom.Code);
                         _atom = atom;
                     }
                     else
-                        throw ExceptionFactory.CreateExpectedSymbol("new", atom.Line, atom.Column);
+                        throw ExceptionFactory.CreateExpectedSymbol("then", atom.Line, atom.Column);
                 else
                     throw new ArgumentNullException("language");
             else

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Andrei15193.Kepler.Extensions;
 using Andrei15193.Kepler.Language.Lexis;
 using Andrei15193.Kepler.Language.Syntax.TerminalSymbols;
@@ -301,91 +299,6 @@ namespace Andrei15193.Kepler.Language.Syntax.NonTerminalSymbols
             }
         }
 
-        //private sealed class Node
-        //{
-        //    static private IReadOnlyList<ScannedAtom<Lexicon>> _Normalize(IReadOnlyList<ScannedAtom<Lexicon>> operandAtoms, ILanguage<Lexicon> language)
-        //    {
-        //        int currentIndex = 0;
-        //        OpeningRoundParenthesisSymbol openingParenthesis;
-        //        ClosingRoundParenthesisSymbol closingParenthesis;
-
-        //        while (currentIndex < operandAtoms.Count
-        //               && OpeningRoundParenthesisSymbol.TryCreate(operandAtoms[currentIndex], language, out openingParenthesis))
-        //            currentIndex++;
-
-        //        int openParenthesisCount = currentIndex;
-
-        //        currentIndex = operandAtoms.Count - 1;
-        //        while (currentIndex >= 0
-        //               && ClosingRoundParenthesisSymbol.TryCreate(operandAtoms[currentIndex], language, out closingParenthesis))
-        //            currentIndex--;
-
-        //        int closedParenthesisCount = operandAtoms.Count - 1 - currentIndex;
-        //        int extraParenthesisPairCount = Math.Min(openParenthesisCount, closedParenthesisCount);
-
-        //        return operandAtoms.Sublist(extraParenthesisPairCount, operandAtoms.Count - extraParenthesisPairCount);
-        //    }
-
-        //    public Node(OperatorSymbol operatorSymbol)
-        //    {
-        //        if (operatorSymbol != null)
-        //        {
-        //            _isOperand = false;
-        //            _operatorSymbol = operatorSymbol;
-        //        }
-        //        else
-        //            throw new ArgumentNullException("symbol");
-        //    }
-
-        //    public Node(IReadOnlyList<ScannedAtom<Lexicon>> operandAtoms, ILanguage<Lexicon> language)
-        //    {
-        //        Exception exception = Validate(operandAtoms, 0, 1);
-
-        //        if (exception == null)
-        //            if (language != null)
-        //            {
-        //                _operandAtoms = operandAtoms;
-        //                _normalizedOperandAtoms = _Normalize(operandAtoms, language);
-
-        //                if (_normalizedOperandAtoms.Count == 0)
-        //                    throw ExceptionFactory.CreateExpectedSymbol("operand", _operandAtoms[0].Line, _operandAtoms[0].Column);
-        //            }
-        //            else
-        //                throw new ArgumentNullException("language");
-        //        else
-        //            throw exception;
-        //    }
-
-        //    public Symbol OperatorSymbol
-        //    {
-        //        get
-        //        {
-        //            return _operatorSymbol;
-        //        }
-        //    }
-
-        //    public IReadOnlyList<ScannedAtom<Lexicon>> OperandAtoms
-        //    {
-        //        get
-        //        {
-        //            return _operandAtoms;
-        //        }
-        //    }
-
-        //    public IReadOnlyList<ScannedAtom<Lexicon>> NormalizedOperandAtoms
-        //    {
-        //        get
-        //        {
-        //            return _normalizedOperandAtoms;
-        //        }
-        //    }
-
-        //    private readonly bool _isOperand;
-        //    private readonly Symbol _operatorSymbol;
-        //    private IReadOnlyList<ScannedAtom<Lexicon>> _operandAtoms;
-        //    private IReadOnlyList<ScannedAtom<Lexicon>> _normalizedOperandAtoms;
-        //}
-
         public ExpressionSymbol(IReadOnlyList<ScannedAtom<Lexicon>> atoms, ILanguage<Lexicon> language, int startIndex = 0)
             : base(SymbolNodeType.Expression)
         {
@@ -407,7 +320,7 @@ namespace Andrei15193.Kepler.Language.Syntax.NonTerminalSymbols
         {
             get
             {
-                throw new NotImplementedException();
+                return _evaluationOrder;
             }
         }
 

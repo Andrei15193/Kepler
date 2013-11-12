@@ -11,11 +11,11 @@ namespace Andrei15193.Kepler.Language.Syntax.NonTerminalSymbols
         : NonTerminalSymbol
     {
         // refactor QualifiedIdentifierSymbol.TryCreate
-        public static bool TryCreate(IReadOnlyList<ScannedAtom<Lexicon>> atoms, ILanguage<Lexicon> language, out QualifiedIdentifierSymbol qualifiedIdentifierSymbol)
+        public static bool TryCreate(IReadOnlyList<ScannedAtom<Lexicon>> atoms, ILanguage<Lexicon> language, out QualifiedIdentifierSymbol qualifiedIdentifierSymbol, int startIndex = 0)
         {
             try
             {
-                qualifiedIdentifierSymbol = new QualifiedIdentifierSymbol(atoms, language);
+                qualifiedIdentifierSymbol = new QualifiedIdentifierSymbol(atoms, language, startIndex);
             }
             catch
             {

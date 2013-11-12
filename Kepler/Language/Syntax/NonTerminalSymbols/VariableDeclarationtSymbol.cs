@@ -6,10 +6,24 @@ using Andrei15193.Kepler.Language.Syntax.TerminalSymbols;
 
 namespace Andrei15193.Kepler.Language.Syntax.NonTerminalSymbols
 {
-    public sealed class VariableDeclarationSymbol
+    public sealed class VariableDeclarationtSymbol
         : NonTerminalSymbol
     {
-        public VariableDeclarationSymbol(IReadOnlyList<ScannedAtom<Lexicon>> atoms, ILanguage<Lexicon> language, int startIndex = 0)
+        static public bool TryCreate(IReadOnlyList<ScannedAtom<Lexicon>> atoms, ILanguage<Lexicon> language, out VariableDeclarationtSymbol variableDeclarationtSymbol, int startIndex)
+        {
+            try
+            {
+                variableDeclarationtSymbol = new VariableDeclarationtSymbol(atoms, language, startIndex);
+            }
+            catch
+            {
+                variableDeclarationtSymbol = null;
+            }
+
+            return (variableDeclarationtSymbol != null);
+        }
+
+        public VariableDeclarationtSymbol(IReadOnlyList<ScannedAtom<Lexicon>> atoms, ILanguage<Lexicon> language, int startIndex = 0)
             : base(SymbolNodeType.VariableDeclaration)
         {
             Exception exception = Validate(atoms, startIndex, 3);

@@ -44,6 +44,8 @@ namespace Andrei15193.Kepler.Language.Syntax.TerminalSymbols
                             break;
                         case Lexicon.False:
                         case Lexicon.True:
+                        case Lexicon.Skip:
+                        case Lexicon.Stop:
                             _isBoolean = true;
                             break;
                         default:
@@ -54,6 +56,14 @@ namespace Andrei15193.Kepler.Language.Syntax.TerminalSymbols
                     throw ExceptionFactory.CreateExpectedAtom("constant", atom.Line, atom.Column);
             else
                 throw new ArgumentNullException("atom");
+        }
+
+        public bool GetBooleanValue()
+        {
+            if (_isBoolean)
+                return (_atom.Code == Lexicon.True);
+            else
+                throw new InvalidOperationException("The constant is not boolean!");
         }
 
         public override string Symbol

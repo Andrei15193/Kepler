@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Andrei15193.Kepler.Language.Lexis;
 
 namespace Andrei15193.Kepler.Language.Syntax.NonTerminalSymbols
@@ -97,5 +94,10 @@ namespace Andrei15193.Kepler.Language.Syntax.NonTerminalSymbols
         private readonly GenericParametersSymbol _genericParameters;
         private readonly IReadOnlyList<Symbol> _symbols;
         private readonly IReadOnlyList<BoundedArray> _arraySymbols;
+
+        internal static bool TryCreate(IReadOnlyList<ScannedAtom<Lexicon>> atoms, ILanguage<Lexicon> language, out TypeInstanceSymbol typeInstanceSymbol, int p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

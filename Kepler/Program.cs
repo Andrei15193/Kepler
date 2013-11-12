@@ -55,20 +55,30 @@ namespace Andrei15193.Kepler
             //    new ScannedAtom<Lexicon>(Lexicon.ClosingSquareParenthesis, 14, 0)
             //};
 
-            var atoms = new[]
-            {
-                new ScannedAtom<Lexicon>(Lexicon.Identifier, 0, 0, "a"),
-                new ScannedAtom<Lexicon>(Lexicon.Plus, 1, 0),
-                new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "b"),
-                new ScannedAtom<Lexicon>(Lexicon.Minus, 1, 0),
-                new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "c"),
-                new ScannedAtom<Lexicon>(Lexicon.Star, 2, 0),
-                new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "d"),
-                new ScannedAtom<Lexicon>(Lexicon.Plus, 2, 0),
-                new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "e")
-            };
+            //var atoms = new[]
+            //{
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 0, 0, "a"),
+            //    new ScannedAtom<Lexicon>(Lexicon.Plus, 1, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "b"),
+            //    new ScannedAtom<Lexicon>(Lexicon.Minus, 1, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "c"),
+            //    new ScannedAtom<Lexicon>(Lexicon.Star, 2, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "d"),
+            //    new ScannedAtom<Lexicon>(Lexicon.Plus, 2, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "e")
+            //};
 
-            var x = new ExpressionSymbol(atoms, new RegexLanguage<Lexicon>());
+            //var atoms = new[]
+            //{
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 0, 0, "a"),
+            //    new ScannedAtom<Lexicon>(Lexicon.OpeningRoundParenthesis, 1, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "b"),
+            //    new ScannedAtom<Lexicon>(Lexicon.Minus, 1, 0),
+            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "c"),
+            //    new ScannedAtom<Lexicon>(Lexicon.ClosingRoundParenthesis, 2, 0)
+            //};
+
+            //var x = new FunctionCallSymbol(atoms, new RegexLanguage<Lexicon>());
 
             if (args.Length > 0)
             {
@@ -78,7 +88,7 @@ namespace Andrei15193.Kepler
                 using (StreamWriter errorStreamWriter = new StreamWriter(File.Open("errors.txt", FileMode.Create)))
                 {
                     foreach (string sourceFile in args)
-                        try
+                        //try
                         {
                             string sourceCode = string.Join(Environment.NewLine, File.ReadAllLines(sourceFile));
                             LexicalAnalysisResult<Lexicon> lexicalAnalysisResult = compiler.LexicallyAnalyse(sourceCode);
@@ -98,14 +108,17 @@ namespace Andrei15193.Kepler
                             using (Stream stream = File.Open(sourceFile + ".BinaryLexicalAnalysis", FileMode.Create))
                                 new BinaryFormatter().Serialize(stream, lexicalAnalysisResult);
 
+                            var x = new ProgramSymbol(lexicalAnalysisResult, compiler.Language);
+
+                            var i = 2;
                         }
-                        catch (Exception exception)
-                        {
-                            errorCount++;
-                            errorStreamWriter.WriteLine("Error in source: " + sourceFile);
-                            errorStreamWriter.WriteLine("Reason: " + exception.Message);
-                            errorStreamWriter.WriteLine();
-                        }
+                        //catch (Exception exception)
+                        //{
+                        //    errorCount++;
+                        //    errorStreamWriter.WriteLine("Error in source: " + sourceFile);
+                        //    errorStreamWriter.WriteLine("Reason: " + exception.Message);
+                        //    errorStreamWriter.WriteLine();
+                        //}
                     errorStreamWriter.WriteLine("Number of errors: {0}.", errorCount);
                 }
                 Console.WriteLine("Lexical analysis finished!");

@@ -39,6 +39,22 @@
         TypeInstance,
         VariableDeclaration,
         Expression,
-        FunctionCall
+        FunctionCall,
+        FuncitonParameters,
+        AssertStatement,
+        VariableAssignment,
+        VariableDeclarationStatement,
+        Throw,
+        ThrowStatement,
+        WhenStatement,
+        WhileStatement,
+        TryCatchFinally,
+        Statement,
+        Exit,
+        Body,
+        CatchStatement,
+        PredicateDeclaration,
+        PredicateParameters,
+        Program
     }
 }

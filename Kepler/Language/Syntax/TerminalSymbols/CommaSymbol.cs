@@ -6,6 +6,21 @@ namespace Andrei15193.Kepler.Language.Syntax.TerminalSymbols
     public sealed class CommaSymbol
         : TerminalSymbol
     {
+        // CommaSymbol.TryCreate
+        public static bool TryCreate(ScannedAtom<Lexicon> scannedAtom, ILanguage<Lexicon> language, out CommaSymbol commaSymbol)
+        {
+            try
+            {
+                commaSymbol = new CommaSymbol(scannedAtom, language);
+            }
+            catch
+            {
+                commaSymbol = null;
+            }
+
+            return (commaSymbol != null);
+        }
+
         public CommaSymbol(ScannedAtom<Lexicon> atom, ILanguage<Lexicon> language)
             : base(SymbolNodeType.Comma)
         {

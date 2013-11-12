@@ -55,6 +55,8 @@ namespace Andrei15193.Kepler.Language.Lexis
         When,
         [LiteralAtom("while", AtomAttribute.LiteralType.KeyWord, isReservedWord: true)]
         While,
+        [LiteralAtom("throw", AtomAttribute.LiteralType.KeyWord, isReservedWord: true)]
+        Throw,
         [LiteralAtom("try", AtomAttribute.LiteralType.KeyWord, isReservedWord: true)]
         Try,
         [LiteralAtom("catch", AtomAttribute.LiteralType.KeyWord, isReservedWord: true)]
