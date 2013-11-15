@@ -1,9 +1,8 @@
-﻿
-namespace Andrei15193.Kepler.Language.Lexis
+﻿namespace Andrei15193.Kepler.Language.Lexis
 {
     public interface ILexicalAnalyser<TCode>
         where TCode : struct
     {
-        LexicalAnalysisResult<TCode> Analyse(string text, ILanguage<TCode> language);
+        ScanResult<TCode> Scan(string text, ILanguage<TCode> language);
     }
 }

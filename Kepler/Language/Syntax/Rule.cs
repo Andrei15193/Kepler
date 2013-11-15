@@ -9,7 +9,7 @@ namespace Andrei15193.Kepler.Language.Syntax
     public sealed class Rule<TCode>
         where TCode : struct
     {
-        internal Rule(string name, RuleSet<TCode> ruleSet, IReadOnlyList<RuleNode> ruleNodes)
+        internal Rule(string name, RuleSet<TCode> ruleSet, IReadOnlyList<RuleNode<TCode>> ruleNodes)
         {
             if (name != null)
                 if (ruleNodes != null)
@@ -19,7 +19,7 @@ namespace Andrei15193.Kepler.Language.Syntax
                         if (_name.Length > 0)
                             if (ruleNodes.Count(ruleNode => ruleNode == null) == 0)
                             {
-                                _ruleNodes = new ReadOnlyCollection<RuleNode>(ruleNodes.ToList());
+                                _ruleNodes = new ReadOnlyCollection<RuleNode<TCode>>(ruleNodes.ToList());
                                 _ruleSet = ruleSet;
                             }
                             else
@@ -35,47 +35,57 @@ namespace Andrei15193.Kepler.Language.Syntax
                 throw new ArgumentNullException("name");
         }
 
-        internal Rule(string name, RuleSet<TCode> ruleSet, params RuleNode[] ruleNodes)
-            : this(name, ruleSet, (IReadOnlyList<RuleNode>)ruleNodes)
+        internal Rule(string name, RuleSet<TCode> ruleSet, params RuleNode<TCode>[] ruleNodes)
+            : this(name, ruleSet, (IReadOnlyList<RuleNode<TCode>>)ruleNodes)
         {
         }
 
-        public ParseNode<TCode> Parse(IReadOnlyList<ScannedAtom<TCode>> atoms, int startIndex = 0)
+        public ParsedNode<TCode> Parse(IReadOnlyList<ScannedAtom<TCode>> atoms, int startIndex = 0)
         {
             if (atoms != null)
                 if (0 <= startIndex && startIndex < atoms.Count
                     || startIndex == 0 && _ruleNodes.Count == 0)
                 {
                     int currentIndex = startIndex;
-                    ParseNode<TCode> resultNode = new ParseNode<TCode>(Name);
+                    ParsedNode<TCode> resultNode = new ParsedNode<TCode>(Name);
 
-                    using (IEnumerator<RuleNode> ruleNode = _ruleNodes.GetEnumerator())
-                        while (resultNode != null && ruleNode.MoveNext())
+                    using (IEnumerator<RuleNode<TCode>> ruleNode = _ruleNodes.GetEnumerator())
+                        while (currentIndex < atoms.Count && resultNode != null && ruleNode.MoveNext())
                             switch (ruleNode.Current.NodeType)
                             {
                                 case RuleNodeType.Atom:
                                     if (ruleNode.Current.IsSequence)
                                         while (currentIndex < atoms.Count
-                                               && _ruleSet.Language.GetCode(ruleNode.Current.Name).Equals(atoms[currentIndex].Code))
+                                               && ruleNode.Current.AtomCode.Equals(atoms[currentIndex].Code))
                                             resultNode.Add(atoms[currentIndex++]);
                                     else
-                                        if (_ruleSet.Language.GetCode(ruleNode.Current.Name).Equals(atoms[currentIndex].Code))
+                                        if (ruleNode.Current.AtomCode.Equals(atoms[currentIndex].Code))
                                             resultNode.Add(atoms[currentIndex++]);
                                         else
                                             resultNode = null;
                                     break;
                                 case RuleNodeType.Rule:
-                                    ParseNode<TCode> childNode = _ruleSet.Parse(atoms, ruleNode.Current.Name, currentIndex);
+                                    ParsedNode<TCode> childNode = _ruleSet.Parse(atoms, ruleNode.Current.RuleName, currentIndex);
 
                                     if (ruleNode.Current.IsSequence)
+                                    {
                                         while (childNode != null)
                                         {
-                                            childNode.Parent = resultNode;
-                                            resultNode.Add(childNode);
+                                            foreach (ParsedNode<TCode> grandChildNodes in childNode.ChildNodes)
+                                            {
+                                                grandChildNodes.Parent = resultNode;
+                                                resultNode.Add(grandChildNodes, appendAtoms: false);
+                                            }
+                                            resultNode.Add(childNode.Atoms);
                                             currentIndex += childNode.Atoms.Count;
-                                            childNode = _ruleSet.Parse(atoms, ruleNode.Current.Name, currentIndex);
+                                            if (currentIndex < atoms.Count)
+                                                childNode = _ruleSet.Parse(atoms, ruleNode.Current.RuleName, currentIndex);
+                                            else
+                                                childNode = null;
                                         }
+                                    }
                                     else
+                                    {
                                         if (childNode != null)
                                         {
                                             childNode.Parent = resultNode;
@@ -84,6 +94,7 @@ namespace Andrei15193.Kepler.Language.Syntax
                                         }
                                         else
                                             resultNode = null;
+                                    }
                                     break;
                             }
 
@@ -103,7 +114,7 @@ namespace Andrei15193.Kepler.Language.Syntax
             }
         }
 
-        public IReadOnlyList<RuleNode> RuleNodes
+        public IReadOnlyList<RuleNode<TCode>> RuleNodes
         {
             get
             {
@@ -113,6 +124,6 @@ namespace Andrei15193.Kepler.Language.Syntax
 
         private readonly string _name;
         private readonly RuleSet<TCode> _ruleSet;
-        private readonly IReadOnlyList<RuleNode> _ruleNodes;
+        private readonly IReadOnlyList<RuleNode<TCode>> _ruleNodes;
     }
 }

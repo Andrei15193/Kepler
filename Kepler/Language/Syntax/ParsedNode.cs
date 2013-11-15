@@ -6,10 +6,10 @@ using Andrei15193.Kepler.Language.Lexis;
 
 namespace Andrei15193.Kepler.Language.Syntax
 {
-    public sealed class ParseNode<TCode>
+    public sealed class ParsedNode<TCode>
         where TCode : struct
     {
-        public ParseNode(string name, ParseNode<TCode> parent = null)
+        public ParsedNode(string name, ParsedNode<TCode> parent = null)
         {
             if (name != null)
             {
@@ -23,27 +23,40 @@ namespace Andrei15193.Kepler.Language.Syntax
                 throw new ArgumentNullException("name");
         }
 
-        public ParseNode<TCode> GetChildNode(string name)
+        public bool HasChildNodeGroup(string childNodeGroupName)
         {
-            if (name != null)
-                return _childNodes[name][0];
-            else
-                throw new ArgumentNullException("name");
+            return (childNodeGroupName != null && _childNodes.ContainsKey(childNodeGroupName));
         }
 
-        public IReadOnlyList<ParseNode<TCode>> GetChildNodes(string name)
+        public bool TryGetChildNodeGroup(string childNodeGroupName, out IReadOnlyList<ParsedNode<TCode>> childNodeGroup)
         {
-            if (name != null)
-                return new ReadOnlyCollection<ParseNode<TCode>>(_childNodes[name]);
+            IList<ParsedNode<TCode>> childNodeGroupList;
+
+            if (childNodeGroupName == null
+                || !_childNodes.TryGetValue(childNodeGroupName, out childNodeGroupList))
+                childNodeGroup = null;
             else
-                throw new ArgumentNullException("name");
+                childNodeGroup = new ReadOnlyCollection<ParsedNode<TCode>>(childNodeGroupList);
+
+            return (childNodeGroup != null);
         }
 
-        public IReadOnlyList<ParseNode<TCode>> this[string name]
+        public IReadOnlyList<ParsedNode<TCode>> this[string childNodeGroupName]
         {
             get
             {
-                return GetChildNodes(name);
+                if (childNodeGroupName != null)
+                    return new ReadOnlyCollection<ParsedNode<TCode>>(_childNodes[childNodeGroupName]);
+                else
+                    throw new ArgumentNullException("childNodeGroupName");
+            }
+        }
+
+        public ParsedNode<TCode> this[string childNodeGroupName, int childNodeIndex]
+        {
+            get
+            {
+                return this[childNodeGroupName][childNodeIndex];
             }
         }
 
@@ -55,7 +68,7 @@ namespace Andrei15193.Kepler.Language.Syntax
             }
         }
 
-        public ParseNode<TCode> Parent
+        public ParsedNode<TCode> Parent
         {
             get
             {
@@ -67,11 +80,11 @@ namespace Andrei15193.Kepler.Language.Syntax
             }
         }
 
-        public IReadOnlyList<ParseNode<TCode>> ChildNodes
+        public IReadOnlyList<ParsedNode<TCode>> ChildNodes
         {
             get
             {
-                return new ReadOnlyCollection<ParseNode<TCode>>(_childNodes.SelectMany(childNodes => childNodes.Value).ToList());
+                return new ReadOnlyCollection<ParsedNode<TCode>>(_childNodes.SelectMany(childNodes => childNodes.Value).ToList());
             }
         }
 
@@ -83,6 +96,14 @@ namespace Andrei15193.Kepler.Language.Syntax
             }
         }
 
+        public IReadOnlyList<string> ChildNodeGroups
+        {
+            get
+            {
+                return _childNodes.Keys.ToList();
+            }
+        }
+
         public bool HasParent
         {
             get
@@ -91,17 +112,18 @@ namespace Andrei15193.Kepler.Language.Syntax
             }
         }
 
-        internal void Add(ParseNode<TCode> childNode)
+        internal void Add(ParsedNode<TCode> childNode, bool appendAtoms = true)
         {
             if (childNode != null)
             {
-                IList<ParseNode<TCode>> childNodesWithSameName;
+                IList<ParsedNode<TCode>> childNodesWithSameName;
 
                 if (_childNodes.TryGetValue(childNode.Name, out childNodesWithSameName))
                     childNodesWithSameName.Add(childNode);
                 else
-                    _childNodes.Add(childNode.Name, new List<ParseNode<TCode>> { childNode });
-                _atoms.AddRange(childNode.Atoms);
+                    _childNodes.Add(childNode.Name, new List<ParsedNode<TCode>> { childNode });
+                if (appendAtoms)
+                    _atoms.AddRange(childNode.Atoms);
             }
             else
                 throw new ArgumentNullException("childNode");
@@ -132,9 +154,9 @@ namespace Andrei15193.Kepler.Language.Syntax
             Add((IEnumerable<ScannedAtom<TCode>>)atoms);
         }
 
-        private ParseNode<TCode> _parent;
+        private ParsedNode<TCode> _parent;
         private readonly string _name;
         private readonly List<ScannedAtom<TCode>> _atoms = new List<ScannedAtom<TCode>>();
-        private readonly IDictionary<string, IList<ParseNode<TCode>>> _childNodes = new SortedDictionary<string, IList<ParseNode<TCode>>>();
+        private readonly IDictionary<string, IList<ParsedNode<TCode>>> _childNodes = new SortedDictionary<string, IList<ParsedNode<TCode>>>();
     }
 }

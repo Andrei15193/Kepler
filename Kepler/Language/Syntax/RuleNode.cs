@@ -2,37 +2,39 @@
 
 namespace Andrei15193.Kepler.Language.Syntax
 {
-    public sealed class RuleNode
+    public sealed class RuleNode<TCode>
+        where TCode : struct
     {
-        static public RuleNode Atom(string name)
+        static public RuleNode<TCode> Atom(TCode code)
         {
-            return new RuleNode(name, RuleNodeType.Atom, isSequence: false);
+            return new RuleNode<TCode>(code, isSequence: false);
         }
 
-        static public RuleNode AtomSequence(string name)
+        static public RuleNode<TCode> AtomSequence(TCode code)
         {
-            return new RuleNode(name, RuleNodeType.Atom, isSequence: true);
+            return new RuleNode<TCode>(code, isSequence: true);
         }
 
-        static public RuleNode Rule(string name)
+        static public RuleNode<TCode> Rule(string name)
         {
-            return new RuleNode(name, RuleNodeType.Rule, isSequence: false);
+            return new RuleNode<TCode>(name, isSequence: false);
         }
 
-        static public RuleNode RuleSequence(string name)
+        static public RuleNode<TCode> RuleSequence(string name)
         {
-            return new RuleNode(name, RuleNodeType.Rule, isSequence: true);
+            return new RuleNode<TCode>(name, isSequence: true);
         }
 
-        public RuleNode(string name, RuleNodeType nodeType, bool isSequence = false)
+        private RuleNode(string ruleName, bool isSequence = false)
         {
-            if (name != null)
+            if (ruleName != null)
             {
-                _name = name.Trim();
-                if (_name.Length > 0)
+                _ruleName = ruleName.Trim();
+                if (_ruleName.Length > 0)
                 {
-                    _nodeType = nodeType;
+                    _nodeType = RuleNodeType.Rule;
                     _isSequence = isSequence;
+                    _atomCode = default(TCode);
                 }
                 else
                     throw new ArgumentException("Cannot be empty!", "name");
@@ -41,11 +43,33 @@ namespace Andrei15193.Kepler.Language.Syntax
                 throw new ArgumentNullException("name");
         }
 
-        public string Name
+        private RuleNode(TCode atomCode, bool isSequence = false)
+        {
+            _ruleName = null;
+            _nodeType = RuleNodeType.Atom;
+            _isSequence = isSequence;
+            _atomCode = atomCode;
+        }
+
+        public TCode AtomCode
         {
             get
             {
-                return _name;
+                if (_nodeType == RuleNodeType.Atom)
+                    return _atomCode;
+                else
+                    throw new InvalidOperationException("The RuleNode instance is on of type Atom");
+            }
+        }
+
+        public string RuleName
+        {
+            get
+            {
+                if (_nodeType == RuleNodeType.Rule)
+                    return _ruleName;
+                else
+                    throw new InvalidOperationException("The RuleNode instance is on of type Rule");
             }
         }
 
@@ -67,6 +91,7 @@ namespace Andrei15193.Kepler.Language.Syntax
 
         private readonly bool _isSequence;
         private readonly RuleNodeType _nodeType;
-        private readonly string _name;
+        private readonly TCode _atomCode;
+        private readonly string _ruleName;
     }
 }

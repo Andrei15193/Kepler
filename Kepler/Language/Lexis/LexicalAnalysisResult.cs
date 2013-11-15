@@ -6,10 +6,10 @@ using System.Linq;
 namespace Andrei15193.Kepler.Language.Lexis
 {
     [Serializable]
-    public sealed class LexicalAnalysisResult<TCode>
+    public sealed class ScanResult<TCode>
         where TCode : struct
     {
-        public LexicalAnalysisResult(IReadOnlyList<ScannedAtom<TCode>> scannedAtoms, IReadOnlyDictionary<string, string> identifiers, IReadOnlyDictionary<string, string> constants)
+        public ScanResult(IReadOnlyList<ScannedAtom<TCode>> scannedAtoms, IReadOnlyDictionary<string, string> identifiers, IReadOnlyDictionary<string, string> constants)
         {
             if (scannedAtoms != null)
                 if (identifiers != null)

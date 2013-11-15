@@ -1,11 +1,11 @@
 predicate Aduna(numar : System::Double, suma : System::Double)
-    when numar = 0
-        System::Console::WriteLine(suma).
+    when numar = 0 then
+        System::Console::WriteLine(suma);
     else
         begin
-            System::Console::Write("Introduceti un numar real: ").
-            Aduna(System::Double::Parse(System::Console::ReadLine(), suma + numar).
+            System::Console::Write("Introduceti un numar real: ");
+            Aduna(System::Double::Parse(System::Console::ReadLine(), suma + numar));
         end
 
 predicate Aduna(numar : System::Double)
-    Aduna(numar, 0).
+    Aduna(numar, 0);

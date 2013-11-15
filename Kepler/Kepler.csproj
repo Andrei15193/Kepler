@@ -59,7 +59,7 @@
     <Compile Include="Language\Operator.cs" />
     <Compile Include="Language\RegexLanguage.cs" />
     <Compile Include="Language\Syntax\KeplerRuleSet.cs" />
-    <Compile Include="Language\Syntax\ParseNode.cs" />
+    <Compile Include="Language\Syntax\ParsedNode.cs" />
     <Compile Include="Language\Syntax\Rule.cs" />
     <Compile Include="Language\Syntax\RuleNode.cs" />
     <Compile Include="Language\Syntax\RuleNodeType.cs" />
