@@ -20,6 +20,8 @@ namespace Andrei15193.Kepler.Language
 
         string GetSymbol(TCode code);
 
+        TCode GetCode(string symbol);
+
         bool TryGetSymbol(TCode code, out string symbol);
 
         bool IsReservedWord(string text);

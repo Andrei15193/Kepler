@@ -9,7 +9,7 @@ using Andrei15193.Kepler.Language.Lexis.Attributes;
 
 namespace Andrei15193.Kepler.Language
 {
-    public class RegexLanguage<TCode>
+    internal class RegexLanguage<TCode>
         : ILanguage<TCode>
         where TCode : struct
     {
@@ -118,6 +118,7 @@ namespace Andrei15193.Kepler.Language
             _enclosedConstants = new ReadOnlyDictionary<Enclosure, TCode>(enclosures[AtomAttribute.EnclosureType.Constant]);
             _enclosedComments = new ReadOnlyDictionary<Enclosure, TCode>(enclosures[AtomAttribute.EnclosureType.Comment]);
             _literalSymbols = new ReadOnlyDictionary<TCode, string>(literalSymbols);
+            _literalCodes = new ReadOnlyDictionary<string, TCode>(new SortedDictionary<string, TCode>(literalSymbols.ToDictionary(pair => pair.Value, pair => pair.Key)));
         }
 
         public bool TryGetIdentifierCode(string text, out TCode code)
@@ -225,11 +226,16 @@ namespace Andrei15193.Kepler.Language
                 throw new ArgumentException(code.ToString() + " does not represent a code for a literal symbol!");
         }
 
+        public TCode GetCode(string symbol)
+        {
+            return _literalSymbols.FirstOrDefault(literalSymbol => literalSymbol.Value == symbol).Key;
+        }
+
         public bool IsReservedWord(string text)
         {
             return _reservedWords.Contains(text);
         }
-        
+
         public IReadOnlyDictionary<string, Operator<TCode>> Operators
         {
             get
@@ -277,5 +283,6 @@ namespace Andrei15193.Kepler.Language
         private readonly IReadOnlyDictionary<Enclosure, TCode> _enclosedConstants;
         private readonly IReadOnlyDictionary<Enclosure, TCode> _enclosedComments;
         private readonly IReadOnlyDictionary<TCode, string> _literalSymbols;
+        private readonly IReadOnlyDictionary<string, TCode> _literalCodes;
     }
 }

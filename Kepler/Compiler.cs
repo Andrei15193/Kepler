@@ -10,6 +10,8 @@ namespace Andrei15193.Kepler
     public sealed class Compiler<TCode>
         where TCode : struct
     {
+        static private readonly ILexicalAnalyser<TCode> _defaultLexicalAnalyser = new SplitBasedLexicalAnalyser();
+
         private sealed class SplitBasedLexicalAnalyser
             : ILexicalAnalyser<TCode>
         {
@@ -323,15 +325,10 @@ namespace Andrei15193.Kepler
             }
         }
 
-        public Compiler(ILanguage<TCode> language, ILexicalAnalyser<TCode> lexicalAnalyser = null)
+        public Compiler(ILexicalAnalyser<TCode> lexicalAnalyser = null, ILanguage<TCode> language = null)
         {
-            if (language != null)
-            {
-                _language = language;
-                _lexicalAnalyser = lexicalAnalyser ?? DefaultLexicalAnalyser;
-            }
-            else
-                throw new ArgumentNullException("language");
+            _lexicalAnalyser = (lexicalAnalyser ?? DefaultLexicalAnalyser);
+            _language = (language ?? Language<TCode>.Default);
         }
 
         public LexicalAnalysisResult<TCode> LexicallyAnalyse(string text)
@@ -364,8 +361,6 @@ namespace Andrei15193.Kepler
                 return _language;
             }
         }
-
-        static private readonly ILexicalAnalyser<TCode> _defaultLexicalAnalyser = new SplitBasedLexicalAnalyser();
 
         private ILexicalAnalyser<TCode> _lexicalAnalyser;
         private readonly ILanguage<TCode> _language;

@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Andrei15193.Kepler.Language;
 using Andrei15193.Kepler.Language.Lexis;
-using Andrei15193.Kepler.Language.Syntax.NonTerminalSymbols;
+using Andrei15193.Kepler.Language.Syntax;
 
 namespace Andrei15193.Kepler
 {
@@ -29,96 +29,53 @@ namespace Andrei15193.Kepler
             //typeBuilder.CreateType();
             //builder.Save("test.dll");
 
+            var x = new KeplerRuleSet(Language<Lexicon>.Default);
 
-            //Environment.Exit(0);
+            var y = x.Parse(new[]
+                {
+                    new ScannedAtom<Lexicon>(Lexicon.Stop, 0, 0),
+                    new ScannedAtom<Lexicon>(Lexicon.Skip, 0, 0),
+                    new ScannedAtom<Lexicon>(Lexicon.Semicolon, 0, 0)
+                }, "statement");
+            var z = y["exit"][0];
 
-            //var atoms = new[]
-            //{
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 0, 0, "a"),
-            //    new ScannedAtom<Lexicon>(Lexicon.LessThan, 1, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "b"),
-            //    new ScannedAtom<Lexicon>(Lexicon.Comma, 3, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 4, 0, "c"),
-            //    new ScannedAtom<Lexicon>(Lexicon.LessThan, 5, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 6, 0, "d"),
-            //    new ScannedAtom<Lexicon>(Lexicon.GreaterThan, 7, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Comma, 8, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 9, 0, "e"),
-            //    new ScannedAtom<Lexicon>(Lexicon.GreaterThan, 10, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.OpeningSquareParenthesis, 11, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.IntegerNumericConstant, 12, 0, "1"),
-            //    new ScannedAtom<Lexicon>(Lexicon.Comma, 12, 20),
-            //    new ScannedAtom<Lexicon>(Lexicon.IntegerNumericConstant, 12, 0, "2"),
-            //    new ScannedAtom<Lexicon>(Lexicon.ClosingSquareParenthesis, 12, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.OpeningSquareParenthesis, 13, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.IntegerNumericConstant, 12, 0, "3"),
-            //    new ScannedAtom<Lexicon>(Lexicon.ClosingSquareParenthesis, 14, 0)
-            //};
-
-            //var atoms = new[]
-            //{
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 0, 0, "a"),
-            //    new ScannedAtom<Lexicon>(Lexicon.Plus, 1, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "b"),
-            //    new ScannedAtom<Lexicon>(Lexicon.Minus, 1, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "c"),
-            //    new ScannedAtom<Lexicon>(Lexicon.Star, 2, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "d"),
-            //    new ScannedAtom<Lexicon>(Lexicon.Plus, 2, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "e")
-            //};
-
-            //var atoms = new[]
-            //{
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 0, 0, "a"),
-            //    new ScannedAtom<Lexicon>(Lexicon.OpeningRoundParenthesis, 1, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "b"),
-            //    new ScannedAtom<Lexicon>(Lexicon.Minus, 1, 0),
-            //    new ScannedAtom<Lexicon>(Lexicon.Identifier, 2, 0, "c"),
-            //    new ScannedAtom<Lexicon>(Lexicon.ClosingRoundParenthesis, 2, 0)
-            //};
-
-            //var x = new FunctionCallSymbol(atoms, new RegexLanguage<Lexicon>());
+            Environment.Exit(0);
 
             if (args.Length > 0)
             {
                 int errorCount = 0;
-                Compiler<Lexicon> compiler = new Compiler<Lexicon>(new RegexLanguage<Lexicon>());
+                Compiler<Lexicon> compiler = new Compiler<Lexicon>();
 
                 using (StreamWriter errorStreamWriter = new StreamWriter(File.Open("errors.txt", FileMode.Create)))
                 {
                     foreach (string sourceFile in args)
-                        //try
-                        {
-                            string sourceCode = string.Join(Environment.NewLine, File.ReadAllLines(sourceFile));
-                            LexicalAnalysisResult<Lexicon> lexicalAnalysisResult = compiler.LexicallyAnalyse(sourceCode);
+                    //try
+                    {
+                        string sourceCode = string.Join(Environment.NewLine, File.ReadAllLines(sourceFile));
+                        LexicalAnalysisResult<Lexicon> lexicalAnalysisResult = compiler.LexicallyAnalyse(sourceCode);
 
-                            using (StreamWriter streamWriter = new StreamWriter(File.Open(sourceFile + ".fip.txt", FileMode.Create)))
-                                foreach (var scannedAtom in lexicalAnalysisResult.ScannedAtoms)
-                                    streamWriter.WriteLine("{0},{1},{2}", scannedAtom.Code.ToString(), (uint)scannedAtom.Code, scannedAtom.Value);
+                        using (StreamWriter streamWriter = new StreamWriter(File.Open(sourceFile + ".fip.txt", FileMode.Create)))
+                            foreach (var scannedAtom in lexicalAnalysisResult.ScannedAtoms)
+                                streamWriter.WriteLine("{0},{1},{2}", scannedAtom.Code.ToString(), (uint)scannedAtom.Code, scannedAtom.Value);
 
-                            using (StreamWriter streamWriter = new StreamWriter(File.Open(sourceFile + ".tsi.txt", FileMode.Create)))
-                                foreach (string identifier in lexicalAnalysisResult.Identifiers.Values)
-                                    streamWriter.WriteLine(identifier);
+                        using (StreamWriter streamWriter = new StreamWriter(File.Open(sourceFile + ".tsi.txt", FileMode.Create)))
+                            foreach (string identifier in lexicalAnalysisResult.Identifiers.Values)
+                                streamWriter.WriteLine(identifier);
 
-                            using (StreamWriter streamWriter = new StreamWriter(File.Open(sourceFile + ".tsc.txt", FileMode.Create)))
-                                foreach (string constant in lexicalAnalysisResult.Constants.Values)
-                                    streamWriter.WriteLine(constant);
+                        using (StreamWriter streamWriter = new StreamWriter(File.Open(sourceFile + ".tsc.txt", FileMode.Create)))
+                            foreach (string constant in lexicalAnalysisResult.Constants.Values)
+                                streamWriter.WriteLine(constant);
 
-                            using (Stream stream = File.Open(sourceFile + ".BinaryLexicalAnalysis", FileMode.Create))
-                                new BinaryFormatter().Serialize(stream, lexicalAnalysisResult);
-
-                            var x = new ProgramSymbol(lexicalAnalysisResult, compiler.Language);
-
-                            var i = 2;
-                        }
-                        //catch (Exception exception)
-                        //{
-                        //    errorCount++;
-                        //    errorStreamWriter.WriteLine("Error in source: " + sourceFile);
-                        //    errorStreamWriter.WriteLine("Reason: " + exception.Message);
-                        //    errorStreamWriter.WriteLine();
-                        //}
+                        using (Stream stream = File.Open(sourceFile + ".BinaryLexicalAnalysis", FileMode.Create))
+                            new BinaryFormatter().Serialize(stream, lexicalAnalysisResult);
+                    }
+                    //catch (Exception exception)
+                    //{
+                    //    errorCount++;
+                    //    errorStreamWriter.WriteLine("Error in source: " + sourceFile);
+                    //    errorStreamWriter.WriteLine("Reason: " + exception.Message);
+                    //    errorStreamWriter.WriteLine();
+                    //}
                     errorStreamWriter.WriteLine("Number of errors: {0}.", errorCount);
                 }
                 Console.WriteLine("Lexical analysis finished!");
