@@ -17,13 +17,16 @@ namespace Andrei15193.Kepler.Language.Syntax
                     {
                         _name = name.Trim();
                         if (_name.Length > 0)
-                            if (ruleNodes.Count(ruleNode => ruleNode == null) == 0)
-                            {
-                                _ruleNodes = new ReadOnlyCollection<RuleNode<TCode>>(ruleNodes.ToList());
-                                _ruleSet = ruleSet;
-                            }
+                            if (ruleNodes.Count > 0)
+                                if (ruleNodes.Count(ruleNode => ruleNode == null) == 0)
+                                {
+                                    _ruleNodes = new ReadOnlyCollection<RuleNode<TCode>>(ruleNodes.ToList());
+                                    _ruleSet = ruleSet;
+                                }
+                                else
+                                    throw new ArgumentException("Cannot contain null values!", "ruleNodes");
                             else
-                                throw new ArgumentException("Cannot contain null values!", "ruleNodes");
+                                throw new ArgumentException("Cannot be empty!", "ruleNodes");
                         else
                             throw new ArgumentException("Cannot be empty!", "name");
                     }
@@ -46,11 +49,13 @@ namespace Andrei15193.Kepler.Language.Syntax
                 if (0 <= startIndex && startIndex < atoms.Count
                     || startIndex == 0 && _ruleNodes.Count == 0)
                 {
+                    bool isFirstRuleNode = true;
                     int currentIndex = startIndex;
                     ParsedNode<TCode> resultNode = new ParsedNode<TCode>(Name);
 
                     using (IEnumerator<RuleNode<TCode>> ruleNode = _ruleNodes.GetEnumerator())
                         while (currentIndex < atoms.Count && resultNode != null && ruleNode.MoveNext())
+                        {
                             switch (ruleNode.Current.NodeType)
                             {
                                 case RuleNodeType.Atom:
@@ -65,7 +70,7 @@ namespace Andrei15193.Kepler.Language.Syntax
                                             resultNode = null;
                                     break;
                                 case RuleNodeType.Rule:
-                                    ParsedNode<TCode> childNode = _ruleSet.Parse(atoms, ruleNode.Current.RuleName, currentIndex);
+                                    ParsedNode<TCode> childNode = _ruleSet.Parse(atoms, ruleNode.Current.RuleName, currentIndex, isFirstRuleNode ? this : null);
 
                                     if (ruleNode.Current.IsSequence)
                                     {
@@ -79,7 +84,7 @@ namespace Andrei15193.Kepler.Language.Syntax
                                             resultNode.Add(childNode.Atoms);
                                             currentIndex += childNode.Atoms.Count;
                                             if (currentIndex < atoms.Count)
-                                                childNode = _ruleSet.Parse(atoms, ruleNode.Current.RuleName, currentIndex);
+                                                childNode = _ruleSet.Parse(atoms, ruleNode.Current.RuleName, currentIndex, isFirstRuleNode ? this : null);
                                             else
                                                 childNode = null;
                                         }
@@ -97,6 +102,8 @@ namespace Andrei15193.Kepler.Language.Syntax
                                     }
                                     break;
                             }
+                            isFirstRuleNode = false;
+                        }
 
                     return resultNode;
                 }

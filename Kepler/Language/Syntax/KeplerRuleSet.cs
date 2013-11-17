@@ -309,7 +309,7 @@ namespace Andrei15193.Kepler.Language.Syntax
             Add("expression",
                 RuleNode<Lexicon>.Rule("booleanExpression"));
             Add("expression",
-                RuleNode<Lexicon>.Rule("constant"));
+                RuleNode<Lexicon>.Rule("otherExpression"));
 
             Add("arithmeticExpression",
                 RuleNode<Lexicon>.Rule("arithmeticOperand"));
@@ -317,7 +317,7 @@ namespace Andrei15193.Kepler.Language.Syntax
                 RuleNode<Lexicon>.Rule("unaryPrefixedArithmeticOperator"),
                 RuleNode<Lexicon>.Rule("arithmeticOperand"));
             Add("arithmeticExpression",
-                RuleNode<Lexicon>.Rule("arithmeticOperand"),
+                RuleNode<Lexicon>.Rule("arithmeticExpression"),
                 RuleNode<Lexicon>.Rule("binaryArithmeticOperator"),
                 RuleNode<Lexicon>.Rule("arithmeticExpression"));
             Add("arithmeticExpression",
@@ -340,13 +340,17 @@ namespace Andrei15193.Kepler.Language.Syntax
                 RuleNode<Lexicon>.Rule("unaryPrefixedBooleanOperator"),
                 RuleNode<Lexicon>.Rule("booleanOperand"));
             Add("booleanExpression",
-                RuleNode<Lexicon>.Rule("booleanOperand"),
+                RuleNode<Lexicon>.Rule("booleanExpression"),
                 RuleNode<Lexicon>.Rule("binaryBooleanOperator"),
                 RuleNode<Lexicon>.Rule("booleanExpression"));
             Add("booleanExpression",
                 RuleNode<Lexicon>.Rule("arithmeticExpression"),
                 RuleNode<Lexicon>.Rule("arithmeticRelation"),
                 RuleNode<Lexicon>.Rule("arithmeticExpression"));
+            Add("booleanExpression",
+                RuleNode<Lexicon>.Rule("otherExpression"),
+                RuleNode<Lexicon>.Rule("arithmeticRelation"),
+                RuleNode<Lexicon>.Rule("otherExpression"));
             Add("booleanExpression",
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
                 RuleNode<Lexicon>.Rule("booleanExpression"),
@@ -364,6 +368,24 @@ namespace Andrei15193.Kepler.Language.Syntax
                 RuleNode<Lexicon>.Atom(Lexicon.Stop));
             Add("booleanOperand",
                 RuleNode<Lexicon>.Atom(Lexicon.Skip));
+
+            Add("otherExpression",
+                RuleNode<Lexicon>.Rule("otherOperand"));
+            Add("otherExpression",
+                RuleNode<Lexicon>.Rule("otherOperand"),
+                RuleNode<Lexicon>.Rule("binaryArithmeticOperator"),
+                RuleNode<Lexicon>.Rule("otherOperand"));
+            Add("otherExpression",
+                RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
+                RuleNode<Lexicon>.Rule("otherOperand"),
+                RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis));
+
+            Add("otherOperand",
+                RuleNode<Lexicon>.Rule("constant"));
+            Add("otherOperand",
+                RuleNode<Lexicon>.Rule("functionCall"));
+            Add("otherOperand",
+                RuleNode<Lexicon>.Rule("qualifiedIdentifier"));
         }
     }
 }

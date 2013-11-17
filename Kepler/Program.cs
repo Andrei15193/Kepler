@@ -62,7 +62,7 @@ namespace Andrei15193.Kepler
                             nodesToVisit.Enqueue(compiler.Parse(scanResult));
 
                             if (nodesToVisit.Peek() != null)
-                                using (StreamWriter writer = new StreamWriter(File.OpenWrite(sourceFile + ".syntax.txt")))
+                                using (StreamWriter writer = new StreamWriter(File.Open(sourceFile + ".syntax.txt", FileMode.Create)))
                                     while (nodesToVisit.Count > 0)
                                     {
                                         ParsedNode<Lexicon> currentNode = nodesToVisit.Dequeue();
