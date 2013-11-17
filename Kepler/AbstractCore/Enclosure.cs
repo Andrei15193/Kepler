@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Andrei15193.Kepler.Language.Lexis
+namespace Andrei15193.Kepler.AbstractCore
 {
     public class Enclosure
     {

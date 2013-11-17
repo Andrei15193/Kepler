@@ -41,29 +41,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractCore\AtomRecognitionResult.cs" />
+    <Compile Include="AbstractCore\State.cs" />
+    <Compile Include="AbstractCore\AtomRecognizer.cs" />
+    <Compile Include="AbstractCore\Transition.cs" />
     <Compile Include="Collections\Sublist.cs" />
     <Compile Include="Compiler.cs" />
     <Compile Include="Extensions\IReadOnlyListExtensions.cs" />
     <Compile Include="Language\Language.cs" />
     <Compile Include="Language\Lexis\Attributes\PriorityAttribute.cs" />
-    <Compile Include="Language\Lexis\LexicalAnalysisResult.cs" />
+    <Compile Include="Language\Lexis\ScanResult.cs" />
     <Compile Include="Language\Lexis\Lexicon.cs" />
     <Compile Include="Language\Lexis\Attributes\AtomAttribute.cs" />
     <Compile Include="Language\Lexis\Attributes\EnclosedAtomAttribute.cs" />
     <Compile Include="Language\Lexis\Attributes\LiteralAtomAttribute.cs" />
-    <Compile Include="Language\Lexis\Enclosure.cs" />
-    <Compile Include="Language\ILanguage.cs" />
+    <Compile Include="AbstractCore\Enclosure.cs" />
+    <Compile Include="AbstractCore\ILanguage.cs" />
     <Compile Include="Language\Lexis\ILexicalAnalyser.cs" />
-    <Compile Include="Language\Lexis\ScannedAtom.cs" />
+    <Compile Include="AbstractCore\ScannedAtom.cs" />
     <Compile Include="Language\Lexis\Attributes\PatternAtomAttribute.cs" />
-    <Compile Include="Language\Operator.cs" />
+    <Compile Include="AbstractCore\Operator.cs" />
+    <Compile Include="Language\Lexis\StateMachineLexicalAnalyser.cs" />
     <Compile Include="Language\RegexLanguage.cs" />
     <Compile Include="Language\Syntax\KeplerRuleSet.cs" />
-    <Compile Include="Language\Syntax\ParsedNode.cs" />
-    <Compile Include="Language\Syntax\Rule.cs" />
-    <Compile Include="Language\Syntax\RuleNode.cs" />
-    <Compile Include="Language\Syntax\RuleNodeType.cs" />
-    <Compile Include="Language\Syntax\RuleSet.cs" />
+    <Compile Include="AbstractCore\ParsedNode.cs" />
+    <Compile Include="AbstractCore\Rule.cs" />
+    <Compile Include="AbstractCore\RuleNode.cs" />
+    <Compile Include="AbstractCore\RuleNodeType.cs" />
+    <Compile Include="AbstractCore\RuleSet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

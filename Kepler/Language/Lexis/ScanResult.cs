@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Andrei15193.Kepler.AbstractCore;
 
 namespace Andrei15193.Kepler.Language.Lexis
 {

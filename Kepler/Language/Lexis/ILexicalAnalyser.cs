@@ -1,4 +1,6 @@
-﻿namespace Andrei15193.Kepler.Language.Lexis
+﻿using Andrei15193.Kepler.AbstractCore;
+
+namespace Andrei15193.Kepler.Language.Lexis
 {
     public interface ILexicalAnalyser<TCode>
         where TCode : struct

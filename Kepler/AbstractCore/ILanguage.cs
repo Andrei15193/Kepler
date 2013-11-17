@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Andrei15193.Kepler.Language.Lexis;
 
-namespace Andrei15193.Kepler.Language
+namespace Andrei15193.Kepler.AbstractCore
 {
     public interface ILanguage<TCode>
         where TCode : struct

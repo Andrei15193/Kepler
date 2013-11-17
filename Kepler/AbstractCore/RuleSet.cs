@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Andrei15193.Kepler.Language.Lexis;
 
-namespace Andrei15193.Kepler.Language.Syntax
+namespace Andrei15193.Kepler.AbstractCore
 {
     public class RuleSet<TCode>
         where TCode : struct

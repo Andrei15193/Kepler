@@ -1,4 +1,5 @@
-﻿using Andrei15193.Kepler.Language.Lexis;
+﻿using Andrei15193.Kepler.AbstractCore;
+using Andrei15193.Kepler.Language.Lexis;
 
 namespace Andrei15193.Kepler.Language.Syntax
 {
@@ -90,7 +91,7 @@ namespace Andrei15193.Kepler.Language.Syntax
             Add("factDefinition",
                 RuleNode<Lexicon>.Atom(Lexicon.Fact),
                 RuleNode<Lexicon>.Rule("name"),
-                RuleNode<Lexicon>.Atom(Lexicon.Semicolon));
+                RuleNode<Lexicon>.Atom(Lexicon.Dot));
             Add("factDefinition",
                 RuleNode<Lexicon>.Atom(Lexicon.Fact),
                 RuleNode<Lexicon>.Rule("name"),
@@ -98,7 +99,7 @@ namespace Andrei15193.Kepler.Language.Syntax
                 RuleNode<Lexicon>.Rule("factParameter"),
                 RuleNode<Lexicon>.RuleSequence("factParameterSequence"),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis),
-                RuleNode<Lexicon>.Atom(Lexicon.Semicolon));
+                RuleNode<Lexicon>.Atom(Lexicon.Dot));
 
             Add("prameterSequence",
                 RuleNode<Lexicon>.Atom(Lexicon.Comma),
@@ -170,19 +171,19 @@ namespace Andrei15193.Kepler.Language.Syntax
                 RuleNode<Lexicon>.Rule("tryCatchFinallyStatement"));
             Add("statement",
                 RuleNode<Lexicon>.Rule("throwStatement"),
-                RuleNode<Lexicon>.Atom(Lexicon.Semicolon));
+                RuleNode<Lexicon>.Atom(Lexicon.Dot));
             Add("statement",
                 RuleNode<Lexicon>.Rule("variableDeclarationStatement"),
-                RuleNode<Lexicon>.Atom(Lexicon.Semicolon));
+                RuleNode<Lexicon>.Atom(Lexicon.Dot));
             Add("statement",
                 RuleNode<Lexicon>.Rule("variableAssignmentStatement"),
-                RuleNode<Lexicon>.Atom(Lexicon.Semicolon));
+                RuleNode<Lexicon>.Atom(Lexicon.Dot));
             Add("statement",
                 RuleNode<Lexicon>.Rule("functionCall"),
-                RuleNode<Lexicon>.Atom(Lexicon.Semicolon));
+                RuleNode<Lexicon>.Atom(Lexicon.Dot));
             Add("statement",
                 RuleNode<Lexicon>.Rule("exitStatement"),
-                RuleNode<Lexicon>.Atom(Lexicon.Semicolon));
+                RuleNode<Lexicon>.Atom(Lexicon.Dot));
 
             Add("whenStatement",
                 RuleNode<Lexicon>.Atom(Lexicon.When),

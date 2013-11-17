@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using Andrei15193.Kepler.AbstractCore;
 using Andrei15193.Kepler.Language.Lexis;
 using Andrei15193.Kepler.Language.Syntax;
 
@@ -33,7 +34,7 @@ namespace Andrei15193.Kepler
             if (args.Length > 0)
             {
                 int errorCount = 0;
-                Compiler<Lexicon> compiler = new Compiler<Lexicon>(new KeplerRuleSet());
+                Compiler compiler = new Compiler(new KeplerRuleSet());
 
                 using (StreamWriter errorStreamWriter = new StreamWriter(File.Open("errors.txt", FileMode.Create)))
                 {
@@ -84,7 +85,7 @@ namespace Andrei15193.Kepler
                             else
                                 errorStreamWriter.WriteLine(sourceFile + " is not syntactically correct!");
                         }
-                        catch (Exception exception)
+                        catch (IOException exception)
                         {
                             errorCount++;
                             errorStreamWriter.WriteLine("Error in source: " + sourceFile);

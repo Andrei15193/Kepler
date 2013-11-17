@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Andrei15193.Kepler.Language.Lexis;
+using Andrei15193.Kepler.AbstractCore;
 
 namespace Andrei15193.Kepler.Language
 {

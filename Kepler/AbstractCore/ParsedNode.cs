@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Andrei15193.Kepler.Language.Lexis;
 
-namespace Andrei15193.Kepler.Language.Syntax
+namespace Andrei15193.Kepler.AbstractCore
 {
     public sealed class ParsedNode<TCode>
         where TCode : struct

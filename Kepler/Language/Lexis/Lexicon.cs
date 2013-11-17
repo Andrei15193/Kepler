@@ -103,12 +103,10 @@ namespace Andrei15193.Kepler.Language.Lexis
         OpeningSquareParenthesis,
         [LiteralAtom("]", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
         ClosingSquareParenthesis,
-        //[LiteralAtom(".", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
-        //Dot,
+        [LiteralAtom(".", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
+        Dot,
         [LiteralAtom(":", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
         Colon,
-        [LiteralAtom(";", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
-        Semicolon,
         [LiteralAtom(",", AtomAttribute.LiteralType.Separator, isReservedWord: false)]
         Comma,
         [LiteralAtom(" ", AtomAttribute.LiteralType.Separator, isReservedWord: false, consider: false)]
@@ -120,6 +118,6 @@ namespace Andrei15193.Kepler.Language.Lexis
         [LiteralAtom("\r", AtomAttribute.LiteralType.Separator, isReservedWord: false, consider: false)]
         CarriageReturn,
         [LiteralAtom("\r\n", AtomAttribute.LiteralType.Separator, isReservedWord: false, consider: false)]
-        NewLine
+        NewLine,
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Andrei15193.Kepler.Language
+﻿namespace Andrei15193.Kepler.AbstractCore
 {
     public sealed class Operator<TCode>
         where TCode : struct

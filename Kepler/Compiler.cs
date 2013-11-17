@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Andrei15193.Kepler.AbstractCore;
 using Andrei15193.Kepler.Language;
 using Andrei15193.Kepler.Language.Lexis;
-using Andrei15193.Kepler.Language.Syntax;
 
 namespace Andrei15193.Kepler
 {
-    public sealed class Compiler<TCode>
-        where TCode : struct
+    public sealed class Compiler
     {
-        static private readonly ILexicalAnalyser<TCode> _defaultLexicalAnalyser = new SplitBasedLexicalAnalyser();
+        static private readonly ILexicalAnalyser<Lexicon> _defaultLexicalAnalyser = new StateMachineLexicalAnalyser();
 
-        static public ILexicalAnalyser<TCode> DefaultLexicalAnalyser
+        static public ILexicalAnalyser<Lexicon> DefaultLexicalAnalyser
         {
             get
             {
@@ -22,7 +21,7 @@ namespace Andrei15193.Kepler
         }
 
         private sealed class SplitBasedLexicalAnalyser
-            : ILexicalAnalyser<TCode>
+            : ILexicalAnalyser<Lexicon>
         {
             static private int _IndexOfAny(string str, IEnumerable<string> values, out string foundValue, int startIndex = 0)
             {
@@ -73,31 +72,31 @@ namespace Andrei15193.Kepler
                 {
                     _line = 1;
                     _column = 1;
-                    _scannedAtoms = new List<ScannedAtom<TCode>>();
+                    _scannedAtoms = new List<ScannedAtom<Lexicon>>();
                     _identifiers = new SortedDictionary<string, string>();
                     _constants = new SortedDictionary<string, string>();
                 }
 
-                public void AppendIdentifier(string identifier, TCode code)
+                public void AppendIdentifier(string identifier, Lexicon code)
                 {
                     if (identifier != null)
                     {
                         if (!_identifiers.ContainsKey(identifier))
                             _identifiers.Add(identifier, identifier);
-                        _scannedAtoms.Add(new ScannedAtom<TCode>(code, _line, _column, identifier));
+                        _scannedAtoms.Add(new ScannedAtom<Lexicon>(code, _line, _column, identifier));
                         _column += (uint)identifier.Length;
                     }
                     else
                         throw new ArgumentNullException("identifier");
                 }
 
-                public void AppendConstant(string constant, TCode code)
+                public void AppendConstant(string constant, Lexicon code)
                 {
                     if (constant != null)
                     {
                         if (!_constants.ContainsKey(constant))
                             _constants.Add(constant, constant);
-                        _scannedAtoms.Add(new ScannedAtom<TCode>(code, _line, _column, constant));
+                        _scannedAtoms.Add(new ScannedAtom<Lexicon>(code, _line, _column, constant));
 
                         int indexOfLastNewLine = 0, newLineCount = 0;
 
@@ -115,11 +114,11 @@ namespace Andrei15193.Kepler
                         throw new ArgumentNullException("constant");
                 }
 
-                public void AppendDelimiter(string delimiter, TCode code)
+                public void AppendDelimiter(string delimiter, Lexicon code)
                 {
                     if (delimiter != null)
                     {
-                        _scannedAtoms.Add(new ScannedAtom<TCode>(code, _line, _column));
+                        _scannedAtoms.Add(new ScannedAtom<Lexicon>(code, _line, _column));
                         if (delimiter == Environment.NewLine)
                         {
                             _line++;
@@ -132,22 +131,22 @@ namespace Andrei15193.Kepler
                         throw new ArgumentNullException("delimiter");
                 }
 
-                public void AppendKeyWord(string keyWord, TCode code)
+                public void AppendKeyWord(string keyWord, Lexicon code)
                 {
                     if (keyWord != null)
                     {
-                        _scannedAtoms.Add(new ScannedAtom<TCode>(code, _line, _column));
+                        _scannedAtoms.Add(new ScannedAtom<Lexicon>(code, _line, _column));
                         _column += (uint)keyWord.Length;
                     }
                     else
                         throw new ArgumentNullException("keyWord");
                 }
 
-                public void AppendIgnoredSequence(string text, TCode code)
+                public void AppendIgnoredSequence(string text, Lexicon code)
                 {
                     if (text != null)
                     {
-                        _scannedAtoms.Add(new ScannedAtom<TCode>(code, _line, _column, text));
+                        _scannedAtoms.Add(new ScannedAtom<Lexicon>(code, _line, _column, text));
 
                         int indexOfLastNewLine = 0, newLineCount = 0;
 
@@ -165,14 +164,14 @@ namespace Andrei15193.Kepler
                         throw new ArgumentNullException("text");
                 }
 
-                public ScanResult<TCode> ToLexicalAnalysisResult(Func<ScannedAtom<TCode>, bool> filter = null)
+                public ScanResult<Lexicon> ToLexicalAnalysisResult(Func<ScannedAtom<Lexicon>, bool> filter = null)
                 {
                     if (filter == null)
-                        return new ScanResult<TCode>(_scannedAtoms,
+                        return new ScanResult<Lexicon>(_scannedAtoms,
                                                                 new ReadOnlyDictionary<string, string>(_identifiers),
                                                                 new ReadOnlyDictionary<string, string>(_constants));
                     else
-                        return new ScanResult<TCode>(_scannedAtoms.Where(filter)
+                        return new ScanResult<Lexicon>(_scannedAtoms.Where(filter)
                                                                              .ToList(),
                                                                 new ReadOnlyDictionary<string, string>(_identifiers),
                                                                 new ReadOnlyDictionary<string, string>(_constants));
@@ -205,12 +204,12 @@ namespace Andrei15193.Kepler
 
                 private uint _line;
                 private uint _column;
-                private readonly List<ScannedAtom<TCode>> _scannedAtoms;
+                private readonly List<ScannedAtom<Lexicon>> _scannedAtoms;
                 private readonly IDictionary<string, string> _identifiers;
                 private readonly IDictionary<string, string> _constants;
             }
 
-            public ScanResult<TCode> Scan(string text, ILanguage<TCode> language)
+            public ScanResult<Lexicon> Scan(string text, ILanguage<Lexicon> language)
             {
                 if (text != null)
                     if (language != null)
@@ -226,7 +225,7 @@ namespace Andrei15193.Kepler
                     throw new ArgumentNullException("text");
             }
 
-            private void _AnalyzeEnclosures(string text, ILanguage<TCode> language, LexicalAnalysisResultBuilder builder)
+            private void _AnalyzeEnclosures(string text, ILanguage<Lexicon> language, LexicalAnalysisResultBuilder builder)
             {
                 int previousIndex = 0;
 
@@ -250,7 +249,7 @@ namespace Andrei15193.Kepler
                 }
             }
 
-            private void _AnalyzeOperators(string text, ILanguage<TCode> language, LexicalAnalysisResultBuilder builder)
+            private void _AnalyzeOperators(string text, ILanguage<Lexicon> language, LexicalAnalysisResultBuilder builder)
             {
                 int previousIndex = 0;
                 IEnumerable<string> operators = language.Operators
@@ -278,7 +277,7 @@ namespace Andrei15193.Kepler
                 }
             }
 
-            private void _AnalyzeSeparators(string text, ILanguage<TCode> language, LexicalAnalysisResultBuilder builder)
+            private void _AnalyzeSeparators(string text, ILanguage<Lexicon> language, LexicalAnalysisResultBuilder builder)
             {
                 int previousIndex = 0;
                 IEnumerable<string> separators = language.Separators
@@ -306,9 +305,9 @@ namespace Andrei15193.Kepler
                 }
             }
 
-            private void _AnalyzeTextLeaf(string text, ILanguage<TCode> language, LexicalAnalysisResultBuilder builder)
+            private void _AnalyzeTextLeaf(string text, ILanguage<Lexicon> language, LexicalAnalysisResultBuilder builder)
             {
-                TCode code;
+                Lexicon code;
 
                 if (language.TryGetIgnoreCode(text, out code))
                     builder.AppendIgnoredSequence(text, code);
@@ -326,19 +325,19 @@ namespace Andrei15193.Kepler
             }
         }
 
-        public Compiler(RuleSet<TCode> ruleSet, ILexicalAnalyser<TCode> lexicalAnalyser = null, ILanguage<TCode> language = null)
+        public Compiler(RuleSet<Lexicon> ruleSet, ILexicalAnalyser<Lexicon> lexicalAnalyser = null, ILanguage<Lexicon> language = null)
         {
             if (ruleSet != null)
             {
                 _ruleSet = ruleSet;
                 _lexicalAnalyser = (lexicalAnalyser ?? DefaultLexicalAnalyser);
-                _language = (language ?? Language<TCode>.Default);
+                _language = (language ?? Language<Lexicon>.Default);
             }
             else
                 throw new ArgumentNullException("ruleSet");
         }
 
-        public ScanResult<TCode> Scan(string text)
+        public ScanResult<Lexicon> Scan(string text)
         {
             if (text != null)
                 return _lexicalAnalyser.Scan(text, _language);
@@ -346,12 +345,12 @@ namespace Andrei15193.Kepler
                 throw new ArgumentNullException("text");
         }
 
-        public ParsedNode<TCode> Parse(string text)
+        public ParsedNode<Lexicon> Parse(string text)
         {
             return _ruleSet.Parse(Scan(text).ScannedAtoms);
         }
 
-        public ParsedNode<TCode> Parse(ScanResult<TCode> scanResult)
+        public ParsedNode<Lexicon> Parse(ScanResult<Lexicon> scanResult)
         {
             if (scanResult != null)
                 return _ruleSet.Parse(scanResult.ScannedAtoms);
@@ -359,7 +358,7 @@ namespace Andrei15193.Kepler
                 throw new ArgumentNullException("scanResult");
         }
 
-        public ILexicalAnalyser<TCode> LexicalAnalyser
+        public ILexicalAnalyser<Lexicon> LexicalAnalyser
         {
             get
             {
@@ -374,7 +373,7 @@ namespace Andrei15193.Kepler
             }
         }
 
-        public ILanguage<TCode> Language
+        public ILanguage<Lexicon> Language
         {
             get
             {
@@ -382,8 +381,8 @@ namespace Andrei15193.Kepler
             }
         }
 
-        private ILexicalAnalyser<TCode> _lexicalAnalyser;
-        private readonly ILanguage<TCode> _language;
-        private readonly RuleSet<TCode> _ruleSet;
+        private ILexicalAnalyser<Lexicon> _lexicalAnalyser;
+        private readonly ILanguage<Lexicon> _language;
+        private readonly RuleSet<Lexicon> _ruleSet;
     }
 }

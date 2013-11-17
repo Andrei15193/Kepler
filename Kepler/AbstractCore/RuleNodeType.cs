@@ -1,4 +1,4 @@
-﻿namespace Andrei15193.Kepler.Language.Syntax
+﻿namespace Andrei15193.Kepler.AbstractCore
 {
     public enum RuleNodeType
     {
