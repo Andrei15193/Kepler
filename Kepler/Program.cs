@@ -13,24 +13,6 @@ namespace Andrei15193.Kepler
     {
         static private void Main(string[] args)
         {
-            //var builder = AppDomain.CurrentDomain.DefineDynamicAssembly(new AssemblyName("test"), AssemblyBuilderAccess.Save);
-            //var moduleBuilder = builder.DefineDynamicModule("test", "test.dll", true);
-            //var typeBuilder = moduleBuilder.DefineType("testClass", TypeAttributes.Class | TypeAttributes.Public | TypeAttributes.Sealed, typeof(object));
-            //var methodBuilder = typeBuilder.DefineMethod("Invoke", MethodAttributes.Public, CallingConventions.HasThis, typeof(string), new[] { typeof(string) });
-            //Expression.Lambda(Expression.Block(typeof(string), Expression.Constant("ret", typeof(string))), "Invoke", new[] { Expression.Parameter(typeof(string), "b") }).CompileToMethod(methodBuilder);
-            //// methodBuilder.CreateMethodBody(new byte[0], 0);
-            ////var methIlGen = methodBuilder.GetILGenerator();
-            ////methIlGen.Emit(OpCodes.Ldstr, "return");
-
-            ////methIlGen.Emit(OpCodes.Ret);
-            //////var constructorBuilder = typeBuilder.DefineConstructor(MethodAttributes.Public, CallingConventions.HasThis, Type.EmptyTypes);
-            //////var ilGenerator = constructorBuilder.GetILGenerator();
-            //////ilGenerator.Emit(OpCodes.Ldarg_0);
-            //////ilGenerator.Emit(OpCodes.Ldstr, "Invoke");
-            //////ilGenerator.Emit(OpCodes.Call, typeof(MulticastDelegate).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance).First(constructorInfo => constructorInfo.GetParameters().Select(parameterInfo => parameterInfo.ParameterType).SequenceEqual(new[] { typeof(object), typeof(string) })));
-            //typeBuilder.CreateType();
-            //builder.Save("test.dll");
-
             if (args.Length > 0)
             {
                 int errorCount = 0;
@@ -63,6 +45,12 @@ namespace Andrei15193.Kepler
                             nodesToVisit.Enqueue(compiler.Parse(scanResult));
 
                             if (nodesToVisit.Peek() != null)
+                            {
+                                new CilGenerator().Generate(sourceFile, sourceFile + ".dll", nodesToVisit.Peek(), new CilGeneratorSettings
+                                    {
+                                        OutputType = OutputType.DynamicLinkLibrary
+                                    });
+
                                 using (StreamWriter writer = new StreamWriter(File.Open(sourceFile + ".syntax.txt", FileMode.Create)))
                                     while (nodesToVisit.Count > 0)
                                     {
@@ -82,15 +70,17 @@ namespace Andrei15193.Kepler
                                         writer.WriteLine("Child count: " + currentNode.ChildNodes.Count);
                                         writer.WriteLine(new string('-', 80));
                                     }
+                            }
                             else
                                 errorStreamWriter.WriteLine(sourceFile + " is not syntactically correct!");
                         }
-                        catch (IOException exception)
+                        catch (Exception exception)
                         {
                             errorCount++;
                             errorStreamWriter.WriteLine("Error in source: " + sourceFile);
                             errorStreamWriter.WriteLine("Reason: " + exception.Message);
                             errorStreamWriter.WriteLine();
+                            throw;
                         }
                     errorStreamWriter.WriteLine("Number of errors: {0}.", errorCount);
                 }

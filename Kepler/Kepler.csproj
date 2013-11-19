@@ -42,12 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractCore\AtomRecognitionResult.cs" />
+    <Compile Include="AbstractCore\CilGeneratorSettings.cs" />
+    <Compile Include="AbstractCore\OutputType.cs" />
     <Compile Include="AbstractCore\State.cs" />
     <Compile Include="AbstractCore\AtomRecognizer.cs" />
     <Compile Include="AbstractCore\Transition.cs" />
+    <Compile Include="CilGenerator.cs" />
     <Compile Include="Collections\Sublist.cs" />
     <Compile Include="Compiler.cs" />
     <Compile Include="Extensions\IReadOnlyListExtensions.cs" />
+    <Compile Include="AbstractCore\ICilGenerator.cs" />
     <Compile Include="Language\Language.cs" />
     <Compile Include="Language\Lexis\Attributes\PriorityAttribute.cs" />
     <Compile Include="Language\Lexis\ScanResult.cs" />
