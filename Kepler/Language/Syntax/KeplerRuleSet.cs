@@ -3,153 +3,196 @@ using Andrei15193.Kepler.Language.Lexis;
 
 namespace Andrei15193.Kepler.Language.Syntax
 {
-    internal sealed class KeplerRuleSet
+    public sealed class KeplerRuleSet
         : RuleSet<Lexicon>
     {
+        public const string Name = "name";
+        public const string Constant = "constant";
+        public const string QualifiedIdentifier = "qualifiedIdentifier";
+        public const string UnaryPrefixedArithmeticOperator = "unaryPrefixedArithmeticOperator";
+        public const string BinaryArithmeticOperator = "binaryArithmeticOperator";
+        public const string UnaryPrefixedBooleanOperator = "unaryPrefixedBooleanOperator";
+        public const string BinaryBooleanOperator = "binaryBooleanOperator";
+        public const string ArithmeticRelation = "arithmeticRelation";
+        public const string Program = "program";
+        public const string PredicateDeclaration = "predicateDeclaration";
+        public const string PredicateDefinition = "predicateDefinition";
+        public const string FactDefinition = "factDefinition";
+        public const string FactParameter = "factParameter";
+        public const string Type = "type";
+        public const string GenericParameters = "genericParameters";
+        public const string Array = "array";
+        public const string Body = "body";
+        public const string TypeInstance = "typeInstance";
+        public const string BoundedArray = "boundedArray";
+        public const string VariableDeclaration = "variableDeclaration";
+        public const string Statement = "statement";
+        public const string WhenStatement = "whenStatement";
+        public const string WhileStatement = "whileStatement";
+        public const string TryCatchFinallyStatement = "tryCatchFinallyStatement";
+        public const string CatchStatement = "catchStatement";
+        public const string CatchBlockStatement = "catchBlockStatement";
+        public const string CatchAllStatement = "catchAllStatement";
+        public const string FinallyStatement = "finallyStatement";
+        public const string ThrowStatement = "throwStatement";
+        public const string VariableDeclarationStatement = "variableDeclarationStatement";
+        public const string VariableAssignmentStatement = "variableAssignmentStatement";
+        public const string FunctionCall = "functionCall";
+        public const string ExitStatement = "exitStatement";
+        public const string Expression = "expression";
+        public const string ArithmeticExpression = "arithmeticExpression";
+        public const string ArithmeticOperand = "arithmeticOperand";
+        public const string BooleanExpression = "booleanExpression";
+        public const string BooleanOperand = "booleanOperand";
+        public const string OtherExpression = "otherExpression";
+        public const string OtherOperand = "otherOperand";
+
         public KeplerRuleSet(ILanguage<Lexicon> language = null)
             : base(language ?? Language<Lexicon>.Default, defaultRule: "program", ignoreRuleNameCase: true)
         {
-            Add("name",
+            Add(Name,
                 RuleNode<Lexicon>.Atom(Lexicon.Identifier));
 
-            Add("constant",
+            Add(Constant,
                 RuleNode<Lexicon>.Atom(Lexicon.CharConstant));
-            Add("constant",
+            Add(Constant,
                 RuleNode<Lexicon>.Atom(Lexicon.FloatNumericConstant));
-            Add("constant",
+            Add(Constant,
                 RuleNode<Lexicon>.Atom(Lexicon.IntegerNumericConstant));
-            Add("constant",
+            Add(Constant,
                 RuleNode<Lexicon>.Atom(Lexicon.StringConstant));
 
-            Add("qualifiedIdentifier",
+            Add(QualifiedIdentifier,
                 RuleNode<Lexicon>.RuleSequence("identifierSequence"),
-                RuleNode<Lexicon>.Rule("name"));
+                RuleNode<Lexicon>.Rule(Name));
             Add("identifierSequence",
-                RuleNode<Lexicon>.Rule("name"),
+                RuleNode<Lexicon>.Rule(Name),
                 RuleNode<Lexicon>.Atom(Lexicon.Scope));
 
-            Add("unaryPrefixedArithmeticOperator",
+            Add(UnaryPrefixedArithmeticOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Plus));
-            Add("unaryPrefixedArithmeticOperator",
+            Add(UnaryPrefixedArithmeticOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Minus));
 
-            Add("binaryArithmeticOperator",
+            Add(BinaryArithmeticOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Plus));
-            Add("binaryArithmeticOperator",
+            Add(BinaryArithmeticOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Minus));
-            Add("binaryArithmeticOperator",
+            Add(BinaryArithmeticOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Star));
-            Add("binaryArithmeticOperator",
+            Add(BinaryArithmeticOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Percentage));
-            Add("binaryArithmeticOperator",
+            Add(BinaryArithmeticOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Slash));
-            Add("binaryArithmeticOperator",
+            Add(BinaryArithmeticOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Backslash));
 
-            Add("unaryPrefixedBooleanOperator",
+            Add(UnaryPrefixedBooleanOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Negation));
 
-            Add("binaryBooleanOperator",
+            Add(BinaryBooleanOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.And));
-            Add("binaryBooleanOperator",
+            Add(BinaryBooleanOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Or));
-            Add("binaryBooleanOperator",
+            Add(BinaryBooleanOperator,
                 RuleNode<Lexicon>.Atom(Lexicon.Equal));
 
-            Add("arithmeticRelation",
+            Add(ArithmeticRelation,
                 RuleNode<Lexicon>.Atom(Lexicon.LessThan));
-            Add("arithmeticRelation",
+            Add(ArithmeticRelation,
                 RuleNode<Lexicon>.Atom(Lexicon.LessThanOrEqualTo));
-            Add("arithmeticRelation",
+            Add(ArithmeticRelation,
                 RuleNode<Lexicon>.Atom(Lexicon.Equal));
-            Add("arithmeticRelation",
+            Add(ArithmeticRelation,
                 RuleNode<Lexicon>.Atom(Lexicon.GreaterThanOrEqualTo));
-            Add("arithmeticRelation",
+            Add(ArithmeticRelation,
                 RuleNode<Lexicon>.Atom(Lexicon.GreaterThan));
 
-            Add("program",
-                RuleNode<Lexicon>.RuleSequence("predicateDeclaration"));
+            Add(Program,
+                RuleNode<Lexicon>.RuleSequence(PredicateDeclaration));
 
-            Add("predicateDeclaration",
-                RuleNode<Lexicon>.Rule("predicateDefinition"));
-            Add("predicateDeclaration",
-                RuleNode<Lexicon>.Rule("factDefinition"));
+            Add(PredicateDeclaration,
+                RuleNode<Lexicon>.Rule(PredicateDefinition));
+            Add(PredicateDeclaration,
+                RuleNode<Lexicon>.Rule(FactDefinition));
 
-            Add("predicateDefinition",
+            Add(PredicateDefinition,
                 RuleNode<Lexicon>.Atom(Lexicon.Predicate),
-                RuleNode<Lexicon>.Rule("name"),
-                RuleNode<Lexicon>.Rule("body"));
-            Add("predicateDefinition",
+                RuleNode<Lexicon>.Rule(Name),
+                RuleNode<Lexicon>.Rule(Body));
+            Add(PredicateDefinition,
                 RuleNode<Lexicon>.Atom(Lexicon.Predicate),
-                RuleNode<Lexicon>.Rule("name"),
+                RuleNode<Lexicon>.Rule(Name),
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
-                RuleNode<Lexicon>.Rule("variableDeclaration"),
-                RuleNode<Lexicon>.RuleSequence("prameterSequence"),
+                RuleNode<Lexicon>.Rule(VariableDeclaration),
+                RuleNode<Lexicon>.RuleSequence("parameterSequence"),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis),
-                RuleNode<Lexicon>.Rule("body"));
+                RuleNode<Lexicon>.Rule(Body));
 
-            Add("factDefinition",
+            Add(FactDefinition,
                 RuleNode<Lexicon>.Atom(Lexicon.Fact),
-                RuleNode<Lexicon>.Rule("name"),
+                RuleNode<Lexicon>.Rule(Name),
                 RuleNode<Lexicon>.Atom(Lexicon.Dot));
-            Add("factDefinition",
+            Add(FactDefinition,
                 RuleNode<Lexicon>.Atom(Lexicon.Fact),
-                RuleNode<Lexicon>.Rule("name"),
+                RuleNode<Lexicon>.Rule(Name),
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
-                RuleNode<Lexicon>.Rule("factParameter"),
+                RuleNode<Lexicon>.Rule(FactParameter),
                 RuleNode<Lexicon>.RuleSequence("factParameterSequence"),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis),
                 RuleNode<Lexicon>.Atom(Lexicon.Dot));
 
-            Add("prameterSequence",
+            Add("parameterSequence",
                 RuleNode<Lexicon>.Atom(Lexicon.Comma),
-                RuleNode<Lexicon>.Rule("variableDeclaration"));
-            Add("factParameter",
-                RuleNode<Lexicon>.Rule("variableDeclaration"),
-                RuleNode<Lexicon>.Rule("arithmeticRelation"),
-                RuleNode<Lexicon>.Rule("constant"));
+                RuleNode<Lexicon>.Rule(VariableDeclaration));
+            Add(FactParameter,
+                RuleNode<Lexicon>.Rule(VariableDeclaration),
+                RuleNode<Lexicon>.Rule(ArithmeticRelation),
+                RuleNode<Lexicon>.Rule(Constant));
             Add("factParameterSequence",
                 RuleNode<Lexicon>.Atom(Lexicon.Comma),
-                RuleNode<Lexicon>.Rule("factParameter"));
+                RuleNode<Lexicon>.Rule(FactParameter));
 
-            Add("type",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"),
-                RuleNode<Lexicon>.RuleSequence("array"));
-            Add("type",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"),
-                RuleNode<Lexicon>.Rule("genericParameters"),
-                RuleNode<Lexicon>.RuleSequence("array"));
+            Add(Type,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier),
+                RuleNode<Lexicon>.RuleSequence("ArraySequence"));
+            Add(Type,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier),
+                RuleNode<Lexicon>.Rule(GenericParameters),
+                RuleNode<Lexicon>.RuleSequence("ArraySequence"));
 
-            Add("genericParameters",
+            Add(GenericParameters,
                 RuleNode<Lexicon>.Atom(Lexicon.LessThan),
-                RuleNode<Lexicon>.Rule("type"),
+                RuleNode<Lexicon>.Rule(Type),
                 RuleNode<Lexicon>.RuleSequence("genericParametersSequence"),
                 RuleNode<Lexicon>.Atom(Lexicon.GreaterThan));
             Add("genericParametersSequence",
                 RuleNode<Lexicon>.Atom(Lexicon.Comma),
-                RuleNode<Lexicon>.Rule("type"));
+                RuleNode<Lexicon>.Rule(Type));
 
-            Add("array",
+            Add("ArraySequence",
+                RuleNode<Lexicon>.Rule(KeplerRuleSet.Array));
+            Add(Array,
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningSquareParenthesis),
                 RuleNode<Lexicon>.AtomSequence(Lexicon.Comma),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingSquareParenthesis));
 
-            Add("body",
-                RuleNode<Lexicon>.Rule("statement"));
-            Add("body",
+            Add(Body,
+                RuleNode<Lexicon>.Rule(Statement));
+            Add(Body,
                 RuleNode<Lexicon>.Atom(Lexicon.Begin),
-                RuleNode<Lexicon>.RuleSequence("statement"),
+                RuleNode<Lexicon>.RuleSequence(Statement),
                 RuleNode<Lexicon>.Atom(Lexicon.End));
 
-            Add("typeInstance",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"),
-                RuleNode<Lexicon>.RuleSequence("boundedArray"));
-            Add("typeInstance",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"),
-                RuleNode<Lexicon>.Rule("genericParameters"),
-                RuleNode<Lexicon>.RuleSequence("boundedArray"));
+            Add(TypeInstance,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier),
+                RuleNode<Lexicon>.RuleSequence(BoundedArray));
+            Add(TypeInstance,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier),
+                RuleNode<Lexicon>.Rule(GenericParameters),
+                RuleNode<Lexicon>.RuleSequence(BoundedArray));
 
-            Add("boundedArray",
+            Add(BoundedArray,
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningSquareParenthesis),
                 RuleNode<Lexicon>.Atom(Lexicon.IntegerNumericConstant),
                 RuleNode<Lexicon>.RuleSequence("boundedArraySequence"),
@@ -158,235 +201,235 @@ namespace Andrei15193.Kepler.Language.Syntax
                 RuleNode<Lexicon>.Atom(Lexicon.Comma),
                 RuleNode<Lexicon>.Atom(Lexicon.IntegerNumericConstant));
 
-            Add("variableDeclaration",
-                RuleNode<Lexicon>.Rule("name"),
+            Add(VariableDeclaration,
+                RuleNode<Lexicon>.Rule(Name),
                 RuleNode<Lexicon>.Atom(Lexicon.Colon),
-                RuleNode<Lexicon>.Rule("type"));
+                RuleNode<Lexicon>.Rule(Type));
 
-            Add("statement",
-                RuleNode<Lexicon>.Rule("whenStatement"));
-            Add("statement",
-                RuleNode<Lexicon>.Rule("whileStatement"));
-            Add("statement",
-                RuleNode<Lexicon>.Rule("tryCatchFinallyStatement"));
-            Add("statement",
-                RuleNode<Lexicon>.Rule("throwStatement"),
+            Add(Statement,
+                RuleNode<Lexicon>.Rule(WhenStatement));
+            Add(Statement,
+                RuleNode<Lexicon>.Rule(WhileStatement));
+            Add(Statement,
+                RuleNode<Lexicon>.Rule(TryCatchFinallyStatement));
+            Add(Statement,
+                RuleNode<Lexicon>.Rule(ThrowStatement),
                 RuleNode<Lexicon>.Atom(Lexicon.Dot));
-            Add("statement",
-                RuleNode<Lexicon>.Rule("variableDeclarationStatement"),
+            Add(Statement,
+                RuleNode<Lexicon>.Rule(VariableDeclarationStatement),
                 RuleNode<Lexicon>.Atom(Lexicon.Dot));
-            Add("statement",
-                RuleNode<Lexicon>.Rule("variableAssignmentStatement"),
+            Add(Statement,
+                RuleNode<Lexicon>.Rule(VariableAssignmentStatement),
                 RuleNode<Lexicon>.Atom(Lexicon.Dot));
-            Add("statement",
-                RuleNode<Lexicon>.Rule("functionCall"),
+            Add(Statement,
+                RuleNode<Lexicon>.Rule(FunctionCall),
                 RuleNode<Lexicon>.Atom(Lexicon.Dot));
-            Add("statement",
-                RuleNode<Lexicon>.Rule("exitStatement"),
+            Add(Statement,
+                RuleNode<Lexicon>.Rule(ExitStatement),
                 RuleNode<Lexicon>.Atom(Lexicon.Dot));
 
-            Add("whenStatement",
+            Add(WhenStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.When),
-                RuleNode<Lexicon>.Rule("booleanExpression"),
+                RuleNode<Lexicon>.Rule(BooleanExpression),
                 RuleNode<Lexicon>.Atom(Lexicon.Then),
-                RuleNode<Lexicon>.Rule("body"));
-            Add("whenStatement",
+                RuleNode<Lexicon>.Rule(Body));
+            Add(WhenStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.When),
-                RuleNode<Lexicon>.Rule("booleanExpression"),
+                RuleNode<Lexicon>.Rule(BooleanExpression),
                 RuleNode<Lexicon>.Atom(Lexicon.Then),
-                RuleNode<Lexicon>.Rule("body"),
+                RuleNode<Lexicon>.Rule(Body),
                 RuleNode<Lexicon>.Atom(Lexicon.Else),
-                RuleNode<Lexicon>.Rule("body"));
+                RuleNode<Lexicon>.Rule(Body));
 
-            Add("whileStatement",
+            Add(WhileStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.While),
-                RuleNode<Lexicon>.Rule("booleanExpression"),
+                RuleNode<Lexicon>.Rule(BooleanExpression),
                 RuleNode<Lexicon>.Atom(Lexicon.Do),
-                RuleNode<Lexicon>.Rule("body"));
+                RuleNode<Lexicon>.Rule(Body));
 
-            Add("tryCatchFinallyStatement",
+            Add(TryCatchFinallyStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Try),
-                RuleNode<Lexicon>.Rule("body"),
-                RuleNode<Lexicon>.Rule("catchStatement"));
-            Add("tryCatchFinallyStatement",
+                RuleNode<Lexicon>.Rule(Body),
+                RuleNode<Lexicon>.Rule(CatchStatement));
+            Add(TryCatchFinallyStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Try),
-                RuleNode<Lexicon>.Rule("body"),
-                RuleNode<Lexicon>.Rule("catchStatement"),
-                RuleNode<Lexicon>.Rule("finallyStatement"));
-            Add("tryCatchFinallyStatement",
+                RuleNode<Lexicon>.Rule(Body),
+                RuleNode<Lexicon>.Rule(CatchStatement),
+                RuleNode<Lexicon>.Rule(FinallyStatement));
+            Add(TryCatchFinallyStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Try),
-                RuleNode<Lexicon>.Rule("body"),
-                RuleNode<Lexicon>.Rule("finallyStatement"));
+                RuleNode<Lexicon>.Rule(Body),
+                RuleNode<Lexicon>.Rule(FinallyStatement));
 
-            Add("catchStatement",
-                RuleNode<Lexicon>.Rule("catchAllStatement"));
-            Add("catchStatement",
-                RuleNode<Lexicon>.Rule("catchBlockStatement"),
-                RuleNode<Lexicon>.RuleSequence("catchBlockStatement"));
-            Add("catchStatement",
-                RuleNode<Lexicon>.Rule("catchBlockStatement"),
-                RuleNode<Lexicon>.RuleSequence("catchBlockStatement"),
-                RuleNode<Lexicon>.Rule("catchAllStatement"));
+            Add(CatchStatement,
+                RuleNode<Lexicon>.Rule(CatchAllStatement));
+            Add(CatchStatement,
+                RuleNode<Lexicon>.Rule(CatchBlockStatement),
+                RuleNode<Lexicon>.RuleSequence(CatchBlockStatement));
+            Add(CatchStatement,
+                RuleNode<Lexicon>.Rule(CatchBlockStatement),
+                RuleNode<Lexicon>.RuleSequence(CatchBlockStatement),
+                RuleNode<Lexicon>.Rule(CatchAllStatement));
 
-            Add("catchBlockStatement",
+            Add(CatchBlockStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Catch),
-                RuleNode<Lexicon>.Rule("variableDeclaration"),
-                RuleNode<Lexicon>.Rule("body"));
+                RuleNode<Lexicon>.Rule(VariableDeclaration),
+                RuleNode<Lexicon>.Rule(Body));
 
-            Add("catchAllStatement",
+            Add(CatchAllStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Catch),
-                RuleNode<Lexicon>.Rule("body"));
+                RuleNode<Lexicon>.Rule(Body));
 
-            Add("finallyStatement",
+            Add(FinallyStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Finally),
-                RuleNode<Lexicon>.Rule("body"));
+                RuleNode<Lexicon>.Rule(Body));
 
-            Add("throwStatement",
+            Add(ThrowStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Throw));
-            Add("throwStatement",
+            Add(ThrowStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Throw),
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"));
-            Add("throwStatement",
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier));
+            Add(ThrowStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Throw),
-                RuleNode<Lexicon>.Rule("functionCall"));
+                RuleNode<Lexicon>.Rule(FunctionCall));
 
-            Add("variableDeclarationStatement",
-                RuleNode<Lexicon>.Rule("variableDeclaration"),
+            Add(VariableDeclarationStatement,
+                RuleNode<Lexicon>.Rule(VariableDeclaration),
                 RuleNode<Lexicon>.Atom(Lexicon.Equal),
-                RuleNode<Lexicon>.Rule("expression"));
-            Add("variableDeclarationStatement",
-                RuleNode<Lexicon>.Rule("variableDeclaration"),
+                RuleNode<Lexicon>.Rule(Expression));
+            Add(VariableDeclarationStatement,
+                RuleNode<Lexicon>.Rule(VariableDeclaration),
                 RuleNode<Lexicon>.Atom(Lexicon.Equal),
                 RuleNode<Lexicon>.Atom(Lexicon.New),
-                RuleNode<Lexicon>.Rule("typeInstance"));
+                RuleNode<Lexicon>.Rule(TypeInstance));
 
-            Add("variableAssignmentStatement",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"),
+            Add(VariableAssignmentStatement,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier),
                 RuleNode<Lexicon>.Atom(Lexicon.Equal),
-                RuleNode<Lexicon>.Rule("expression"));
-            Add("variableAssignmentStatement",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"),
+                RuleNode<Lexicon>.Rule(Expression));
+            Add(VariableAssignmentStatement,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier),
                 RuleNode<Lexicon>.Atom(Lexicon.Equal),
                 RuleNode<Lexicon>.Atom(Lexicon.New),
-                RuleNode<Lexicon>.Rule("typeInstance"));
+                RuleNode<Lexicon>.Rule(TypeInstance));
 
-            Add("functionCall",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"),
+            Add(FunctionCall,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier),
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis));
-            Add("functionCall",
+            Add(FunctionCall,
                 RuleNode<Lexicon>.Atom(Lexicon.New),
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"),
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier),
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis));
-            Add("functionCall",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"),
+            Add(FunctionCall,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier),
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
-                RuleNode<Lexicon>.Rule("expression"),
+                RuleNode<Lexicon>.Rule(Expression),
                 RuleNode<Lexicon>.RuleSequence("expressionSequence"),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis));
-            Add("functionCall",
+            Add(FunctionCall,
                 RuleNode<Lexicon>.Atom(Lexicon.New),
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"),
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier),
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
-                RuleNode<Lexicon>.Rule("expression"),
+                RuleNode<Lexicon>.Rule(Expression),
                 RuleNode<Lexicon>.RuleSequence("expressionSequence"),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis));
 
             Add("expressionSequence",
                 RuleNode<Lexicon>.Atom(Lexicon.Comma),
-                RuleNode<Lexicon>.Rule("expression"));
+                RuleNode<Lexicon>.Rule(Expression));
 
-            Add("exitStatement",
+            Add(ExitStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Stop));
-            Add("exitStatement",
+            Add(ExitStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Skip));
-            Add("exitStatement",
+            Add(ExitStatement,
                 RuleNode<Lexicon>.Atom(Lexicon.Assert),
-                RuleNode<Lexicon>.Rule("booleanExpression"));
+                RuleNode<Lexicon>.Rule(BooleanExpression));
 
-            Add("expression",
-                RuleNode<Lexicon>.Rule("arithmeticExpression"));
-            Add("expression",
-                RuleNode<Lexicon>.Rule("booleanExpression"));
-            Add("expression",
-                RuleNode<Lexicon>.Rule("otherExpression"));
+            Add(Expression,
+                RuleNode<Lexicon>.Rule(ArithmeticExpression));
+            Add(Expression,
+                RuleNode<Lexicon>.Rule(BooleanExpression));
+            Add(Expression,
+                RuleNode<Lexicon>.Rule(OtherExpression));
 
-            Add("arithmeticExpression",
-                RuleNode<Lexicon>.Rule("arithmeticOperand"));
-            Add("arithmeticExpression",
-                RuleNode<Lexicon>.Rule("unaryPrefixedArithmeticOperator"),
-                RuleNode<Lexicon>.Rule("arithmeticOperand"));
-            Add("arithmeticExpression",
-                RuleNode<Lexicon>.Rule("arithmeticExpression"),
-                RuleNode<Lexicon>.Rule("binaryArithmeticOperator"),
-                RuleNode<Lexicon>.Rule("arithmeticExpression"));
-            Add("arithmeticExpression",
+            Add(ArithmeticExpression,
+                RuleNode<Lexicon>.Rule(ArithmeticOperand));
+            Add(ArithmeticExpression,
+                RuleNode<Lexicon>.Rule(UnaryPrefixedArithmeticOperator),
+                RuleNode<Lexicon>.Rule(ArithmeticOperand));
+            Add(ArithmeticExpression,
+                RuleNode<Lexicon>.Rule(ArithmeticExpression),
+                RuleNode<Lexicon>.Rule(BinaryArithmeticOperator),
+                RuleNode<Lexicon>.Rule(ArithmeticExpression));
+            Add(ArithmeticExpression,
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
-                RuleNode<Lexicon>.Rule("arithmeticExpression"),
+                RuleNode<Lexicon>.Rule(ArithmeticExpression),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis));
 
-            Add("arithmeticOperand",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"));
-            Add("arithmeticOperand",
-                RuleNode<Lexicon>.Rule("functionCall"));
-            Add("arithmeticOperand",
+            Add(ArithmeticOperand,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier));
+            Add(ArithmeticOperand,
+                RuleNode<Lexicon>.Rule(FunctionCall));
+            Add(ArithmeticOperand,
                 RuleNode<Lexicon>.Atom(Lexicon.IntegerNumericConstant));
-            Add("arithmeticOperand",
+            Add(ArithmeticOperand,
                 RuleNode<Lexicon>.Atom(Lexicon.FloatNumericConstant));
 
-            Add("booleanExpression",
-                RuleNode<Lexicon>.Rule("booleanOperand"));
-            Add("booleanExpression",
-                RuleNode<Lexicon>.Rule("unaryPrefixedBooleanOperator"),
-                RuleNode<Lexicon>.Rule("booleanOperand"));
-            Add("booleanExpression",
-                RuleNode<Lexicon>.Rule("booleanExpression"),
-                RuleNode<Lexicon>.Rule("binaryBooleanOperator"),
-                RuleNode<Lexicon>.Rule("booleanExpression"));
-            Add("booleanExpression",
-                RuleNode<Lexicon>.Rule("arithmeticExpression"),
-                RuleNode<Lexicon>.Rule("arithmeticRelation"),
-                RuleNode<Lexicon>.Rule("arithmeticExpression"));
-            Add("booleanExpression",
-                RuleNode<Lexicon>.Rule("otherExpression"),
-                RuleNode<Lexicon>.Rule("arithmeticRelation"),
-                RuleNode<Lexicon>.Rule("otherExpression"));
-            Add("booleanExpression",
+            Add(BooleanExpression,
+                RuleNode<Lexicon>.Rule(BooleanOperand));
+            Add(BooleanExpression,
+                RuleNode<Lexicon>.Rule(UnaryPrefixedBooleanOperator),
+                RuleNode<Lexicon>.Rule(BooleanOperand));
+            Add(BooleanExpression,
+                RuleNode<Lexicon>.Rule(BooleanExpression),
+                RuleNode<Lexicon>.Rule(BinaryBooleanOperator),
+                RuleNode<Lexicon>.Rule(BooleanExpression));
+            Add(BooleanExpression,
+                RuleNode<Lexicon>.Rule(ArithmeticExpression),
+                RuleNode<Lexicon>.Rule(ArithmeticRelation),
+                RuleNode<Lexicon>.Rule(ArithmeticExpression));
+            Add(BooleanExpression,
+                RuleNode<Lexicon>.Rule(OtherExpression),
+                RuleNode<Lexicon>.Rule(ArithmeticRelation),
+                RuleNode<Lexicon>.Rule(OtherExpression));
+            Add(BooleanExpression,
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
-                RuleNode<Lexicon>.Rule("booleanExpression"),
+                RuleNode<Lexicon>.Rule(BooleanExpression),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis));
 
-            Add("booleanOperand",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"));
-            Add("booleanOperand",
-                RuleNode<Lexicon>.Rule("functionCall"));
-            Add("booleanOperand",
+            Add(BooleanOperand,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier));
+            Add(BooleanOperand,
+                RuleNode<Lexicon>.Rule(FunctionCall));
+            Add(BooleanOperand,
                 RuleNode<Lexicon>.Atom(Lexicon.True));
-            Add("booleanOperand",
+            Add(BooleanOperand,
                 RuleNode<Lexicon>.Atom(Lexicon.False));
-            Add("booleanOperand",
+            Add(BooleanOperand,
                 RuleNode<Lexicon>.Atom(Lexicon.Stop));
-            Add("booleanOperand",
+            Add(BooleanOperand,
                 RuleNode<Lexicon>.Atom(Lexicon.Skip));
 
-            Add("otherExpression",
-                RuleNode<Lexicon>.Rule("otherOperand"));
-            Add("otherExpression",
-                RuleNode<Lexicon>.Rule("otherOperand"),
-                RuleNode<Lexicon>.Rule("binaryArithmeticOperator"),
-                RuleNode<Lexicon>.Rule("otherOperand"));
-            Add("otherExpression",
+            Add(OtherExpression,
+                RuleNode<Lexicon>.Rule(OtherOperand));
+            Add(OtherExpression,
+                RuleNode<Lexicon>.Rule(OtherOperand),
+                RuleNode<Lexicon>.Rule(BinaryArithmeticOperator),
+                RuleNode<Lexicon>.Rule(OtherOperand));
+            Add(OtherExpression,
                 RuleNode<Lexicon>.Atom(Lexicon.OpeningRoundParenthesis),
-                RuleNode<Lexicon>.Rule("otherOperand"),
+                RuleNode<Lexicon>.Rule(OtherOperand),
                 RuleNode<Lexicon>.Atom(Lexicon.ClosingRoundParenthesis));
 
-            Add("otherOperand",
-                RuleNode<Lexicon>.Rule("constant"));
-            Add("otherOperand",
-                RuleNode<Lexicon>.Rule("functionCall"));
-            Add("otherOperand",
-                RuleNode<Lexicon>.Rule("qualifiedIdentifier"));
+            Add(OtherOperand,
+                RuleNode<Lexicon>.Rule(Constant));
+            Add(OtherOperand,
+                RuleNode<Lexicon>.Rule(FunctionCall));
+            Add(OtherOperand,
+                RuleNode<Lexicon>.Rule(QualifiedIdentifier));
         }
     }
 }

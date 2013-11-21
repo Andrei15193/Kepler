@@ -1,4 +1,4 @@
-predicate Main
+predicate Main (args : System::String[])
     begin
         try
         begin
@@ -12,6 +12,9 @@ predicate Main
     end
 
 predicate PerimetruCerc(razaCerc : System::Int32)
+    System::Console::WriteLine(2 * razaCerc * 3.14).
+
+predicate PerimetruCerc(razaCerc : System::Int16)
     System::Console::WriteLine(2 * razaCerc * 3.14).
 
 predicate ArieCerc(razaCerc : System::Int32)

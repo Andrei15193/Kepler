@@ -80,7 +80,6 @@ namespace Andrei15193.Kepler
                             errorStreamWriter.WriteLine("Error in source: " + sourceFile);
                             errorStreamWriter.WriteLine("Reason: " + exception.Message);
                             errorStreamWriter.WriteLine();
-                            throw;
                         }
                     errorStreamWriter.WriteLine("Number of errors: {0}.", errorCount);
                 }

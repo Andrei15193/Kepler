@@ -72,7 +72,6 @@ namespace Andrei15193.Kepler.AbstractCore
                                     ParsedNode<TCode> childNode = _ruleSet.Parse(atoms, ruleNode.Current.RuleName, currentIndex, isFirstRuleNode ? this : null);
 
                                     if (ruleNode.Current.IsSequence)
-                                    {
                                         while (childNode != null)
                                         {
                                             foreach (ParsedNode<TCode> grandChildNodes in childNode.ChildNodes)
@@ -87,9 +86,7 @@ namespace Andrei15193.Kepler.AbstractCore
                                             else
                                                 childNode = null;
                                         }
-                                    }
                                     else
-                                    {
                                         if (childNode != null)
                                         {
                                             childNode.Parent = resultNode;
@@ -98,7 +95,6 @@ namespace Andrei15193.Kepler.AbstractCore
                                         }
                                         else
                                             resultNode = null;
-                                    }
                                     break;
                             }
                             isFirstRuleNode = false;
