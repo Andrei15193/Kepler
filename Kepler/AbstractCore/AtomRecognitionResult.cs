@@ -5,13 +5,14 @@ namespace Andrei15193.Kepler.AbstractCore
     public struct AtomRecognitionResult<TCode>
         where TCode : struct
     {
-        public AtomRecognitionResult(string sequence, TCode code)
+        public AtomRecognitionResult(string sequence, TCode code, bool isDelimiter)
         {
             if (sequence != null)
             {
                 _sequence = sequence;
                 _code = code;
                 _success = true;
+                _isDelimiter = isDelimiter;
             }
             else
                 throw new ArgumentNullException("sequence");
@@ -33,6 +34,14 @@ namespace Andrei15193.Kepler.AbstractCore
             }
         }
 
+        public bool IsDelimiter
+        {
+            get
+            {
+                return _isDelimiter;
+            }
+        }
+
         public bool Success
         {
             get
@@ -41,6 +50,7 @@ namespace Andrei15193.Kepler.AbstractCore
             }
         }
 
+        private readonly bool _isDelimiter;
         private readonly bool _success;
         private readonly TCode _code;
         private readonly string _sequence;

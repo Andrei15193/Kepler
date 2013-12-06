@@ -5,6 +5,7 @@ using System.Linq;
 using Andrei15193.Kepler.AbstractCore;
 using Andrei15193.Kepler.Language;
 using Andrei15193.Kepler.Language.Lexis;
+using Andrei15193.Kepler.Language.Syntax;
 
 namespace Andrei15193.Kepler
 {
@@ -325,7 +326,7 @@ namespace Andrei15193.Kepler
             }
         }
 
-        public Compiler(RuleSet<Lexicon> ruleSet, ILexicalAnalyser<Lexicon> lexicalAnalyser = null, ILanguage<Lexicon> language = null)
+        public Compiler(KeplerRuleSet ruleSet, ILexicalAnalyser<Lexicon> lexicalAnalyser = null, ILanguage<Lexicon> language = null)
         {
             if (ruleSet != null)
             {
@@ -345,17 +346,9 @@ namespace Andrei15193.Kepler
                 throw new ArgumentNullException("text");
         }
 
-        public ParsedNode<Lexicon> Parse(string text)
+        public ProgramNode Parse(string text)
         {
-            return _ruleSet.Parse(Scan(text).ScannedAtoms);
-        }
-
-        public ParsedNode<Lexicon> Parse(ScanResult<Lexicon> scanResult)
-        {
-            if (scanResult != null)
-                return _ruleSet.Parse(scanResult.ScannedAtoms);
-            else
-                throw new ArgumentNullException("scanResult");
+            return _ruleSet.Parse(Scan(text));
         }
 
         public ILexicalAnalyser<Lexicon> LexicalAnalyser
@@ -383,6 +376,6 @@ namespace Andrei15193.Kepler
 
         private ILexicalAnalyser<Lexicon> _lexicalAnalyser;
         private readonly ILanguage<Lexicon> _language;
-        private readonly RuleSet<Lexicon> _ruleSet;
+        private readonly KeplerRuleSet _ruleSet;
     }
 }

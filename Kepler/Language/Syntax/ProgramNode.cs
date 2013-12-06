@@ -10,17 +10,20 @@ namespace Andrei15193.Kepler.Language.Syntax
 {
     public sealed class ProgramNode
     {
-        public ProgramNode(ParsedNode<Lexicon> programParsedNode)
+        internal ProgramNode(ParsedNode<Lexicon> programParsedNode)
         {
             if (programParsedNode != null)
                 if (programParsedNode.Name == KeplerRuleSet.Program)
                 {
+                    IReadOnlyList<ParsedNode<Lexicon>> childNodes;
                     List<PredicateDeclarationNode> predicateDeclarationNodes = new List<PredicateDeclarationNode>();
 
-                    foreach (ParsedNode<Lexicon> predicateDefinition in programParsedNode[KeplerRuleSet.PredicateDefinition])
-                        predicateDeclarationNodes.Add(new PredicateDeclarationNode(predicateDefinition));
-                    foreach (ParsedNode<Lexicon> factDefinition in programParsedNode[KeplerRuleSet.FactDefinition])
-                        predicateDeclarationNodes.Add(new PredicateDeclarationNode(factDefinition));
+                    if (programParsedNode.TryGetChildNodeGroup(KeplerRuleSet.PredicateDefinition, out childNodes))
+                        foreach (ParsedNode<Lexicon> predicateDefinition in childNodes)
+                            predicateDeclarationNodes.Add(new PredicateDeclarationNode(predicateDefinition));
+                    if (programParsedNode.TryGetChildNodeGroup(KeplerRuleSet.FactDefinition, out childNodes))
+                        foreach (ParsedNode<Lexicon> factDefinition in childNodes)
+                            predicateDeclarationNodes.Add(new PredicateDeclarationNode(factDefinition));
 
                     _predicateDeclarations = predicateDeclarationNodes;
                 }

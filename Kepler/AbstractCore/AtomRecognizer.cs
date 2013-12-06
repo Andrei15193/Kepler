@@ -5,11 +5,12 @@ namespace Andrei15193.Kepler.AbstractCore
     public class AtomRecognizer<TCode>
         where TCode : struct
     {
-        public AtomRecognizer(TCode code, State<char> initialState)
+        public AtomRecognizer(TCode code, State<char> initialState, bool isDelimiter)
         {
             if (initialState != null)
             {
                 _initialState = initialState;
+                _isDelimiter = isDelimiter;
                 _code = code;
             }
             else
@@ -59,7 +60,7 @@ namespace Andrei15193.Kepler.AbstractCore
                     }
 
                     if (sequenceEndIndex != startIndex)
-                        return new AtomRecognitionResult<TCode>(text.Substring(startIndex, sequenceEndIndex - startIndex), _code);
+                        return new AtomRecognitionResult<TCode>(text.Substring(startIndex, sequenceEndIndex - startIndex), _code, IsDelimiter);
                     else
                         return new AtomRecognitionResult<TCode>();
                 }
@@ -86,6 +87,15 @@ namespace Andrei15193.Kepler.AbstractCore
             }
         }
 
+        public bool IsDelimiter
+        {
+            get
+            {
+                return _isDelimiter;
+            }
+        }
+
+        private readonly bool _isDelimiter;
         private readonly TCode _code;
         private readonly State<char> _initialState;
     }

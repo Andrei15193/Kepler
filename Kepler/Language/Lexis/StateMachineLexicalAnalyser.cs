@@ -13,52 +13,52 @@ namespace Andrei15193.Kepler.Language.Lexis
         {
             _atomRecognizers.Add(_CreateCommentAtomRecognizer());
             _atomRecognizers.Add(_CreateMultilineCommentAtomRecognizer());
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("assert", Lexicon.Assert));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("begin", Lexicon.Begin));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("do", Lexicon.Do));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("else", Lexicon.Else));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("end", Lexicon.End));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("fact", Lexicon.Fact));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("false", Lexicon.False));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("new", Lexicon.New));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("predicate", Lexicon.Predicate));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("skip", Lexicon.Skip));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("stop", Lexicon.Stop));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("then", Lexicon.Then));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("true", Lexicon.True));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("when", Lexicon.When));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("while", Lexicon.While));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("throw", Lexicon.Throw));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("try", Lexicon.Try));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("catch", Lexicon.Catch));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("finally", Lexicon.Finally));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("::", Lexicon.Scope));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("*", Lexicon.Star));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("%", Lexicon.Percentage));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("/", Lexicon.Slash));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("\\", Lexicon.Backslash));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("+", Lexicon.Plus));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("-", Lexicon.Minus));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("<", Lexicon.LessThan));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("<=", Lexicon.LessThanOrEqualTo));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("=", Lexicon.Equal));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(">=", Lexicon.GreaterThanOrEqualTo));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(">", Lexicon.GreaterThan));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("negation", Lexicon.Negation));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("and", Lexicon.And));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("or", Lexicon.Or));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("(", Lexicon.OpeningRoundParenthesis));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(")", Lexicon.ClosingRoundParenthesis));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("[", Lexicon.OpeningSquareParenthesis));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("]", Lexicon.ClosingSquareParenthesis));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(":", Lexicon.Colon));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(",", Lexicon.Comma));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(".", Lexicon.Dot));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(" ", Lexicon.WhiteSpace));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("\t", Lexicon.Tabulator));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("\n", Lexicon.LineFeed));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("\r", Lexicon.CarriageReturn));
-            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("\r\n", Lexicon.NewLine));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("assert", Lexicon.Assert, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("begin", Lexicon.Begin, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("do", Lexicon.Do, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("else", Lexicon.Else, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("end", Lexicon.End, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("fact", Lexicon.Fact, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("false", Lexicon.False, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("new", Lexicon.New, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("predicate", Lexicon.Predicate, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("skip", Lexicon.Skip, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("stop", Lexicon.Stop, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("then", Lexicon.Then, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("true", Lexicon.True, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("when", Lexicon.When, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("while", Lexicon.While, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("throw", Lexicon.Throw, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("try", Lexicon.Try, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("catch", Lexicon.Catch, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("finally", Lexicon.Finally, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("::", Lexicon.Scope, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("*", Lexicon.Star, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("%", Lexicon.Percentage, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("/", Lexicon.Slash, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("\\", Lexicon.Backslash, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("+", Lexicon.Plus, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("-", Lexicon.Minus, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("<", Lexicon.LessThan, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("<=", Lexicon.LessThanOrEqualTo, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("=", Lexicon.Equal, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(">=", Lexicon.GreaterThanOrEqualTo, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(">", Lexicon.GreaterThan, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("negation", Lexicon.Negation, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("and", Lexicon.And, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("or", Lexicon.Or, isDelimiter: false));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("(", Lexicon.OpeningRoundParenthesis, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(")", Lexicon.ClosingRoundParenthesis, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("[", Lexicon.OpeningSquareParenthesis, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("]", Lexicon.ClosingSquareParenthesis, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(":", Lexicon.Colon, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(",", Lexicon.Comma, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(".", Lexicon.Dot, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer(" ", Lexicon.WhiteSpace, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("\t", Lexicon.Tabulator, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("\n", Lexicon.LineFeed, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("\r", Lexicon.CarriageReturn, isDelimiter: true));
+            _atomRecognizers.Add(_CreateLiteralAtomRecognizer("\r\n", Lexicon.NewLine, isDelimiter: true));
             _atomRecognizers.Add(_CreateIdentifierAtomRecognizer());
             _atomRecognizers.Add(_CreateIntegerConstantAtomRecognizer());
             _atomRecognizers.Add(_CreateFloatConstantAtomRecognizer());
@@ -78,7 +78,7 @@ namespace Andrei15193.Kepler.Language.Lexis
             commentStart.Transitions.Add(new Transition<char>(character => character == '\r', carriageReturn));
             carriageReturn.Transitions.Add(new Transition<char>(character => character == '\n', lineFeed));
 
-            return new AtomRecognizer<Lexicon>(Lexicon.Comment, startState);
+            return new AtomRecognizer<Lexicon>(Lexicon.Comment, startState, isDelimiter: true);
         }
 
         private static AtomRecognizer<Lexicon> _CreateMultilineCommentAtomRecognizer()
@@ -94,10 +94,10 @@ namespace Andrei15193.Kepler.Language.Lexis
             sharp.Transitions.Add(new Transition<char>(character => character == '{', commentStart));
             commentStart.Transitions.Add(new Transition<char>(character => character == '}', commentEnd));
 
-            return new AtomRecognizer<Lexicon>(Lexicon.MultilineComment, startState);
+            return new AtomRecognizer<Lexicon>(Lexicon.MultilineComment, startState, isDelimiter: true);
         }
 
-        private static AtomRecognizer<Lexicon> _CreateLiteralAtomRecognizer(string literal, Lexicon code)
+        private static AtomRecognizer<Lexicon> _CreateLiteralAtomRecognizer(string literal, Lexicon code, bool isDelimiter)
         {
             if (literal != null)
                 if (literal.Length > 0)
@@ -114,7 +114,7 @@ namespace Andrei15193.Kepler.Language.Lexis
                     }
                     previousState.Transitions.Add(new Transition<char>(character => character == literal[literal.Length - 1], new State<char>(literal[literal.Length - 1] + "Character", isFinalState: true)));
 
-                    return new AtomRecognizer<Lexicon>(code, startState);
+                    return new AtomRecognizer<Lexicon>(code, startState, isDelimiter);
                 }
                 else
                     throw new ArgumentException("Cannot be empty!", "literal");
@@ -142,7 +142,7 @@ namespace Andrei15193.Kepler.Language.Lexis
                                                                            || ('A' <= character && character <= 'Z'))),
                                                             identifierSymbol));
 
-            return new AtomRecognizer<Lexicon>(Lexicon.Identifier, startState);
+            return new AtomRecognizer<Lexicon>(Lexicon.Identifier, startState, isDelimiter: false);
         }
 
         private static AtomRecognizer<Lexicon> _CreateIntegerConstantAtomRecognizer()
@@ -156,7 +156,7 @@ namespace Andrei15193.Kepler.Language.Lexis
             startState.Transitions.Add(new Transition<char>(character => (character != '0' && char.IsDigit(character)), integerPartState));
             startState.Transitions.Add(new Transition<char>(character => character == '0', zeroState));
 
-            return new AtomRecognizer<Lexicon>(Lexicon.IntegerNumericConstant, startState);
+            return new AtomRecognizer<Lexicon>(Lexicon.IntegerNumericConstant, startState, isDelimiter: false);
         }
 
         private static AtomRecognizer<Lexicon> _CreateFloatConstantAtomRecognizer()
@@ -176,7 +176,7 @@ namespace Andrei15193.Kepler.Language.Lexis
             integerPartState.Transitions.Add(new Transition<char>(character => character == '.', dotState));
             dotState.Transitions.Add(new Transition<char>(character => char.IsDigit(character), realPartState));
 
-            return new AtomRecognizer<Lexicon>(Lexicon.FloatNumericConstant, startState);
+            return new AtomRecognizer<Lexicon>(Lexicon.FloatNumericConstant, startState, isDelimiter: false);
         }
 
         private static AtomRecognizer<Lexicon> _CreateCharConstantAtomRecognizer()
@@ -195,7 +195,7 @@ namespace Andrei15193.Kepler.Language.Lexis
             escapedCharacters.Transitions.Add(new Transition<char>(character => character == '\'', closingApostrophe));
             nonEscapedCharacters.Transitions.Add(new Transition<char>(character => character == '\'', closingApostrophe));
 
-            return new AtomRecognizer<Lexicon>(Lexicon.CharConstant, startState);
+            return new AtomRecognizer<Lexicon>(Lexicon.CharConstant, startState, isDelimiter: false);
         }
 
         private static AtomRecognizer<Lexicon> _CreateStringConstantAtomRecognizer()
@@ -219,7 +219,7 @@ namespace Andrei15193.Kepler.Language.Lexis
             nonEscapedCharacters.Transitions.Add(new Transition<char>(character => character != '"' && character != '\\', nonEscapedCharacters));
             backSlash.Transitions.Add(new Transition<char>(character => _escapedCharacters.Contains(character) || character == '"', escapedCharacters));
 
-            return new AtomRecognizer<Lexicon>(Lexicon.StringConstant, startState);
+            return new AtomRecognizer<Lexicon>(Lexicon.StringConstant, startState, isDelimiter: false);
         }
 
         static private char[] _escapedCharacters = new[] { 'r', 'n', 't' };
@@ -230,6 +230,7 @@ namespace Andrei15193.Kepler.Language.Lexis
             if (text != null)
                 if (language != null)
                 {
+                    bool wasPreviousDelimiter = true;
                     uint line = 1, column = 1;
                     int currentIndex = 0;
                     List<ScannedAtom<Lexicon>> scannedAtoms = new List<ScannedAtom<Lexicon>>();
@@ -238,56 +239,60 @@ namespace Andrei15193.Kepler.Language.Lexis
 
                     while (currentIndex < text.Length)
                     {
-                        AtomRecognitionResult<Lexicon> recognizedAtom = _RecognizeAtom(text, currentIndex);
+                        AtomRecognitionResult<Lexicon> recognizedAtom = _RecognizeAtom(text, currentIndex, wasPreviousDelimiter);
 
                         if (recognizedAtom.Success)
-                        {
-                            int indexOfLastNewLine = 0;
-                            uint newLineCount = 0;
-
-                            for (int indexOfNewLine = recognizedAtom.Sequence.IndexOf(Environment.NewLine); indexOfNewLine != -1; indexOfLastNewLine = indexOfNewLine, indexOfNewLine = recognizedAtom.Sequence.IndexOf(Environment.NewLine, indexOfNewLine + Environment.NewLine.Length))
-                                newLineCount++;
-                            if (newLineCount > 0)
+                            if (wasPreviousDelimiter || recognizedAtom.IsDelimiter)
                             {
-                                line += newLineCount;
-                                column = (uint)(recognizedAtom.Sequence.Length - indexOfLastNewLine) - 1;
-                            }
-                            else
-                                column += (uint)recognizedAtom.Sequence.Length;
+                                int indexOfLastNewLine = 0;
+                                uint newLineCount = 0;
 
-                            if (!language.CanIgnore(recognizedAtom.Code))
-                            {
-                                string value;
-                                ScannedAtom<Lexicon> scannedAtom;
-
-                                switch (recognizedAtom.Code)
+                                for (int indexOfNewLine = recognizedAtom.Sequence.IndexOf(Environment.NewLine); indexOfNewLine != -1; indexOfLastNewLine = indexOfNewLine, indexOfNewLine = recognizedAtom.Sequence.IndexOf(Environment.NewLine, indexOfNewLine + Environment.NewLine.Length))
+                                    newLineCount++;
+                                if (newLineCount > 0)
                                 {
-                                    case Lexicon.Identifier:
-                                        if (!identifiers.TryGetValue(recognizedAtom.Sequence, out value))
-                                            identifiers.Add(recognizedAtom.Sequence, recognizedAtom.Sequence);
-                                        scannedAtom = new ScannedAtom<Lexicon>(recognizedAtom.Code, line, column, recognizedAtom.Sequence);
+                                    line += newLineCount;
+                                    column = (uint)(recognizedAtom.Sequence.Length - indexOfLastNewLine) - 1;
+                                }
+                                else
+                                    column += (uint)recognizedAtom.Sequence.Length;
 
-                                        break;
-                                    case Lexicon.IntegerNumericConstant:
-                                    case Lexicon.FloatNumericConstant:
-                                    case Lexicon.StringConstant:
-                                    case Lexicon.CharConstant:
-                                        if (!constants.TryGetValue(recognizedAtom.Sequence, out value))
-                                            constants.Add(recognizedAtom.Sequence, recognizedAtom.Sequence);
-                                        scannedAtom = new ScannedAtom<Lexicon>(recognizedAtom.Code, line, column, recognizedAtom.Sequence);
+                                if (!language.CanIgnore(recognizedAtom.Code))
+                                {
+                                    string value;
+                                    ScannedAtom<Lexicon> scannedAtom;
 
-                                        break;
-                                    default:
-                                        scannedAtom = new ScannedAtom<Lexicon>(recognizedAtom.Code, line, column);
-                                        break;
+                                    switch (recognizedAtom.Code)
+                                    {
+                                        case Lexicon.Identifier:
+                                            if (!identifiers.TryGetValue(recognizedAtom.Sequence, out value))
+                                                identifiers.Add(recognizedAtom.Sequence, recognizedAtom.Sequence);
+                                            scannedAtom = new ScannedAtom<Lexicon>(recognizedAtom.Code, line, column, recognizedAtom.Sequence);
+
+                                            break;
+                                        case Lexicon.IntegerNumericConstant:
+                                        case Lexicon.FloatNumericConstant:
+                                        case Lexicon.StringConstant:
+                                        case Lexicon.CharConstant:
+                                            if (!constants.TryGetValue(recognizedAtom.Sequence, out value))
+                                                constants.Add(recognizedAtom.Sequence, recognizedAtom.Sequence);
+                                            scannedAtom = new ScannedAtom<Lexicon>(recognizedAtom.Code, line, column, recognizedAtom.Sequence);
+
+                                            break;
+                                        default:
+                                            scannedAtom = new ScannedAtom<Lexicon>(recognizedAtom.Code, line, column);
+                                            break;
+                                    }
+                                    scannedAtoms.Add(scannedAtom);
                                 }
 
-                                scannedAtoms.Add(scannedAtom);
+                                wasPreviousDelimiter = recognizedAtom.IsDelimiter;
+                                currentIndex += recognizedAtom.Sequence.Length;
                             }
-                            currentIndex += recognizedAtom.Sequence.Length;
-                        }
+                            else
+                                throw new ArgumentException(string.Format("Unknown '{0}' at line: {1}, column: {2}", recognizedAtom.Sequence, line, column));
                         else
-                            throw new ArgumentException(string.Format("Unknown '{0}' symbol at line: {1}, clumn: {2}", text[currentIndex], line, column));
+                            throw new ArgumentException(string.Format("Unknown symbol '{0}' at line: {1}, column: {2}", text[currentIndex], line, column));
                     }
 
                     return new ScanResult<Lexicon>(scannedAtoms, new ReadOnlyDictionary<string, string>(identifiers), new ReadOnlyDictionary<string, string>(constants));
@@ -298,7 +303,7 @@ namespace Andrei15193.Kepler.Language.Lexis
                 throw new ArgumentNullException("text");
         }
 
-        private AtomRecognitionResult<Lexicon> _RecognizeAtom(string text, int currentIndex)
+        private AtomRecognitionResult<Lexicon> _RecognizeAtom(string text, int currentIndex, bool canBeNonDelimiter)
         {
             return (from atomRecognizer in _atomRecognizers
                     let recognisitionResult = atomRecognizer.Recognize(text, currentIndex)

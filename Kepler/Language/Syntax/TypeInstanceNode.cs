@@ -7,23 +7,28 @@ using Andrei15193.Kepler.Language.Lexis;
 
 namespace Andrei15193.Kepler.Language.Syntax
 {
-    public sealed class TypeNode
+    public sealed class TypeInstanceNode
     {
-        internal TypeNode(ParsedNode<Lexicon> typeParsedNode)
+        internal TypeInstanceNode(ParsedNode<Lexicon> typeInstanceParsedNode)
         {
-            if (typeParsedNode != null)
-                if (typeParsedNode.Name == KeplerRuleSet.Type)
+            if (typeInstanceParsedNode != null)
+                if (typeInstanceParsedNode.Name == KeplerRuleSet.TypeInstance)
                 {
                     IReadOnlyList<ParsedNode<Lexicon>> childNodes;
 
-                    _typeName = new QualifiedIdentifierNode(typeParsedNode[KeplerRuleSet.QualifiedIdentifier, 0]);
-                    if (typeParsedNode.TryGetChildNodeGroup(KeplerRuleSet.GenericParameters, out childNodes))
+                    _typeName = new QualifiedIdentifierNode(typeInstanceParsedNode[KeplerRuleSet.QualifiedIdentifier, 0]);
+                    if (typeInstanceParsedNode.TryGetChildNodeGroup(KeplerRuleSet.GenericParameters, out childNodes))
                         _genericParameters = childNodes[0][KeplerRuleSet.Type].Select(genericTypeNode => new TypeNode(genericTypeNode)).ToList();
-                    if (typeParsedNode.TryGetChildNodeGroup(KeplerRuleSet.Array, out childNodes))
-                        _arrayDimensions = childNodes.Select(arrayNode => arrayNode.Atoms.Count - 1).ToList();
+                    else
+                        _genericParameters = new TypeNode[0];
+                    _arrayBounds = typeInstanceParsedNode[KeplerRuleSet.BoundedArray].Select(arraybound => arraybound.Atoms
+                                                                                                                     .Where(atom => atom.Code == Lexicon.IntegerNumericConstant)
+                                                                                                                     .Select(atom => int.Parse(atom.Value))
+                                                                                                                     .ToList())
+                                                                                     .ToList();
                 }
                 else
-                    throw new ArgumentException("Expected type node!", "typeParsedNode");
+                    throw new ArgumentException("Expected type instance node!", "typeParsedNode");
             else
                 throw new ArgumentNullException("typeParsedNode");
         }
@@ -38,7 +43,7 @@ namespace Andrei15193.Kepler.Language.Syntax
                                   .Append("[")
                                   .Append(string.Join(", ", _genericParameters.Select(genericParameter => genericParameter.GetCliTypeName())))
                                   .Append("]");
-            cliTypeNameBuilder.Append(string.Join("", _arrayDimensions.Select(arrayDimension => "[" + new string(',', arrayDimension - 1) + "]")));
+            cliTypeNameBuilder.Append(string.Join("", _arrayBounds.Select(arrayBound => "[" + new string(',', arrayBound.Count - 1) + "]")));
 
             return cliTypeNameBuilder.ToString();
         }
@@ -57,35 +62,11 @@ namespace Andrei15193.Kepler.Language.Syntax
             return cliTypeNameBuilder.ToString();
         }
 
-        public override string ToString()
-        {
-            StringBuilder stringBuilder = new StringBuilder(_typeName.ToString());
-
-            if (_genericParameters.Count > 0)
-                stringBuilder.Append('<')
-                             .Append(string.Join(", ", _genericParameters.Select(genericParameter => genericParameter.ToString())))
-                             .Append('>');
-            foreach (int arrayDimenison in _arrayDimensions)
-                stringBuilder.Append('[')
-                             .Append(new string(',', arrayDimenison - 1))
-                             .Append(']');
-
-            return stringBuilder.ToString();
-        }
-
         public QualifiedIdentifierNode TypeName
         {
             get
             {
                 return _typeName;
-            }
-        }
-
-        public IReadOnlyList<int> ArrayDimensions
-        {
-            get
-            {
-                return _arrayDimensions;
             }
         }
 
@@ -97,8 +78,16 @@ namespace Andrei15193.Kepler.Language.Syntax
             }
         }
 
+        public IReadOnlyList<IReadOnlyList<int>> ArrayBounds
+        {
+            get
+            {
+                return _arrayBounds;
+            }
+        }
+
         private readonly QualifiedIdentifierNode _typeName;
-        private readonly IReadOnlyList<int> _arrayDimensions = new List<int>();
-        private readonly IReadOnlyList<TypeNode> _genericParameters = new List<TypeNode>();
+        private readonly IReadOnlyList<TypeNode> _genericParameters;
+        private readonly IReadOnlyList<IReadOnlyList<int>> _arrayBounds;
     }
 }

@@ -1,203 +1,82 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="Andrei15193.Kepler.Compiler&lt;TCode&gt;">
-    <Position X="10.5" Y="0.5" Width="3.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Class Name="Andrei15193.Kepler.Compiler&lt;TCode&gt;.SplitBasedLexicalAnalyser" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Compiler.cs</NewMemberFileName>
-        </TypeIdentifier>
-        <Lollipop Position="0.2" />
-      </Class>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AAQgQBAACABAAAAAAAAAAAAABAAAAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>Compiler.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="DefaultLexicalAnalyser" />
-      <Property Name="LexicalAnalyser" />
-      <Property Name="Language" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="Andrei15193.Kepler.Language.Lexis.Enclosure">
-    <Position X="6.25" Y="5.75" Width="2.75" />
-    <TypeIdentifier>
-      <HashCode>BAAAAAiBAAgAAAAAABAEEAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
-      <FileName>Language\Lexis\Enclosure.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Andrei15193.Kepler.Language.Lexis.ScanResult&lt;TCode&gt;">
-    <Position X="20.25" Y="10.75" Width="4" />
+    <Position X="7.25" Y="5.5" Width="4" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAAAAAAAAAgAAAAAAAAAgBAAAAAAIAAAI=</HashCode>
-      <FileName>Language\Lexis\LexicalAnalysisResult.cs</FileName>
+      <FileName>Language\Lexis\ScanResult.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="ScannedAtoms" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Andrei15193.Kepler.Language.Lexis.ScannedAtom&lt;TCode&gt;">
-    <Position X="21.75" Y="6.25" Width="2" />
+  <Class Name="Andrei15193.Kepler.Language.Lexis.StateMachineLexicalAnalyser" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="0.5" Width="4" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAIAAAABhAAAABAAAAAAAAAAgAAAhAAA=</HashCode>
-      <FileName>Language\Lexis\ScannedAtom.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Andrei15193.Kepler.Language.RegexLanguage&lt;TCode&gt;" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="4" Width="4.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAARgAMgEAQAAAAAAgBAAgOCIACDAAEAIAIGIIBA=</HashCode>
-      <FileName>Language\RegexLanguage.cs</FileName>
+      <HashCode>AAQBAggAAAAAgAAAAAAAAAAAEEQAAAAAAAAAAgBACSA=</HashCode>
+      <FileName>Language\Lexis\StateMachineLexicalAnalyser.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="Enclosures" />
+      <Field Name="_atomRecognizers" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Andrei15193.Kepler.Language.Lexis.Attributes.PriorityAttribute">
-    <Position X="5.75" Y="10.75" Width="3" />
+  <Class Name="Andrei15193.Kepler.AbstractCore.AtomRecognizer&lt;TCode&gt;">
+    <Position X="3" Y="5.5" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>ARAAAAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Language\Lexis\Attributes\PriorityAttribute.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Andrei15193.Kepler.Language.Lexis.Attributes.AtomAttribute">
-    <Position X="3.75" Y="11.75" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="Andrei15193.Kepler.Language.Lexis.Attributes.AtomAttribute.PatternType" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Language\Lexis\Attributes\AtomAttribute.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-      <Enum Name="Andrei15193.Kepler.Language.Lexis.Attributes.AtomAttribute.LiteralType" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Language\Lexis\Attributes\AtomAttribute.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-      <Enum Name="Andrei15193.Kepler.Language.Lexis.Attributes.AtomAttribute.EnclosureType" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Language\Lexis\Attributes\AtomAttribute.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Language\Lexis\Attributes\AtomAttribute.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Andrei15193.Kepler.Language.Lexis.Attributes.EnclosedAtomAttribute">
-    <Position X="6" Y="13.75" Width="2.75" />
-    <TypeIdentifier>
-      <HashCode>AAIAAAiAAAAAAAAAABAEAAAAAAEAAAAAAAgAAAAAAAI=</HashCode>
-      <FileName>Language\Lexis\Attributes\EnclosedAtomAttribute.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Andrei15193.Kepler.Language.Lexis.Attributes.LiteralAtomAttribute">
-    <Position X="0.5" Y="13.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAYAAQAAAAAAgAAEAAAAAAAAAQAAAAAAAAAIAAAAAAI=</HashCode>
-      <FileName>Language\Lexis\Attributes\LiteralAtomAttribute.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Andrei15193.Kepler.Language.Lexis.Attributes.PatternAtomAttribute">
-    <Position X="3.25" Y="13.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAIAAAAAAAI=</HashCode>
-      <FileName>Language\Lexis\Attributes\PatternAtomAttribute.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Andrei15193.Kepler.Language.Syntax.KeplerRuleSet">
-    <Position X="17" Y="9.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Language\Syntax\KeplerRuleSet.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Andrei15193.Kepler.Language.Syntax.ParsedNode&lt;TCode&gt;">
-    <Position X="27" Y="6.25" Width="4.25" />
-    <AssociationLine Name="ChildNodes" Type="Andrei15193.Kepler.Language.Syntax.ParsedNode&lt;TCode&gt;" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="27.25" Y="9.988" />
-        <Point X="27.25" Y="10.238" />
-        <Point X="31.062" Y="10.238" />
-        <Point X="31.062" Y="9.988" />
-      </Path>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>IAIAIEAAAAAAAAgAGAACQAQQAAAAAAAAAACAAAQAAAA=</HashCode>
-      <FileName>Language\Syntax\ParsedNode.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAABAAAggAAAAAAAAEAAAAAAAAAAgBAA=</HashCode>
+      <FileName>AbstractCore\AtomRecognizer.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Parent" />
+      <Property Name="InitialState" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Atoms" />
-      <Property Name="ChildNodes" />
-    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Andrei15193.Kepler.Language.Syntax.Rule&lt;TCode&gt;">
-    <Position X="16" Y="2" Width="3.5" />
+  <Class Name="Andrei15193.Kepler.AbstractCore.ScannedAtom&lt;TCode&gt;">
+    <Position X="8.75" Y="9" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAgIAgAAAAAAAAAAAAAAQQAAAAAAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>Language\Syntax\Rule.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="RuleNodes" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="Andrei15193.Kepler.Language.Syntax.RuleNode&lt;TCode&gt;">
-    <Position X="23.25" Y="1" Width="2.75" />
-    <TypeIdentifier>
-      <HashCode>AAAABCEAAEAAAAAAABAAAAQEBAAgBAAAAAAAAAgAAAA=</HashCode>
-      <FileName>Language\Syntax\RuleNode.cs</FileName>
+      <HashCode>ABAAAAAAAAAAAIAAAABhAAAABAAAAAAAAAAgAAAhAAA=</HashCode>
+      <FileName>AbstractCore\ScannedAtom.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Andrei15193.Kepler.Language.Syntax.RuleSet&lt;TCode&gt;">
-    <Position X="16" Y="5.75" Width="3.5" />
+  <Class Name="Andrei15193.Kepler.AbstractCore.Transition&lt;T&gt;">
+    <Position X="0.5" Y="8.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AgIgQAAACAAAAAAAAACAAAAABAAAAABACAABAAAAAAA=</HashCode>
-      <FileName>Language\Syntax\RuleSet.cs</FileName>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAgAAAAEAAAAgAAAAAA=</HashCode>
+      <FileName>AbstractCore\Transition.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Language" />
+      <Property Name="Destination" />
     </ShowAsAssociation>
+  </Class>
+  <Class Name="Andrei15193.Kepler.AbstractCore.State&lt;T&gt;">
+    <Position X="4" Y="9" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAgAAAAAAYEAAAAEAAAAAAACAAAAAA=</HashCode>
+      <FileName>AbstractCore\State.cs</FileName>
+    </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="Rules" />
+      <Property Name="Transitions" />
     </ShowAsCollectionAssociation>
   </Class>
+  <Struct Name="Andrei15193.Kepler.AbstractCore.AtomRecognitionResult&lt;TCode&gt;">
+    <Position X="7.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAgAAAAAgAAAAAAAAEAAAEgAAA=</HashCode>
+      <FileName>AbstractCore\AtomRecognitionResult.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Interface Name="Andrei15193.Kepler.Language.Lexis.ILexicalAnalyser&lt;TCode&gt;">
-    <Position X="6.25" Y="1.75" Width="2.25" />
+    <Position X="10.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Language\Lexis\ILexicalAnalyser.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Andrei15193.Kepler.Language.ILanguage&lt;TCode&gt;">
-    <Position X="10.75" Y="5.75" Width="4" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAQAAIgEAQAAAAAAABAAAIAAACCAAAAIAAGAIAA=</HashCode>
-      <FileName>Language\ILanguage.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Enclosures" />
-    </ShowAsCollectionAssociation>
-  </Interface>
   <Enum Name="Andrei15193.Kepler.Language.Lexis.Lexicon">
-    <Position X="32.25" Y="0.5" Width="1.5" />
+    <Position X="12.25" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>IiIAAYBEEOCgAGIAgYAAJIQJqAgAkAAgsSgC5AAAMGA=</HashCode>
+      <HashCode>IiIAAYBEEOCgAGIAgQAAJIQJqAgAkAAgsSgC5AAAMGA=</HashCode>
       <FileName>Language\Lexis\Lexicon.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Andrei15193.Kepler.Language.Syntax.RuleNodeType">
-    <Position X="28.25" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Language\Syntax\RuleNodeType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

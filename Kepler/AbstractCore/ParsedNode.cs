@@ -103,6 +103,7 @@ namespace Andrei15193.Kepler.AbstractCore
             }
         }
 
+        // remove this crap
         public bool HasParent
         {
             get

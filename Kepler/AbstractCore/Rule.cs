@@ -42,18 +42,19 @@ namespace Andrei15193.Kepler.AbstractCore
         {
         }
 
-        public ParsedNode<TCode> Parse(IReadOnlyList<ScannedAtom<TCode>> atoms, int startIndex = 0)
+        public RuleParseResult<TCode> Parse(IReadOnlyList<ScannedAtom<TCode>> atoms, int startIndex = 0)
         {
             if (atoms != null)
                 if (0 <= startIndex && startIndex < atoms.Count
                     || startIndex == 0 && _ruleNodes.Count == 0)
                 {
+                    bool hasError = false;
                     bool isFirstRuleNode = true;
                     int currentIndex = startIndex;
                     ParsedNode<TCode> resultNode = new ParsedNode<TCode>(Name);
 
                     using (IEnumerator<RuleNode<TCode>> ruleNode = _ruleNodes.GetEnumerator())
-                        while (currentIndex < atoms.Count && resultNode != null && ruleNode.MoveNext())
+                        while (!hasError && currentIndex < atoms.Count && resultNode != null && ruleNode.MoveNext())
                         {
                             switch (ruleNode.Current.NodeType)
                             {
@@ -66,7 +67,7 @@ namespace Andrei15193.Kepler.AbstractCore
                                         if (ruleNode.Current.AtomCode.Equals(atoms[currentIndex].Code))
                                             resultNode.Add(atoms[currentIndex++]);
                                         else
-                                            resultNode = null;
+                                            hasError = true;
                                     break;
                                 case RuleNodeType.Rule:
                                     ParsedNode<TCode> childNode = _ruleSet.Parse(atoms, ruleNode.Current.RuleName, currentIndex, isFirstRuleNode ? this : null);
@@ -94,13 +95,19 @@ namespace Andrei15193.Kepler.AbstractCore
                                             currentIndex += childNode.Atoms.Count;
                                         }
                                         else
-                                            resultNode = null;
+                                            hasError = true;
                                     break;
                             }
                             isFirstRuleNode = false;
                         }
 
-                    return resultNode;
+                    if (hasError)
+                        if (currentIndex != startIndex)
+                            return new RuleParseResult<TCode>("Expected " + _name);
+                        else
+                            return new RuleParseResult<TCode>();
+                    else
+                        return new RuleParseResult<TCode>(resultNode);
                 }
                 else
                     throw new ArgumentOutOfRangeException("startIndex");
