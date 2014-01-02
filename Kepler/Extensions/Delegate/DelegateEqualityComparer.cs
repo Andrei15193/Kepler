@@ -28,7 +28,6 @@ namespace Andrei15193.Kepler.Extensions.Delegate
 	}
 
 	public static class DelegateEqualityComparer
-		: IEqualityComparer
 	{
 		static public IEqualityComparer<T> Create<T>(Func<T, T, bool> equals = null, Func<T, int> getHashCode = null)
 		{

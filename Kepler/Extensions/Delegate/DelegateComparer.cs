@@ -38,7 +38,6 @@ namespace Andrei15193.Kepler.Extensions.Delegate
 	}
 
 	public static class DelegateComparer
-		: IComparer, IEqualityComparer
 	{
 		static public DelegateComparer<T> Create<T>(Func<T, T, bool> equals = null, Func<T, int> getHashCode = null)
 			where T : IComparable<T>
