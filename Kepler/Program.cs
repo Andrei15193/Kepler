@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using Andrei15193.Kepler.AbstractCore;
-using Andrei15193.Kepler.Language.Lexis;
-using Andrei15193.Kepler.Language.Syntax;
-
 namespace Andrei15193.Kepler
 {
 	internal static class Program
@@ -15,7 +9,7 @@ namespace Andrei15193.Kepler
 			if (args.Length > 0)
 			{
 				int errorCount = 0;
-				Compiler compiler = new Compiler(new KeplerRuleSet());
+				Compiler compiler = new Compiler();
 
 				using (StreamWriter errorStreamWriter = new StreamWriter(File.Open("errors.txt", FileMode.Create)))
 				{

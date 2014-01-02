@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Andrei15193.Kepler.Collections;
-
 namespace Andrei15193.Kepler.Extensions
 {
     /// <summary>

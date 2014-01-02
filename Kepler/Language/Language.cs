@@ -1,106 +1,644 @@
-﻿using System.Collections.Generic;
-using Andrei15193.Kepler.AbstractCore;
-
+﻿using System.Text.RegularExpressions;
+using Andrei15193.Kepler.Language.Lexic;
+using Andrei15193.Kepler.Language.Lexic.Scanner;
+using Andrei15193.Kepler.Language.Syntax.Parser;
 namespace Andrei15193.Kepler.Language
 {
-    public sealed class Language<TCode>
-        : ILanguage<TCode>
-        where TCode : struct
-    {
-        static public ILanguage<TCode> Default
-        {
-            get
-            {
-                return _instance;
-            }
-        }
+	public static class KeplerLanguage
+	{
+		public static IScanner GetScanner<TScanner>()
+			where TScanner : IScanner, new()
+		{
+			return new TScanner()
+			{
+				AtomSepcifications =
+				{
+					AtomSpecification.Create(AtomCode.Assert,
+											 "assert"),
+					AtomSpecification.Create(AtomCode.Begin,
+											 "begin"),
+					AtomSpecification.Create(AtomCode.Do,
+											 "do"),
+					AtomSpecification.Create(AtomCode.Else,
+											 "else"),
+					AtomSpecification.Create(AtomCode.End,
+											 "end"),
+					AtomSpecification.Create(AtomCode.Fact,
+											 "fact"),
+					AtomSpecification.Create(AtomCode.False,
+											 "false"),
+					AtomSpecification.Create(AtomCode.New,
+											 "new"),
+					AtomSpecification.Create(AtomCode.Predicate,
+											 "predicate"),
+					AtomSpecification.Create(AtomCode.Skip,
+											 "skip"),
+					AtomSpecification.Create(AtomCode.Stop,
+											 "stop"),
+					AtomSpecification.Create(AtomCode.Then,
+											 "then"),
+					AtomSpecification.Create(AtomCode.True,
+											 "true"),
+					AtomSpecification.Create(AtomCode.When,
+											 "when"),
+					AtomSpecification.Create(AtomCode.While,
+											 "while"),
+					AtomSpecification.Create(AtomCode.Throw,
+											 "throw"),
+					AtomSpecification.Create(AtomCode.Try,
+											 "try"),
+					AtomSpecification.Create(AtomCode.Catch,
+											 "catch"),
+					AtomSpecification.Create(AtomCode.Finally,
+											 "finally"),
+					AtomSpecification.Create(AtomCode.And,
+											 "and"),
+					AtomSpecification.Create(AtomCode.Or,
+											 "or"),
 
-        static private readonly ILanguage<TCode> _instance = new RegexLanguage<TCode>();
+					AtomSpecification.Create(AtomCode.Scope,
+											 "::",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Star,
+											 "*",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Percentage,
+											 "%",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Slash,
+											 "/",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Backslash,
+											 "\\",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Plus,
+											 "+",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Minus,
+											 "-",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.LessThan,
+											 "<",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.LessThanOrEqualTo,
+											 "<=",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Equal,
+											 "=",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Distinct,
+											 "<>",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.GreaterThanOrEqualTo,
+											 ">=",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.GreaterThan,
+											 ">",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Not,
+											 "!",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.OpeningRoundParenthesis,
+											 "(",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.ClosingRoundParenthesis,
+											 ")",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.OpeningSquareParenthesis,
+											 "[",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.ClosingSquareParenthesis,
+											 "]",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Dot,
+											 ".",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Colon,
+											 ":",
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Comma,
+											 ",",
+											 isSeparator: true),
 
-        private Language()
-        {
-        }
+					AtomSpecification.Create(AtomCode.WhiteSpace,
+											 " ",
+											 ignoreAtom: true,
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.Tabulator,
+											 "\t",
+											 ignoreAtom: true,
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.LineFeed,
+											 "\n",
+											 ignoreAtom: true,
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.CarriageReturn,
+											 "\r",
+											 ignoreAtom: true,
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.NewLine,
+											 "\r\n",
+											 ignoreAtom: true,
+											 isSeparator: true),
 
-        public bool TryGetIdentifierCode(string text, out TCode code)
-        {
-            return Default.TryGetIdentifierCode(text, out code);
-        }
+					AtomSpecification.Create(AtomCode.Identifier,
+											 new Regex(@"^([_a-zA-Z][_a-zA-Z0-9]{0,249})", RegexOptions.Compiled)),
+					AtomSpecification.Create(AtomCode.IntegerNumericConstant,
+											 new Regex(@"^(0|[1-9]\d*)", RegexOptions.Compiled)),
+					AtomSpecification.Create(AtomCode.FloatNumericConstant,
+											 new Regex(@"^(0|[1-9]\d*\.\d*[1-9])", RegexOptions.Compiled)),
+					AtomSpecification.Create(AtomCode.CharConstant,
+											 new Regex(@"^'([^']|\\')'", RegexOptions.Compiled)),
+					AtomSpecification.Create(AtomCode.StringConstant,
+											 "\"",  "\""),
 
-        public bool TryGetConstantCode(string text, out TCode code)
-        {
-            return Default.TryGetConstantCode(text, out code);
-        }
+					AtomSpecification.Create(AtomCode.Comment,
+											 new Regex(@"\#.*\r\n", RegexOptions.Compiled),
+											 ignoreAtom: true,
+											 isSeparator: true),
+					AtomSpecification.Create(AtomCode.MultilineComment,
+											 "#{", "}",
+											 ignoreAtom: true,
+											 isSeparator: true)
+				}
+			};
+		}
 
-        public bool TryGetKeyWordCode(string text, out TCode code)
-        {
-            return Default.TryGetKeyWordCode(text, out code);
-        }
+		public static IParser GetParser<TParser>()
+			where TParser : IParser, new()
+		{
+			return new TParser(){
+				ProductionRules =
+				{
+					new ProductionRule(ProductionRuleCode.Name,
+									   new ProductionRuleSymbol(AtomCode.Identifier)),
 
-        public bool TryGetIgnoreCode(string text, out TCode code)
-        {
-            return Default.TryGetIgnoreCode(text, out code);
-        }
+					new ProductionRule(ProductionRuleCode.ArithmeticConstant,
+									   new ProductionRuleSymbol(AtomCode.CharConstant)),
+					new ProductionRule(ProductionRuleCode.ArithmeticConstant,
+									   new ProductionRuleSymbol(AtomCode.FloatNumericConstant)),
+					new ProductionRule(ProductionRuleCode.ArithmeticConstant,
+									   new ProductionRuleSymbol(AtomCode.IntegerNumericConstant)),
+					new ProductionRule(ProductionRuleCode.ArithmeticConstant,
+									   new ProductionRuleSymbol(AtomCode.StringConstant)),
+									   
+					new ProductionRule(ProductionRuleCode.BooleanConstant,
+									   new ProductionRuleSymbol(AtomCode.True)),
+					new ProductionRule(ProductionRuleCode.BooleanConstant,
+									   new ProductionRuleSymbol(AtomCode.False)),
+									   
+					new ProductionRule(ProductionRuleCode.QualifiedIdentifier,
+									   new ProductionRuleSymbol(ProductionRuleCode.Name),
+									   new ProductionRuleSymbol(ProductionRuleCode.IdentifierSequence, isSequence: true)),
+					new ProductionRule(ProductionRuleCode.IdentifierSequence,
+									   new ProductionRuleSymbol(AtomCode.Scope),
+									   new ProductionRuleSymbol(ProductionRuleCode.Name)),
+									   
+					new ProductionRule(ProductionRuleCode.UnaryPrefixedArithmeticOperator,
+									   new ProductionRuleSymbol(AtomCode.Plus)),
+					new ProductionRule(ProductionRuleCode.UnaryPrefixedArithmeticOperator,
+									   new ProductionRuleSymbol(AtomCode.Minus)),
+									   
+					new ProductionRule(ProductionRuleCode.BinaryArithmeticOperator,
+									   new ProductionRuleSymbol(AtomCode.Plus)),
+					new ProductionRule(ProductionRuleCode.BinaryArithmeticOperator,
+									   new ProductionRuleSymbol(AtomCode.Minus)),
+					new ProductionRule(ProductionRuleCode.BinaryArithmeticOperator,
+									   new ProductionRuleSymbol(AtomCode.Star)),
+					new ProductionRule(ProductionRuleCode.BinaryArithmeticOperator,
+									   new ProductionRuleSymbol(AtomCode.Percentage)),
+					new ProductionRule(ProductionRuleCode.BinaryArithmeticOperator,
+									   new ProductionRuleSymbol(AtomCode.Slash)),
+					new ProductionRule(ProductionRuleCode.BinaryArithmeticOperator,
+									   new ProductionRuleSymbol(AtomCode.Backslash)),
+									   
+					new ProductionRule(ProductionRuleCode.UnaryPrefixedBooleanOperator,
+									   new ProductionRuleSymbol(AtomCode.Not)),
+									   
+					new ProductionRule(ProductionRuleCode.BinaryBooleanOperator,
+									   new ProductionRuleSymbol(AtomCode.And)),
+					new ProductionRule(ProductionRuleCode.BinaryBooleanOperator,
+									   new ProductionRuleSymbol(AtomCode.Or)),
+					new ProductionRule(ProductionRuleCode.BinaryBooleanOperator,
+									   new ProductionRuleSymbol(AtomCode.Equal)),
+									   
+					new ProductionRule(ProductionRuleCode.ArithmeticRelation,
+									   new ProductionRuleSymbol(AtomCode.LessThan)),
+					new ProductionRule(ProductionRuleCode.ArithmeticRelation,
+									   new ProductionRuleSymbol(AtomCode.LessThanOrEqualTo)),
+					new ProductionRule(ProductionRuleCode.ArithmeticRelation,
+									   new ProductionRuleSymbol(AtomCode.Equal)),
+					new ProductionRule(ProductionRuleCode.ArithmeticRelation,
+									   new ProductionRuleSymbol(AtomCode.GreaterThanOrEqualTo)),
+					new ProductionRule(ProductionRuleCode.ArithmeticRelation,
+									   new ProductionRuleSymbol(AtomCode.GreaterThan)),
 
-        public bool CanIgnore(string text)
-        {
-            return Default.CanIgnore(text);
-        }
+					new ProductionRule(ProductionRuleCode.Program,
+									   new ProductionRuleSymbol(ProductionRuleCode.PredicateDeclaration)),
 
-        public bool CanIgnore(TCode code)
-        {
-            return Default.CanIgnore(code);
-        }
+					new ProductionRule(ProductionRuleCode.PredicateDeclaration,
+									   new ProductionRuleSymbol(ProductionRuleCode.PredicateDefinition)),
+					new ProductionRule(ProductionRuleCode.PredicateDeclaration,
+									   new ProductionRuleSymbol(ProductionRuleCode.FactDefinition)),
+									   
+					new ProductionRule(ProductionRuleCode.PredicateDefinition,
+									   new ProductionRuleSymbol(AtomCode.Predicate),
+									   new ProductionRuleSymbol(ProductionRuleCode.Name),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body)),
+					new ProductionRule(ProductionRuleCode.PredicateDefinition,
+									   new ProductionRuleSymbol(AtomCode.Predicate),
+									   new ProductionRuleSymbol(ProductionRuleCode.Name),
+									   new ProductionRuleSymbol(AtomCode.OpeningRoundParenthesis),
+									   new ProductionRuleSymbol(ProductionRuleCode.VariableDeclaration),
+									   new ProductionRuleSymbol(ProductionRuleCode.ParameterSequence, isSequence: true),
+									   new ProductionRuleSymbol(AtomCode.ClosingRoundParenthesis),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body)),
+					new ProductionRule(ProductionRuleCode.ParameterSequence,
+									   new ProductionRuleSymbol(AtomCode.Comma),
+									   new ProductionRuleSymbol(ProductionRuleCode.VariableDeclaration)),
+									   
+					new ProductionRule(ProductionRuleCode.FactDefinition,
+									   new ProductionRuleSymbol(AtomCode.Fact),
+									   new ProductionRuleSymbol(ProductionRuleCode.Name),
+									   new ProductionRuleSymbol(AtomCode.Dot)),
+					new ProductionRule(ProductionRuleCode.FactDefinition,
+									   new ProductionRuleSymbol(AtomCode.Fact),
+									   new ProductionRuleSymbol(ProductionRuleCode.Name),
+									   new ProductionRuleSymbol(AtomCode.OpeningRoundParenthesis),
+									   new ProductionRuleSymbol(ProductionRuleCode.FactParameter),
+									   new ProductionRuleSymbol(ProductionRuleCode.FactParameterSequence),
+									   new ProductionRuleSymbol(AtomCode.ClosingRoundParenthesis),
+									   new ProductionRuleSymbol(AtomCode.Dot)),
 
-        public string GetSymbol(TCode code)
-        {
-            return Default.GetSymbol(code);
-        }
+					new ProductionRule(ProductionRuleCode.FactParameter,
+									   new ProductionRuleSymbol(ProductionRuleCode.VariableDeclaration),
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticRelation),
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticConstant)),
+					new ProductionRule(ProductionRuleCode.FactParameterSequence,
+									   new ProductionRuleSymbol(AtomCode.Comma),
+									   new ProductionRuleSymbol(ProductionRuleCode.FactParameter)),
+			
+					new ProductionRule(ProductionRuleCode.Type,
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier),
+									   new ProductionRuleSymbol(ProductionRuleCode.ArraySequence, isSequence: true)),
+					new ProductionRule(ProductionRuleCode.Type,
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier),
+									   new ProductionRuleSymbol(ProductionRuleCode.GenericParameters),
+									   new ProductionRuleSymbol(ProductionRuleCode.ArraySequence, isSequence: true)),
 
-        public bool TryGetSymbol(TCode code, out string symbol)
-        {
-            return Default.TryGetSymbol(code, out symbol);
-        }
+					new ProductionRule(ProductionRuleCode.GenericParameters,
+									   new ProductionRuleSymbol(AtomCode.LessThan),
+									   new ProductionRuleSymbol(ProductionRuleCode.Type),
+									   new ProductionRuleSymbol(ProductionRuleCode.GenericParametersSequence, isSequence: true),
+									   new ProductionRuleSymbol(AtomCode.GreaterThan),
+									   new ProductionRuleSymbol(ProductionRuleCode.ArraySequence, isSequence: true)),
 
-        public TCode GetCode(string symbol)
-        {
-            return Default.GetCode(symbol);
-        }
+					new ProductionRule(ProductionRuleCode.GenericParametersSequence,
+									   new ProductionRuleSymbol(AtomCode.Comma),
+									   new ProductionRuleSymbol(ProductionRuleCode.Type)),
 
-        public bool IsReservedWord(string text)
-        {
-            return Default.IsReservedWord(text);
-        }
+					new ProductionRule(ProductionRuleCode.ArraySequence,
+									   new ProductionRuleSymbol(ProductionRuleCode.Array)),
+					new ProductionRule(ProductionRuleCode.Array,
+									   new ProductionRuleSymbol(AtomCode.OpeningSquareParenthesis),
+									   new ProductionRuleSymbol(AtomCode.Comma, isSequence: true),
+									   new ProductionRuleSymbol(AtomCode.ClosingSquareParenthesis)),
 
-        public IReadOnlyDictionary<string, Operator<TCode>> Operators
-        {
-            get
-            {
-                return Default.Operators;
-            }
-        }
+					new ProductionRule(ProductionRuleCode.Body,
+									   new ProductionRuleSymbol(ProductionRuleCode.Statement)),
+					new ProductionRule(ProductionRuleCode.Body,
+									   new ProductionRuleSymbol(AtomCode.Begin),
+									   new ProductionRuleSymbol(ProductionRuleCode.Statement, isSequence: true),
+									   new ProductionRuleSymbol(AtomCode.End)),
+									   
+					new ProductionRule(ProductionRuleCode.TypeInstance,
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier),
+									   new ProductionRuleSymbol(ProductionRuleCode.BoundedArray, isSequence: true)),
+					new ProductionRule(ProductionRuleCode.TypeInstance,
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier),
+									   new ProductionRuleSymbol(ProductionRuleCode.GenericParameters),
+									   new ProductionRuleSymbol(ProductionRuleCode.BoundedArray, isSequence: true)),
 
-        public IReadOnlyDictionary<string, TCode> Separators
-        {
-            get
-            {
-                return Default.Separators;
-            }
-        }
+					new ProductionRule(ProductionRuleCode.BoundedArray,
+									   new ProductionRuleSymbol(AtomCode.OpeningSquareParenthesis),
+									   new ProductionRuleSymbol(AtomCode.IntegerNumericConstant),
+									   new ProductionRuleSymbol(ProductionRuleCode.BoundedArraySequence, isSequence: true),
+									   new ProductionRuleSymbol(AtomCode.ClosingSquareParenthesis)),
+					new ProductionRule(ProductionRuleCode.BoundedArray,
+									   new ProductionRuleSymbol(AtomCode.Comma),
+									   new ProductionRuleSymbol(AtomCode.IntegerNumericConstant)),
 
-        public IEnumerable<string> ReservedWords
-        {
-            get
-            {
-                return Default.ReservedWords;
-            }
-        }
+					new ProductionRule(ProductionRuleCode.VariableDeclaration,
+									   new ProductionRuleSymbol(ProductionRuleCode.Name),
+									   new ProductionRuleSymbol(AtomCode.Colon),
+									   new ProductionRuleSymbol(ProductionRuleCode.Type)),
 
-        public IEnumerable<Enclosure> Enclosures
-        {
-            get
-            {
-                return Default.Enclosures;
-            }
-        }
-    }
+					new ProductionRule(ProductionRuleCode.Statement,
+									   new ProductionRuleSymbol(ProductionRuleCode.WhenStatement)),
+					new ProductionRule(ProductionRuleCode.Statement,
+									   new ProductionRuleSymbol(ProductionRuleCode.WhileStatement)),
+					new ProductionRule(ProductionRuleCode.Statement,
+									   new ProductionRuleSymbol(ProductionRuleCode.TryCatchFinallyStatement)),
+					new ProductionRule(ProductionRuleCode.Statement,
+									   new ProductionRuleSymbol(ProductionRuleCode.ThrowStatement),
+									   new ProductionRuleSymbol(AtomCode.Dot)),
+					new ProductionRule(ProductionRuleCode.Statement,
+									   new ProductionRuleSymbol(ProductionRuleCode.VariableDeclarationStatement),
+									   new ProductionRuleSymbol(AtomCode.Dot)),
+					new ProductionRule(ProductionRuleCode.Statement,
+									   new ProductionRuleSymbol(ProductionRuleCode.VariableAssignmentStatement),
+									   new ProductionRuleSymbol(AtomCode.Dot)),
+					new ProductionRule(ProductionRuleCode.Statement,
+									   new ProductionRuleSymbol(ProductionRuleCode.FunctionCall),
+									   new ProductionRuleSymbol(AtomCode.Dot)),
+					new ProductionRule(ProductionRuleCode.Statement,
+									   new ProductionRuleSymbol(ProductionRuleCode.ExitStatement),
+									   new ProductionRuleSymbol(AtomCode.Dot)),
+
+					new ProductionRule(ProductionRuleCode.WhenStatement,
+									   new ProductionRuleSymbol(AtomCode.When),
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanExpression),
+									   new ProductionRuleSymbol(AtomCode.Then),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body)),
+					new ProductionRule(ProductionRuleCode.WhenStatement,
+									   new ProductionRuleSymbol(AtomCode.When),
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanExpression),
+									   new ProductionRuleSymbol(AtomCode.Then),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body),
+									   new ProductionRuleSymbol(AtomCode.Else),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body)),
+
+					new ProductionRule(ProductionRuleCode.WhileStatement,
+									   new ProductionRuleSymbol(AtomCode.While),
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanExpression),
+									   new ProductionRuleSymbol(AtomCode.Do),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body)),
+
+					new ProductionRule(ProductionRuleCode.TryCatchFinallyStatement,
+									   new ProductionRuleSymbol(AtomCode.Try),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body),
+									   new ProductionRuleSymbol(ProductionRuleCode.CatchStatement)),
+					new ProductionRule(ProductionRuleCode.TryCatchFinallyStatement,
+									   new ProductionRuleSymbol(AtomCode.Try),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body),
+									   new ProductionRuleSymbol(ProductionRuleCode.CatchStatement),
+									   new ProductionRuleSymbol(ProductionRuleCode.FinallyStatement)),
+					new ProductionRule(ProductionRuleCode.TryCatchFinallyStatement,
+									   new ProductionRuleSymbol(AtomCode.Try),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body),
+									   new ProductionRuleSymbol(ProductionRuleCode.FinallyStatement)),
+
+					new ProductionRule(ProductionRuleCode.CatchStatement,
+									   new ProductionRuleSymbol(ProductionRuleCode.CatchAllStatement)),
+					new ProductionRule(ProductionRuleCode.CatchStatement,
+									   new ProductionRuleSymbol(ProductionRuleCode.CatchBlockStatement),
+									   new ProductionRuleSymbol(ProductionRuleCode.CatchBlockStatement)),
+					new ProductionRule(ProductionRuleCode.CatchStatement,
+									   new ProductionRuleSymbol(ProductionRuleCode.CatchBlockStatement),
+									   new ProductionRuleSymbol(ProductionRuleCode.CatchBlockStatement),
+									   new ProductionRuleSymbol(ProductionRuleCode.CatchAllStatement)),
+
+					new ProductionRule(ProductionRuleCode.CatchBlockStatement,
+									   new ProductionRuleSymbol(AtomCode.Catch),
+									   new ProductionRuleSymbol(ProductionRuleCode.VariableDeclaration),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body)),
+
+					new ProductionRule(ProductionRuleCode.CatchAllStatement,
+									   new ProductionRuleSymbol(AtomCode.Catch),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body)),
+
+					new ProductionRule(ProductionRuleCode.FinallyStatement,
+									   new ProductionRuleSymbol(AtomCode.Finally),
+									   new ProductionRuleSymbol(ProductionRuleCode.Body)),
+
+					new ProductionRule(ProductionRuleCode.ThrowStatement,
+									   new ProductionRuleSymbol(AtomCode.Throw)),
+					new ProductionRule(ProductionRuleCode.ThrowStatement,
+									   new ProductionRuleSymbol(AtomCode.Throw),
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier)),
+					new ProductionRule(ProductionRuleCode.ThrowStatement,
+									   new ProductionRuleSymbol(AtomCode.Throw),
+									   new ProductionRuleSymbol(ProductionRuleCode.FunctionCall)),
+
+					new ProductionRule(ProductionRuleCode.VariableDeclarationStatement,
+									   new ProductionRuleSymbol(ProductionRuleCode.VariableDeclaration),
+									   new ProductionRuleSymbol(AtomCode.Equal),
+									   new ProductionRuleSymbol(ProductionRuleCode.Expression)),
+					new ProductionRule(ProductionRuleCode.VariableDeclarationStatement,
+									   new ProductionRuleSymbol(ProductionRuleCode.VariableDeclaration),
+									   new ProductionRuleSymbol(AtomCode.Equal),
+									   new ProductionRuleSymbol(AtomCode.New),
+									   new ProductionRuleSymbol(ProductionRuleCode.TypeInstance)),
+
+					new ProductionRule(ProductionRuleCode.VariableAssignmentStatement,
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier),
+									   new ProductionRuleSymbol(AtomCode.Equal),
+									   new ProductionRuleSymbol(ProductionRuleCode.Expression)),
+					new ProductionRule(ProductionRuleCode.VariableAssignmentStatement,
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier),
+									   new ProductionRuleSymbol(AtomCode.Equal),
+									   new ProductionRuleSymbol(AtomCode.New),
+									   new ProductionRuleSymbol(ProductionRuleCode.TypeInstance)),
+
+					new ProductionRule(ProductionRuleCode.FunctionCall,
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier),
+									   new ProductionRuleSymbol(AtomCode.OpeningRoundParenthesis),
+									   new ProductionRuleSymbol(AtomCode.ClosingRoundParenthesis)),
+					new ProductionRule(ProductionRuleCode.FunctionCall,
+									   new ProductionRuleSymbol(AtomCode.New),
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier),
+									   new ProductionRuleSymbol(AtomCode.OpeningRoundParenthesis),
+									   new ProductionRuleSymbol(AtomCode.ClosingRoundParenthesis)),
+					new ProductionRule(ProductionRuleCode.FunctionCall,
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier),
+									   new ProductionRuleSymbol(AtomCode.OpeningRoundParenthesis),
+									   new ProductionRuleSymbol(ProductionRuleCode.Expression),
+									   new ProductionRuleSymbol(ProductionRuleCode.ExpressionSequence),
+									   new ProductionRuleSymbol(AtomCode.ClosingRoundParenthesis)),
+					new ProductionRule(ProductionRuleCode.FunctionCall,
+									   new ProductionRuleSymbol(AtomCode.New),
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier),
+									   new ProductionRuleSymbol(AtomCode.OpeningRoundParenthesis),
+									   new ProductionRuleSymbol(ProductionRuleCode.Expression),
+									   new ProductionRuleSymbol(ProductionRuleCode.ExpressionSequence),
+									   new ProductionRuleSymbol(AtomCode.ClosingRoundParenthesis)),
+
+					new ProductionRule(ProductionRuleCode.ExpressionSequence,
+									   new ProductionRuleSymbol(AtomCode.Comma),
+									   new ProductionRuleSymbol(ProductionRuleCode.Expression)),
+
+					new ProductionRule(ProductionRuleCode.ExitStatement,
+									   new ProductionRuleSymbol(AtomCode.Stop)),
+					new ProductionRule(ProductionRuleCode.ExitStatement,
+									   new ProductionRuleSymbol(AtomCode.Skip)),
+					new ProductionRule(ProductionRuleCode.ExitStatement,
+									   new ProductionRuleSymbol(AtomCode.Assert),
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanExpression)),
+
+					new ProductionRule(ProductionRuleCode.Expression,
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticExpression)),
+					new ProductionRule(ProductionRuleCode.Expression,
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanExpression)),
+
+					new ProductionRule(ProductionRuleCode.ArithmeticExpression,
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticOperand)),
+					new ProductionRule(ProductionRuleCode.ArithmeticExpression,
+									   new ProductionRuleSymbol(ProductionRuleCode.UnaryPrefixedArithmeticOperator),
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticExpression)),
+					new ProductionRule(ProductionRuleCode.ArithmeticExpression,
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticExpression),
+									   new ProductionRuleSymbol(ProductionRuleCode.BinaryArithmeticOperator),
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticExpression)),
+					new ProductionRule(ProductionRuleCode.ArithmeticExpression,
+									   new ProductionRuleSymbol(AtomCode.OpeningRoundParenthesis),
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticExpression),
+									   new ProductionRuleSymbol(AtomCode.ClosingRoundParenthesis)),
+
+					new ProductionRule(ProductionRuleCode.ArithmeticOperand,
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticConstant)),
+					new ProductionRule(ProductionRuleCode.ArithmeticOperand,
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier)),
+					new ProductionRule(ProductionRuleCode.ArithmeticOperand,
+									   new ProductionRuleSymbol(ProductionRuleCode.FunctionCall)),
+
+					new ProductionRule(ProductionRuleCode.BooleanExpression,
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanOperand)),
+					new ProductionRule(ProductionRuleCode.BooleanExpression,
+									   new ProductionRuleSymbol(ProductionRuleCode.UnaryPrefixedBooleanOperator),
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanExpression)),
+					new ProductionRule(ProductionRuleCode.BooleanExpression,
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanExpression),
+									   new ProductionRuleSymbol(ProductionRuleCode.BinaryBooleanOperator),
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanExpression)),
+					new ProductionRule(ProductionRuleCode.BooleanExpression,
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticExpression),
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticRelation),
+									   new ProductionRuleSymbol(ProductionRuleCode.ArithmeticExpression)),
+					new ProductionRule(ProductionRuleCode.BooleanExpression,
+									   new ProductionRuleSymbol(AtomCode.OpeningRoundParenthesis),
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanExpression),
+									   new ProductionRuleSymbol(AtomCode.ClosingRoundParenthesis)),
+
+					new ProductionRule(ProductionRuleCode.BooleanOperand,
+									   new ProductionRuleSymbol(ProductionRuleCode.BooleanConstant)),
+					new ProductionRule(ProductionRuleCode.BooleanOperand,
+									   new ProductionRuleSymbol(ProductionRuleCode.QualifiedIdentifier)),
+					new ProductionRule(ProductionRuleCode.BooleanOperand,
+									   new ProductionRuleSymbol(ProductionRuleCode.FunctionCall))
+					}
+				};
+		}
+
+		public enum AtomCode
+		{
+			Identifier,
+
+			IntegerNumericConstant,
+			FloatNumericConstant,
+			StringConstant,
+			CharConstant,
+
+			Comment,
+			MultilineComment,
+
+			Assert,
+			Begin,
+			Do,
+			Else,
+			End,
+			Fact,
+			False,
+			New,
+			Predicate,
+			Skip,
+			Stop,
+			Then,
+			True,
+			When,
+			While,
+			Throw,
+			Try,
+			Catch,
+			Finally,
+
+			Scope,
+			Star,
+			Percentage,
+			Slash,
+			Backslash,
+			Plus,
+			Minus,
+			LessThan,
+			LessThanOrEqualTo,
+			Equal,
+			Distinct,
+			GreaterThanOrEqualTo,
+			GreaterThan,
+			Not,
+			And,
+			Or,
+
+			OpeningRoundParenthesis,
+			ClosingRoundParenthesis,
+			OpeningSquareParenthesis,
+			ClosingSquareParenthesis,
+			Dot,
+			Colon,
+			Comma,
+			WhiteSpace,
+			Tabulator,
+			LineFeed,
+			CarriageReturn,
+			NewLine,
+		}
+		public enum ProductionRuleCode
+		{
+			Name,
+			ArithmeticConstant,
+			QualifiedIdentifier,
+			UnaryPrefixedArithmeticOperator,
+			BinaryArithmeticOperator,
+			UnaryPrefixedBooleanOperator,
+			BinaryBooleanOperator,
+			ArithmeticRelation,
+			Program,
+			PredicateDeclaration,
+			PredicateDefinition,
+			FactDefinition,
+			FactParameter,
+			Type,
+			GenericParameters,
+			Array,
+			Body,
+			TypeInstance,
+			BoundedArray,
+			VariableDeclaration,
+			Statement,
+			WhenStatement,
+			WhileStatement,
+			TryCatchFinallyStatement,
+			CatchStatement,
+			CatchBlockStatement,
+			CatchAllStatement,
+			FinallyStatement,
+			ThrowStatement,
+			VariableDeclarationStatement,
+			VariableAssignmentStatement,
+			FunctionCall,
+			ExitStatement,
+			Expression,
+			ArithmeticExpression,
+			ArithmeticOperand,
+			BooleanExpression,
+			BooleanOperand,
+			BooleanConstant,
+			IdentifierSequence,
+			ParameterSequence,
+			FactParameterSequence,
+			ArraySequence,
+			GenericParametersSequence,
+			BoundedArraySequence,
+			ExpressionSequence
+		}
+	}
 }
