@@ -32,10 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="demo1.txt, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\demo1.txt.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Language\AtomCode.cs" />
+    <Compile Include="Language\ProductionRuleCode.cs" />
     <Compile Include="Language\Syntax\Parser\IParser.cs" />
     <Compile Include="CilGenerator.cs" />
     <Compile Include="Collections\RestrictedList.cs" />
@@ -56,6 +54,7 @@
     <Compile Include="Language\Lexic\Scanner\DefaultScanner.cs" />
     <Compile Include="Language\Lexic\Scanner\IScanner.cs" />
     <Compile Include="Language\Lexic\ScannedAtom.cs" />
+    <Compile Include="Language\Syntax\Parser\LR1Parser.cs" />
     <Compile Include="Language\Syntax\Parser\ParsedNode.cs" />
     <Compile Include="Language\Syntax\Parser\ProductionRule.cs" />
     <Compile Include="Language\Syntax\Parser\ProductionRuleSymbol.cs" />

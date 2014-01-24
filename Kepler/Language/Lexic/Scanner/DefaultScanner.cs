@@ -23,14 +23,14 @@ namespace Andrei15193.Kepler.Language.Lexic.Scanner
 			while (currentIndex < text.Length)
 			{
 				string atom;
-				var bestAtomMatch = (from atomSpecification in (isPreviousSeparator.GetValueOrDefault() ? (IEnumerable<AtomSpecification>)_atomSpecifications : _separatorSpecifications)
+				var bestAtomMatch = (from atomSpecification in (!isPreviousSeparator.HasValue || isPreviousSeparator.Value == true ? (IEnumerable<AtomSpecification>)_atomSpecifications : _separatorSpecifications)
 									 let match = new
 									 {
 										 Success = atomSpecification.TryIdentifty(text, out atom, currentIndex),
 										 Value = atom,
 										 Specification = atomSpecification
 									 }
-									 where match.Success
+									 where match.Success && match.Value.Length > 0
 									 orderby match.Value.Length descending
 									 select match).FirstOrDefault();
 				if (bestAtomMatch == null)
@@ -52,13 +52,15 @@ namespace Andrei15193.Kepler.Language.Lexic.Scanner
 					int lastNewLine = bestAtomMatch.Value.LastIndexOf(Environment.NewLine);
 					if (lastNewLine != -1)
 					{
-						column = (uint)(bestAtomMatch.Value.Length - lastNewLine - Environment.NewLine.Length);
+						column = (uint)(bestAtomMatch.Value.Length - lastNewLine - Environment.NewLine.Length + 1);
 						do
 						{
 							line++;
 							lastNewLine = bestAtomMatch.Value.LastIndexOf(Environment.NewLine, 0, lastNewLine);
 						} while (lastNewLine != -1);
 					}
+					else
+						column += (uint)bestAtomMatch.Value.Length;
 				}
 			}
 

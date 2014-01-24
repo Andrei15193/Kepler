@@ -2,7 +2,7 @@
 {
 	public sealed class ScannedAtom
 	{
-		public ScannedAtom(KeplerLanguage.AtomCode code, uint line, uint column, string value = null)
+		public ScannedAtom(AtomCode code, uint line, uint column, string value = null)
 		{
 			_code = code;
 			_line = line;
@@ -24,7 +24,7 @@
 				return _column;
 			}
 		}
-		public KeplerLanguage.AtomCode Code
+		public AtomCode Code
 		{
 			get
 			{
@@ -38,10 +38,14 @@
 				return _value;
 			}
 		}
+		public override string ToString()
+		{
+			return string.Format("{0}: {1} [{2}, {3}]", (int)_code, _code.ToString(), _line, _column);
+		}
 
 		private readonly uint _line;
 		private readonly uint _column;
-		private readonly KeplerLanguage.AtomCode _code;
+		private readonly AtomCode _code;
 		private readonly string _value;
 	}
 }

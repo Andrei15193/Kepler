@@ -1,28 +1,41 @@
 ﻿using System;
 namespace Andrei15193.Kepler.Language.Syntax.Parser
 {
-	public sealed class ProductionRuleSymbol
+	public struct ProductionRuleSymbol
+		: IEquatable<ProductionRuleSymbol>
 	{
-		public ProductionRuleSymbol(KeplerLanguage.ProductionRuleCode code, bool isSequence = false)
+		public ProductionRuleSymbol(ProductionRuleCode nonTerminal, bool skipRootParsedNode = false)
 		{
-			_isSequence = isSequence;
+			_skipRootParsedNode = skipRootParsedNode;
 			_isTerminal = false;
 			_terminalCode = 0;
-			_nonTerminalCode = code;
+			_nonTerminalCode = nonTerminal;
 		}
-		public ProductionRuleSymbol(KeplerLanguage.AtomCode code, bool isSequence = false)
+		public ProductionRuleSymbol(AtomCode terminal, bool skipRootParsedNode = false)
 		{
-			_isSequence = isSequence;
+			_skipRootParsedNode = skipRootParsedNode;
 			_isTerminal = true;
-			_terminalCode = code;
+			_terminalCode = terminal;
 			_nonTerminalCode = 0;
 		}
 
-		public bool IsSequence
+		#region IEquatable<ProductionRuleSymbol> Members
+		public bool Equals(ProductionRuleSymbol other)
+		{
+			if (_isTerminal && other._isTerminal)
+				return (_terminalCode == other._terminalCode);
+			else
+				if (!_isTerminal && !other._isTerminal)
+					return (_nonTerminalCode == other._nonTerminalCode);
+				else
+					return false;
+		}
+		#endregion
+		public bool SkipRootParsedNode
 		{
 			get
 			{
-				return _isSequence;
+				return _skipRootParsedNode;
 			}
 		}
 		public bool IsTerminal
@@ -32,7 +45,7 @@ namespace Andrei15193.Kepler.Language.Syntax.Parser
 				return _isTerminal;
 			}
 		}
-		public KeplerLanguage.AtomCode TerminalCode
+		public AtomCode TerminalCode
 		{
 			get
 			{
@@ -41,7 +54,7 @@ namespace Andrei15193.Kepler.Language.Syntax.Parser
 				return _terminalCode;
 			}
 		}
-		public KeplerLanguage.ProductionRuleCode NonTerminalCode
+		public ProductionRuleCode NonTerminalCode
 		{
 			get
 			{
@@ -50,10 +63,29 @@ namespace Andrei15193.Kepler.Language.Syntax.Parser
 				return _nonTerminalCode;
 			}
 		}
+		public override string ToString()
+		{
+			if (_isTerminal)
+				return string.Join(_terminalCode.ToString(), "\"", "\"");
+			else
+				return _nonTerminalCode.ToString();
+		}
+		public override bool Equals(object obj)
+		{
+			return (obj is ProductionRuleSymbol && Equals((ProductionRuleSymbol)obj));
+		}
+		public override int GetHashCode()
+		{
+			if (_isTerminal)
+				return _terminalCode.GetHashCode();
+			else
+				return _nonTerminalCode.GetHashCode();
+		}
 
-		private readonly bool _isSequence;
 		private readonly bool _isTerminal;
-		private readonly KeplerLanguage.AtomCode _terminalCode;
-		private readonly KeplerLanguage.ProductionRuleCode _nonTerminalCode;
+		private readonly bool _skipRootParsedNode;
+		private readonly AtomCode _terminalCode;
+		private readonly ProductionRuleCode _nonTerminalCode;
+
 	}
 }

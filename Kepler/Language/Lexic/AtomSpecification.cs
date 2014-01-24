@@ -4,19 +4,19 @@ namespace Andrei15193.Kepler.Language.Lexic
 {
 	public abstract class AtomSpecification
 	{
-		public static AtomSpecification Create(KeplerLanguage.AtomCode code, string literal, bool ignoreAtom = false, bool isSeparator = false, bool ignoreCase = false)
+		public static AtomSpecification Create(AtomCode code, string literal, bool ignoreAtom = false, bool isSeparator = false, bool ignoreCase = false)
 		{
-			return new LiteralAtomSpecification(code, literal, ignoreAtom, ignoreCase);
+			return new LiteralAtomSpecification(code, literal, ignoreAtom, isSeparator, ignoreCase);
 		}
-		public static AtomSpecification Create(KeplerLanguage.AtomCode code, Regex pattern, bool ignoreAtom = false, bool isSeparator = false)
+		public static AtomSpecification Create(AtomCode code, Regex pattern, bool ignoreAtom = false, bool isSeparator = false)
 		{
 			return new PatternAtomSpecfication(code, pattern, ignoreAtom, isSeparator);
 		}
-		public static AtomSpecification Create(KeplerLanguage.AtomCode code, string beggining, string end, bool ignoreAtom = false, bool isSeparator = false, bool ignoreCase = false)
+		public static AtomSpecification Create(AtomCode code, string beggining, string end, bool ignoreAtom = false, bool isSeparator = false, bool ignoreCase = false)
 		{
 			return new EnclosedAtomSpecification(code, beggining, end, ignoreAtom, isSeparator, ignoreCase);
 		}
-		protected AtomSpecification(KeplerLanguage.AtomCode code, bool ignore, bool isSeparator)
+		protected AtomSpecification(AtomCode code, bool ignore, bool isSeparator)
 		{
 			_code = code;
 			_ignore = ignore;
@@ -37,7 +37,7 @@ namespace Andrei15193.Kepler.Language.Lexic
 				return _isSeparator;
 			}
 		}
-		public KeplerLanguage.AtomCode Code
+		public AtomCode Code
 		{
 			get
 			{
@@ -49,12 +49,12 @@ namespace Andrei15193.Kepler.Language.Lexic
 
 		private readonly bool _ignore;
 		private readonly bool _isSeparator;
-		private readonly KeplerLanguage.AtomCode _code;
+		private readonly AtomCode _code;
 
 		private class LiteralAtomSpecification
 			: AtomSpecification
 		{
-			public LiteralAtomSpecification(KeplerLanguage.AtomCode code, string literal, bool canIgnore = false, bool isSeparator = false, bool ignoreCase = false)
+			public LiteralAtomSpecification(AtomCode code, string literal, bool canIgnore = false, bool isSeparator = false, bool ignoreCase = false)
 				: base(code, canIgnore, isSeparator)
 			{
 				if (literal == null)
@@ -84,7 +84,7 @@ namespace Andrei15193.Kepler.Language.Lexic
 		private class PatternAtomSpecfication
 			: AtomSpecification
 		{
-			public PatternAtomSpecfication(KeplerLanguage.AtomCode code, Regex pattern, bool canIgnore, bool isSeparator)
+			public PatternAtomSpecfication(AtomCode code, Regex pattern, bool canIgnore, bool isSeparator)
 				: base(code, canIgnore, isSeparator)
 			{
 				if (pattern == null)
@@ -95,7 +95,7 @@ namespace Andrei15193.Kepler.Language.Lexic
 			public override bool TryIdentifty(string text, out string atom, int startIndex = 0)
 			{
 				Match patternFirstMatch = _pattern.Match(text, startIndex);
-				if (patternFirstMatch.Index == startIndex)
+				if (patternFirstMatch.Success && patternFirstMatch.Index == startIndex)
 					atom = patternFirstMatch.Value;
 				else
 					atom = null;
@@ -111,7 +111,7 @@ namespace Andrei15193.Kepler.Language.Lexic
 		private class EnclosedAtomSpecification
 			: AtomSpecification
 		{
-			public EnclosedAtomSpecification(KeplerLanguage.AtomCode code, string begining, string end, bool canIgnore, bool isSeparator, bool ignoreCase)
+			public EnclosedAtomSpecification(AtomCode code, string begining, string end, bool canIgnore, bool isSeparator, bool ignoreCase)
 				: base(code, canIgnore, isSeparator)
 			{
 				if (begining == null)
@@ -137,7 +137,7 @@ namespace Andrei15193.Kepler.Language.Lexic
 					endIndex = text.IndexOf(_end, endIndex);
 				while (endIndex != -1 && text[endIndex - 1] == '\\');
 				if (endIndex != -1)
-					atom = text.Substring(startIndex, endIndex - startIndex);
+					atom = text.Substring(startIndex, endIndex - startIndex + _end.Length);
 				return (atom != null);
 			}
 			public override bool IsSatisfiedBy(string str, int startIndex = 0)

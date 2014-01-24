@@ -9,3 +9,4 @@ predicate Aduna(numar : System::Double, suma : System::Double)
 
 predicate Aduna(numar : System::Double)
     Aduna(numar, 0).
+

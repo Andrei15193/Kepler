@@ -3,21 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Andrei15193.Kepler.Language.Syntax.Parser
 {
-	public sealed class ProductionRule
+	public struct ProductionRule
+		: IEquatable<ProductionRule>
 	{
-		public ProductionRule(KeplerLanguage.ProductionRuleCode code, IEnumerable<ProductionRuleSymbol> symbols)
+		public ProductionRule(ProductionRuleCode code, IEnumerable<ProductionRuleSymbol> symbols)
 		{
-			_code = code;
 			if (symbols == null)
 				throw new ArgumentNullException("symbols");
-			_symbols = symbols.Where(symbol => symbol != null).ToList();
+			_code = code;
+			_symbols = symbols.ToList();
 		}
-		public ProductionRule(KeplerLanguage.ProductionRuleCode code, params ProductionRuleSymbol[] symbols)
+		public ProductionRule(ProductionRuleCode code, params ProductionRuleSymbol[] symbols)
 			: this(code, (IEnumerable<ProductionRuleSymbol>)symbols)
 		{
 		}
-
-		public KeplerLanguage.ProductionRuleCode Code
+		
+		#region IEquatable<ProductionRule> Members
+		public bool Equals(ProductionRule other)
+		{
+			return (_code == other._code
+					&& _symbols.SequenceEqual(other._symbols));
+		}
+		#endregion
+		public ProductionRuleCode Code
 		{
 			get
 			{
@@ -31,8 +39,20 @@ namespace Andrei15193.Kepler.Language.Syntax.Parser
 				return _symbols;
 			}
 		}
+		public override bool Equals(object obj)
+		{
+			return (obj is ProductionRule && Equals((ProductionRule)obj));
+		}
+		public override int GetHashCode()
+		{
+			return _symbols.Aggregate(_code.GetHashCode(), (hashCode, symbol) => (hashCode ^ symbol.GetHashCode()));
+		}
+		public override string ToString()
+		{
+			return string.Format("{0} -> {1}", _code.ToString(), string.Join(" ", _symbols.Select(symbol => symbol.ToString())));
+		}
 
-		private KeplerLanguage.ProductionRuleCode _code;
+		private ProductionRuleCode _code;
 		private readonly IReadOnlyList<ProductionRuleSymbol> _symbols;
 	}
 }
