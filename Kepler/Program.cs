@@ -1,25 +1,19 @@
 ﻿using System;
-using System.IO;
 using Andrei15193.Kepler.Language;
-using Andrei15193.Kepler.Language.Lexic.Scanner;
-using Andrei15193.Kepler.Language.Syntax.Parser;
+using Andrei15193.Kepler.Language.Lexic.Scanners;
 namespace Andrei15193.Kepler
 {
 	internal static class Program
 	{
 		static private void Main(string[] args)
 		{
-			try
+			//try
 			{
-				var scanResult = KeplerLanguage.GetScanner<DefaultScanner>().Scan(@"predicate Main
-    try
+				var scanResult = KeplerLanguage.GetScanner<DefaultScanner<AtomCode>>().Scan(@"predicate Main
         System::Console::Write(""Introduceti raza cercului: "").
         razaCerc : System::Int32 = System::Int32::Parse(System::Console::ReadLine()).
         PerimetruCerc(razaCerc).
         ArieCerc(razaCerc).
-    catch
-        System::Console::WriteLine(""Nu ati introdus un numar!"").
-    end
 end
 
 predicate PerimetruCerc(razaCerc : System::Int32)
@@ -29,12 +23,13 @@ end
 predicate ArieCerc(razaCerc : System::Int32)
     System::Console::WriteLine(System::Math::Pow(razaCerc, 2) * 3.14).
 end");
-				KeplerLanguage.GetParser<LR1Parser>().Parse(scanResult);
+				var y = KeplerLanguage.GetParser().Parse(scanResult);
 				throw new NotImplementedException("Compiler not finished");
 			}
-			catch (Exception exception)
-			{
-			}
+			//catch (Exception e)
+			//{
+			//	var x = e;
+			//}
 
 
 			//if (args.Length > 0)

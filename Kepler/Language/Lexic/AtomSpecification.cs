@@ -2,21 +2,10 @@
 using System.Text.RegularExpressions;
 namespace Andrei15193.Kepler.Language.Lexic
 {
-	public abstract class AtomSpecification
+	public abstract class AtomSpecification<TAtomCode>
+		where TAtomCode : struct
 	{
-		public static AtomSpecification Create(AtomCode code, string literal, bool ignoreAtom = false, bool isSeparator = false, bool ignoreCase = false)
-		{
-			return new LiteralAtomSpecification(code, literal, ignoreAtom, isSeparator, ignoreCase);
-		}
-		public static AtomSpecification Create(AtomCode code, Regex pattern, bool ignoreAtom = false, bool isSeparator = false)
-		{
-			return new PatternAtomSpecfication(code, pattern, ignoreAtom, isSeparator);
-		}
-		public static AtomSpecification Create(AtomCode code, string beggining, string end, bool ignoreAtom = false, bool isSeparator = false, bool ignoreCase = false)
-		{
-			return new EnclosedAtomSpecification(code, beggining, end, ignoreAtom, isSeparator, ignoreCase);
-		}
-		protected AtomSpecification(AtomCode code, bool ignore, bool isSeparator)
+		protected AtomSpecification(TAtomCode code, bool ignore, bool isSeparator)
 		{
 			_code = code;
 			_ignore = ignore;
@@ -37,7 +26,7 @@ namespace Andrei15193.Kepler.Language.Lexic
 				return _isSeparator;
 			}
 		}
-		public AtomCode Code
+		public TAtomCode Code
 		{
 			get
 			{
@@ -49,12 +38,31 @@ namespace Andrei15193.Kepler.Language.Lexic
 
 		private readonly bool _ignore;
 		private readonly bool _isSeparator;
-		private readonly AtomCode _code;
-
-		private class LiteralAtomSpecification
-			: AtomSpecification
+		private readonly TAtomCode _code;
+	}
+	public static class AtomSpecification
+	{
+		public static AtomSpecification<TAtomCode> CreateLiteral<TAtomCode>(TAtomCode code, string literal, bool ignoreAtom = false, bool isSeparator = false, bool ignoreCase = false)
+			where TAtomCode : struct
 		{
-			public LiteralAtomSpecification(AtomCode code, string literal, bool canIgnore = false, bool isSeparator = false, bool ignoreCase = false)
+			return new LiteralAtomSpecification<TAtomCode>(code, literal, ignoreAtom, isSeparator, ignoreCase);
+		}
+		public static AtomSpecification<TAtomCode> CreatePattern<TAtomCode>(TAtomCode code, Regex pattern, bool ignoreAtom = false, bool isSeparator = false)
+			where TAtomCode : struct
+		{
+			return new PatternAtomSpecfication<TAtomCode>(code, pattern, ignoreAtom, isSeparator);
+		}
+		public static AtomSpecification<TAtomCode> CreateEnclosed<TAtomCode>(TAtomCode code, string beggining, string end, bool ignoreAtom = false, bool isSeparator = false, bool ignoreCase = false)
+			where TAtomCode : struct
+		{
+			return new EnclosedAtomSpecification<TAtomCode>(code, beggining, end, ignoreAtom, isSeparator, ignoreCase);
+		}
+
+		private class LiteralAtomSpecification<TAtomCode>
+			: AtomSpecification<TAtomCode>
+			where TAtomCode : struct
+		{
+			public LiteralAtomSpecification(TAtomCode code, string literal, bool canIgnore = false, bool isSeparator = false, bool ignoreCase = false)
 				: base(code, canIgnore, isSeparator)
 			{
 				if (literal == null)
@@ -81,10 +89,11 @@ namespace Andrei15193.Kepler.Language.Lexic
 			private readonly bool _ingoreCase;
 			private readonly string _literal;
 		}
-		private class PatternAtomSpecfication
-			: AtomSpecification
+		private class PatternAtomSpecfication<TAtomCode>
+			: AtomSpecification<TAtomCode>
+			where TAtomCode : struct
 		{
-			public PatternAtomSpecfication(AtomCode code, Regex pattern, bool canIgnore, bool isSeparator)
+			public PatternAtomSpecfication(TAtomCode code, Regex pattern, bool canIgnore, bool isSeparator)
 				: base(code, canIgnore, isSeparator)
 			{
 				if (pattern == null)
@@ -108,10 +117,11 @@ namespace Andrei15193.Kepler.Language.Lexic
 
 			private readonly Regex _pattern;
 		}
-		private class EnclosedAtomSpecification
-			: AtomSpecification
+		private class EnclosedAtomSpecification<TAtomCode>
+			: AtomSpecification<TAtomCode>
+			where TAtomCode : struct
 		{
-			public EnclosedAtomSpecification(AtomCode code, string begining, string end, bool canIgnore, bool isSeparator, bool ignoreCase)
+			public EnclosedAtomSpecification(TAtomCode code, string begining, string end, bool canIgnore, bool isSeparator, bool ignoreCase)
 				: base(code, canIgnore, isSeparator)
 			{
 				if (begining == null)

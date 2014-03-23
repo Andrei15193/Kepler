@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 namespace Andrei15193.Kepler.Extensions.Delegate
 {
