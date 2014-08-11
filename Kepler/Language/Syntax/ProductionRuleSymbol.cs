@@ -6,21 +6,35 @@ namespace Andrei15193.Kepler.Language.Syntax
 		where TAtomCode : struct
 		where TProductionRuleCode : struct
 	{
-		public ProductionRuleSymbol(TProductionRuleCode nonTerminal, bool skipRootParsedNode = false)
+		public ProductionRuleSymbol(TProductionRuleCode nonTerminal)
 		{
-			_skipRootParsedNode = skipRootParsedNode;
 			_isTerminal = false;
 			_terminalCode = default(TAtomCode);
 			_nonTerminalCode = nonTerminal;
 		}
-		public ProductionRuleSymbol(TAtomCode terminal, bool skipRootParsedNode = false)
+		public ProductionRuleSymbol(TAtomCode terminal)
 		{
-			_skipRootParsedNode = skipRootParsedNode;
 			_isTerminal = true;
 			_terminalCode = terminal;
 			_nonTerminalCode = default(TProductionRuleCode);
 		}
 
+		public static implicit operator ProductionRuleSymbol<TAtomCode, TProductionRuleCode>(TProductionRuleCode productionRuleCode)
+		{
+			return new ProductionRuleSymbol<TAtomCode, TProductionRuleCode>(productionRuleCode);
+		}
+		public static explicit operator TProductionRuleCode(ProductionRuleSymbol<TAtomCode, TProductionRuleCode> symbol)
+		{
+			return symbol.NonTerminalCode;
+		}
+		public static implicit operator ProductionRuleSymbol<TAtomCode, TProductionRuleCode>(TAtomCode atomCode)
+		{
+			return new ProductionRuleSymbol<TAtomCode, TProductionRuleCode>(atomCode);
+		}
+		public static explicit operator TAtomCode(ProductionRuleSymbol<TAtomCode, TProductionRuleCode> symbol)
+		{
+			return symbol.TerminalCode;
+		}
 		public static bool operator ==(ProductionRuleSymbol<TAtomCode, TProductionRuleCode> left, ProductionRuleSymbol<TAtomCode, TProductionRuleCode> right)
 		{
 			return left.Equals(right);
@@ -108,13 +122,6 @@ namespace Andrei15193.Kepler.Language.Syntax
 			else
 				return _nonTerminalCode.GetHashCode();
 		}
-		public bool SkipRootParsedNode
-		{
-			get
-			{
-				return _skipRootParsedNode;
-			}
-		}
 		public bool IsTerminal
 		{
 			get
@@ -142,7 +149,6 @@ namespace Andrei15193.Kepler.Language.Syntax
 		}
 
 		private readonly bool _isTerminal;
-		private readonly bool _skipRootParsedNode;
 		private readonly TAtomCode _terminalCode;
 		private readonly TProductionRuleCode _nonTerminalCode;
 	}

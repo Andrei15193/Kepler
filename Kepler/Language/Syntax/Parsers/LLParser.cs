@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using Andrei15193.Kepler.Extensions;
 using Andrei15193.Kepler.Extensions.Delegate;
 using Andrei15193.Kepler.Language.Lexic;
 namespace Andrei15193.Kepler.Language.Syntax.Parsers
@@ -81,9 +82,8 @@ namespace Andrei15193.Kepler.Language.Syntax.Parsers
 				{
 					ProductionRule<TAtomCode, TProductionRuleCode> productionRule;
 					IReadOnlyDictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>> parseTableRow = _parseTable[topEvaluationStackEntry.Symbol.NonTerminalCode];
-
 					if (!parseTableRow.TryGetValue(_GetPrediction(atoms, atomIndex), out productionRule))
-						throw new ArgumentException(string.Format("Expected statement at line {0}, column {1}", atoms[atomIndex].Line, atoms[atomIndex].Column), "atoms");
+						throw new ArgumentException(string.Format("Expected {2} at line {0}, column {1}", atoms[atomIndex].Line, atoms[atomIndex].Column, topEvaluationStackEntry.Symbol.NonTerminalCode.ToString()), "atoms");
 
 					foreach (ProductionRuleSymbol<TAtomCode, TProductionRuleCode> productionRuleSymbol in productionRule.Symbols.Reverse())
 						evaluationStack.Push(new EvaluationStackEntry(productionRuleSymbol, topEvaluationStackEntry.Depth + 1));
@@ -135,7 +135,7 @@ namespace Andrei15193.Kepler.Language.Syntax.Parsers
 																										   && !productionRule.Symbols[0].IsTerminal)
 																				  .Select(productionRule => new Derivation(productionRule)));
 
-			do
+			while (derivations.Count > 0)
 			{
 				Derivation currentDerivation = derivations.Pop();
 
@@ -160,7 +160,7 @@ namespace Andrei15193.Kepler.Language.Syntax.Parsers
 					else
 						derivations.Push(new Derivation(produtionRule, currentDerivation.Depth + 1));
 				}
-			} while (derivations.Count > 0);
+			}
 		}
 		private IEnumerable<IReadOnlyList<TAtomCode>> _First(IEnumerable<ProductionRuleSymbol<TAtomCode, TProductionRuleCode>> productionRuleSymbols)
 		{
@@ -196,136 +196,163 @@ namespace Andrei15193.Kepler.Language.Syntax.Parsers
 			if (productionRuleSymbol.IsTerminal)
 				return new IReadOnlyList<TAtomCode>[] { new[] { productionRuleSymbol.TerminalCode } };
 
-			IEnumerable<IReadOnlyList<TAtomCode>> firstSet;
-			if (_first.TryGetValue(productionRuleSymbol.NonTerminalCode, out firstSet))
-				return firstSet;
+			IEnumerable<IReadOnlyList<TAtomCode>> cachedFirstSet;
+			if (_first.TryGetValue(productionRuleSymbol.NonTerminalCode, out cachedFirstSet))
+				return cachedFirstSet;
 
-			ISet<IReadOnlyList<TAtomCode>> firstSequencesSet = new HashSet<IReadOnlyList<TAtomCode>>(new DelegateEqualityComparer<IReadOnlyList<TAtomCode>>((left, right) => left.SequenceEqual(right),
+			ISet<IReadOnlyList<TAtomCode>> firstSet = new HashSet<IReadOnlyList<TAtomCode>>(new DelegateEqualityComparer<IReadOnlyList<TAtomCode>>((left, right) => left.SequenceEqual(right),
 																																							value => value.Aggregate(0, (hashCode, atomCode) => (hashCode ^ atomCode.GetHashCode()))));
-			Queue<NonTerminalSymbolAtoms> productionRulesLeft = new Queue<NonTerminalSymbolAtoms>();
-			productionRulesLeft.Enqueue(new NonTerminalSymbolAtoms(productionRuleSymbol.NonTerminalCode, new TAtomCode[0]));
+			var firstsToCalculate = (from productionRule in _productionRules
+									 where productionRule.Code.Equals(productionRuleSymbol.NonTerminalCode)
+									 select new
+									 {
+										 Symbols = productionRule.Symbols,
+										 TerminalsCalculated = (IEnumerable<TAtomCode>)_emptyAtomCodeArray
+									 }).ToQueue();
 
 			do
 			{
-				NonTerminalSymbolAtoms productionRuleLeft = productionRulesLeft.Dequeue();
 
-				foreach (ProductionRule<TAtomCode, TProductionRuleCode> productionRule in _productionRules.Where(productionRule => productionRule.Code.Equals(productionRuleLeft.ProductionRuleCode)))
-					if (productionRule.Symbols.Count == 0)
-						firstSequencesSet.Add(productionRuleLeft.Atoms);
-					else
-					{
-						int symbolIndex = 0;
-						List<TAtomCode> atoms = new List<TAtomCode>(productionRuleLeft.Atoms);
+			} while (firstsToCalculate.Count > 0);
 
-						while (symbolIndex < productionRule.Symbols.Count && productionRule.Symbols[symbolIndex].IsTerminal && atoms.Count < _lookAheadCount)
-							atoms.Add(productionRule.Symbols[symbolIndex++].TerminalCode);
+			//Queue<NonTerminalSymbolAtoms> productionRulesLeft = new Queue<NonTerminalSymbolAtoms>();
+			//productionRulesLeft.Enqueue(new NonTerminalSymbolAtoms(productionRuleSymbol.NonTerminalCode, new TAtomCode[0]));
 
-						if (symbolIndex == productionRule.Symbols.Count || atoms.Count == _lookAheadCount)
-							firstSequencesSet.Add(atoms);
-						else
-							productionRulesLeft.Enqueue(new NonTerminalSymbolAtoms(productionRule.Symbols[symbolIndex].NonTerminalCode, atoms));
-					}
-			} while (productionRulesLeft.Count > 0);
+			//do
+			//{
+			//	NonTerminalSymbolAtoms productionRuleLeft = productionRulesLeft.Dequeue();
 
-			_first.Add(productionRuleSymbol.NonTerminalCode, firstSequencesSet);
-			return firstSequencesSet;
+			//	foreach (ProductionRule<TAtomCode, TProductionRuleCode> productionRule in _productionRules.Where(productionRule => productionRule.Code.Equals(productionRuleLeft.ProductionRuleCode)))
+			//		if (productionRule.Symbols.Count == 0)
+			//			firstSet.Add(productionRuleLeft.Atoms);
+			//		else
+			//		{
+			//			int symbolIndex = 0;
+			//			List<TAtomCode> atoms = new List<TAtomCode>(productionRuleLeft.Atoms);
+
+			//			while (symbolIndex < productionRule.Symbols.Count && productionRule.Symbols[symbolIndex].IsTerminal && atoms.Count < _lookAheadCount)
+			//				atoms.Add(productionRule.Symbols[symbolIndex++].TerminalCode);
+
+			//			if (symbolIndex == productionRule.Symbols.Count || atoms.Count == _lookAheadCount)
+			//				firstSet.Add(atoms);
+			//			else
+			//				productionRulesLeft.Enqueue(new NonTerminalSymbolAtoms(productionRule.Symbols[symbolIndex].NonTerminalCode, atoms));
+			//		}
+			//} while (productionRulesLeft.Count > 0);
+
+			_first.Add(productionRuleSymbol.NonTerminalCode, firstSet);
+			return firstSet;
 		}
 		private IEnumerable<IReadOnlyList<TAtomCode>> _Follow(TProductionRuleCode productionRuleCode)
 		{
-			IEnumerable<IReadOnlyList<TAtomCode>> followSet;
-			if (_follow.TryGetValue(productionRuleCode, out followSet))
-				return followSet;
+			IEnumerable<IReadOnlyList<TAtomCode>> cachedFollowSet;
+			if (_follow.TryGetValue(productionRuleCode, out cachedFollowSet))
+				return cachedFollowSet;
 
-			ISet<IReadOnlyList<TAtomCode>> followSequencesSet = new HashSet<IReadOnlyList<TAtomCode>>(new DelegateEqualityComparer<IReadOnlyList<TAtomCode>>((left, right) => left.SequenceEqual(right),
-																																							 value => value.Aggregate(0, (hashCode, atomCode) => (hashCode ^ atomCode.GetHashCode()))));
-			ISet<TProductionRuleCode> subscribedProductionRuleCodes = new HashSet<TProductionRuleCode> { productionRuleCode };
-			Queue<TProductionRuleCode> productionRuleCodesLeft = new Queue<TProductionRuleCode>();
-			productionRuleCodesLeft.Enqueue(productionRuleCode);
+			ISet<IReadOnlyList<TAtomCode>> followSet = new HashSet<IReadOnlyList<TAtomCode>>(_columnHeaderEqualityComparer);
+			var followsToCalculate = new[]
+				{
+					new
+					{
+						ProductionRule = productionRuleCode,
+						TerminalsCalculated = (IEnumerable<TAtomCode>)_emptyAtomCodeArray,
+						VisitedProductionRulesWithoutFollow = (IEnumerable<TProductionRuleCode>)_emptyProductionRuleCodeArray
+					}
+				}.ToQueue();
 
 			do
 			{
-				TProductionRuleCode currentProductionRuleCode = productionRuleCodesLeft.Dequeue();
+				var followToCalculate = followsToCalculate.Dequeue();
 
-				foreach (var productionRuleInfo in from productionRule in _productionRules
-												   let productionRuleInfo = new
-													   {
-														   Code = productionRule.Code,
-														   Symbols = productionRule.Symbols,
-														   FollowSymbolIndexes = productionRule.Symbols.Select((symbol, index) => (!symbol.IsTerminal && symbol.NonTerminalCode.Equals(currentProductionRuleCode) ? index : -1)).Where(index => index != -1)
-													   }
-												   where productionRuleInfo.FollowSymbolIndexes.Any()
-												   select productionRuleInfo)
-					foreach (int followSymbolIndex in productionRuleInfo.FollowSymbolIndexes)
-						foreach (IReadOnlyList<TAtomCode> firstSequence in _First(productionRuleInfo.Symbols.Skip(followSymbolIndex + 1)))
-						{
-							followSequencesSet.Add(firstSequence);
-							if (firstSequence.Count < _lookAheadCount && subscribedProductionRuleCodes.Add(productionRuleInfo.Code))
-								productionRuleCodesLeft.Enqueue(productionRuleInfo.Code);
-						}
-			} while (productionRuleCodesLeft.Count > 0);
+				foreach (var follow in from productionRule in _productionRules
+									   let followingSymbolsStartIndex = (productionRule.Symbols.IndexOf(followToCalculate.ProductionRule) + 1)
+									   where (followingSymbolsStartIndex > 0)
+									   select new
+									   {
+										   ProductionRule = productionRule.Code,
+										   Symbols = _First(productionRule.Symbols.Skip(followingSymbolsStartIndex))
+									   })
+					foreach (IReadOnlyList<TProductionRuleCode> prediction in from followSymbols in follow.Symbols
+																			  select followToCalculate.TerminalsCalculated
+																									  .Concat(followSymbols)
+																									  .Take(_lookAheadCount)
+																									  .ToList())
+						if (prediction.Count == 0)
+							if (followToCalculate.VisitedProductionRulesWithoutFollow.Contains(follow.ProductionRule))
+								followSet.Add(followToCalculate.TerminalsCalculated.ToList());
+							else
+								followsToCalculate.Enqueue(new
+									{
+										follow.ProductionRule,
+										followToCalculate.TerminalsCalculated,
+										VisitedProductionRulesWithoutFollow = followToCalculate.VisitedProductionRulesWithoutFollow
+																							   .Append(followToCalculate.ProductionRule)
+									});
+						else
+							if (prediction.Count == _lookAheadCount)
+								followSet.Add(followToCalculate.TerminalsCalculated.ToList());
+							else
+								followsToCalculate.Enqueue(new
+									{
+										follow.ProductionRule,
+										TerminalsCalculated = (IEnumerable<TAtomCode>)prediction,
+										VisitedProductionRulesWithoutFollow = (IEnumerable<TProductionRuleCode>)_emptyProductionRuleCodeArray
+									});
+			} while (followsToCalculate.Count > 0);
 
-			_follow.Add(productionRuleCode, followSequencesSet);
-			return followSequencesSet;
+			if (followSet.Count == 0)
+				followSet.Add(_emptyAtomCodeArray);
+			_follow.Add(productionRuleCode, followSet);
+
+			return followSet;
 		}
 		private void _BuildParseTable()
 		{
 			if (_parseTable == null)
-			{
-				Dictionary<TProductionRuleCode, IReadOnlyDictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>>> parseTable = new Dictionary<TProductionRuleCode, IReadOnlyDictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>>>();
-				IEqualityComparer<IReadOnlyList<TAtomCode>> columnHeaderEqualityComparer =
-					new DelegateEqualityComparer<IReadOnlyList<TAtomCode>>((first, second) => first.SequenceEqual(second), value => value.Aggregate(0, (hashCode, terminal) => hashCode ^ terminal.GetHashCode()));
-				IList<IReadOnlyList<ProductionRule<TAtomCode, TProductionRuleCode>>> allConflictingRules = new List<IReadOnlyList<ProductionRule<TAtomCode, TProductionRuleCode>>>();
+				_parseTable = _productionRules.GroupBy(productionRule => productionRule.Code)
+											  .ToDictionary(productionRulesByCode => productionRulesByCode.Key,
+															productionRulesByCode => _GetParseTableRow(productionRulesByCode));
+		}
+		private IReadOnlyDictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>> _GetParseTableRow(IEnumerable<ProductionRule<TAtomCode, TProductionRuleCode>> productionRules)
+		{
+			ISet<ProductionRule<TAtomCode, TProductionRuleCode>> conflictingRules = new HashSet<ProductionRule<TAtomCode, TProductionRuleCode>>();
+			Dictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>> parseTableRow = new Dictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>>(_columnHeaderEqualityComparer);
 
-				foreach (IGrouping<TProductionRuleCode, ProductionRule<TAtomCode, TProductionRuleCode>> productionRulesByCode in _productionRules.GroupBy(productionRule => productionRule.Code))
+			foreach (ProductionRule<TAtomCode, TProductionRuleCode> productionRule in productionRules)
+				foreach (IReadOnlyList<TAtomCode> firstSequence in _First(productionRule.Symbols))
 				{
-					ISet<ProductionRule<TAtomCode, TProductionRuleCode>> conflictingRules = new HashSet<ProductionRule<TAtomCode, TProductionRuleCode>>();
-					Dictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>> parseTableRow = new Dictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>>(columnHeaderEqualityComparer);
+					ProductionRule<TAtomCode, TProductionRuleCode> addedProductionRule;
 
-					foreach (ProductionRule<TAtomCode, TProductionRuleCode> productionRule in productionRulesByCode)
+					if (firstSequence.Count == _lookAheadCount)
 					{
-						Dictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>> parseColumns = new Dictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>>(columnHeaderEqualityComparer);
-
-						foreach (IReadOnlyList<TAtomCode> firstSequence in _First(productionRule.Symbols))
-							if (!parseColumns.ContainsKey(firstSequence))
+						if (!parseTableRow.TryGetValue(firstSequence, out addedProductionRule))
+							parseTableRow.Add(firstSequence, productionRule);
+						else
+							if (addedProductionRule != productionRule)
 							{
-								parseColumns.Add(firstSequence, productionRule);
-								if (firstSequence.Count < _lookAheadCount)
-									foreach (IReadOnlyList<TAtomCode> followSequence in _Follow(productionRule.Code).Where(followSequence => !parseColumns.ContainsKey(followSequence)))
-									{
-										IReadOnlyList<TAtomCode> followTerminals = firstSequence.Concat(followSequence)
-																								.Take(_lookAheadCount)
-																								.ToList();
-										if (!parseColumns.ContainsKey(followTerminals))
-											parseColumns.Add(followTerminals, productionRule);
-									}
-							}
-						foreach (KeyValuePair<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>> parseColumn in parseColumns)
-						{
-							ProductionRule<TAtomCode, TProductionRuleCode> conflictingProductionRule;
-							if (parseTableRow.TryGetValue(parseColumn.Key, out conflictingProductionRule))
-							{
-								conflictingRules.Add(conflictingProductionRule);
 								conflictingRules.Add(productionRule);
+								conflictingRules.Add(addedProductionRule);
 							}
-							else
-								parseTableRow.Add(parseColumn.Key, productionRule);
-						}
 					}
-
-					if (conflictingRules.Count > 0)
-						throw new InvalidOperationException(string.Join(Environment.NewLine, "The following rules cause conflicts:", string.Join(Environment.NewLine, conflictingRules)));
-					parseTable.Add(productionRulesByCode.Key, parseTableRow);
+					else
+						foreach (IReadOnlyList<TAtomCode> prediction in _Follow(productionRule.Code).Select(followSequence => firstSequence.Concat(followSequence).Take(_lookAheadCount).ToList()))
+							if (!parseTableRow.TryGetValue(prediction, out addedProductionRule))
+								parseTableRow.Add(prediction, productionRule);
+							else
+								if (addedProductionRule != productionRule)
+								{
+									conflictingRules.Add(productionRule);
+									conflictingRules.Add(addedProductionRule);
+								}
 				}
 
-				_parseTable = parseTable;
-			}
+			if (conflictingRules.Count > 0)
+				throw new ArgumentException(string.Join(Environment.NewLine,
+														"These rules cause conflicts: ",
+														string.Join(Environment.NewLine,
+																	conflictingRules.Select(conflictingRule => conflictingRule.ToString()))));
+			return parseTableRow;
 		}
-
-		private IReadOnlyDictionary<TProductionRuleCode, IReadOnlyDictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>>> _parseTable = null;
-		private readonly int _lookAheadCount;
-		private readonly ICollection<ProductionRule<TAtomCode, TProductionRuleCode>> _productionRules;
-		private readonly IDictionary<TProductionRuleCode, IEnumerable<IReadOnlyList<TAtomCode>>> _first = new SortedDictionary<TProductionRuleCode, IEnumerable<IReadOnlyList<TAtomCode>>>();
-		private readonly IDictionary<TProductionRuleCode, IEnumerable<IReadOnlyList<TAtomCode>>> _follow = new SortedDictionary<TProductionRuleCode, IEnumerable<IReadOnlyList<TAtomCode>>>();
 		private IReadOnlyList<TAtomCode> _GetPrediction(IReadOnlyList<ScannedAtom<TAtomCode>> atoms, int atomIndex)
 		{
 			TAtomCode[] prediction = new TAtomCode[Math.Min(atoms.Count - atomIndex, _lookAheadCount)];
@@ -335,6 +362,15 @@ namespace Andrei15193.Kepler.Language.Syntax.Parsers
 
 			return prediction;
 		}
+
+		private IReadOnlyDictionary<TProductionRuleCode, IReadOnlyDictionary<IReadOnlyList<TAtomCode>, ProductionRule<TAtomCode, TProductionRuleCode>>> _parseTable = null;
+		private readonly int _lookAheadCount;
+		private readonly ICollection<ProductionRule<TAtomCode, TProductionRuleCode>> _productionRules;
+		private readonly IDictionary<TProductionRuleCode, IEnumerable<IReadOnlyList<TAtomCode>>> _first = new SortedDictionary<TProductionRuleCode, IEnumerable<IReadOnlyList<TAtomCode>>>();
+		private readonly IDictionary<TProductionRuleCode, IEnumerable<IReadOnlyList<TAtomCode>>> _follow = new SortedDictionary<TProductionRuleCode, IEnumerable<IReadOnlyList<TAtomCode>>>();
+		private static readonly TAtomCode[] _emptyAtomCodeArray = new TAtomCode[0];
+		private static readonly TProductionRuleCode[] _emptyProductionRuleCodeArray = new TProductionRuleCode[0];
+		private static readonly IEqualityComparer<IReadOnlyList<TAtomCode>> _columnHeaderEqualityComparer = new DelegateEqualityComparer<IReadOnlyList<TAtomCode>>((first, second) => first.SequenceEqual(second), value => value.Aggregate(0, (hashCode, terminal) => hashCode ^ terminal.GetHashCode()));
 
 		private sealed class NonTerminalSymbolAtoms
 		{
@@ -383,7 +419,7 @@ namespace Andrei15193.Kepler.Language.Syntax.Parsers
 			{
 			}
 
-			public static explicit operator ProductionRuleSymbol<TAtomCode, TProductionRuleCode> (EvaluationStackEntry evaluationStackEntry)
+			public static explicit operator ProductionRuleSymbol<TAtomCode, TProductionRuleCode>(EvaluationStackEntry evaluationStackEntry)
 			{
 				return evaluationStackEntry._symbol;
 			}
@@ -596,6 +632,124 @@ namespace Andrei15193.Kepler.Language.Syntax.Parsers
 
 			private readonly ProductionRule<TAtomCode, TProductionRuleCode> _productionRule;
 			private readonly uint _depth;
+		}
+		private struct ProductionRuleTerminals
+			: IEquatable<ProductionRuleTerminals>
+		{
+			public ProductionRuleTerminals(TProductionRuleCode productionRuleCode, IReadOnlyList<TAtomCode> terminals = null, IEnumerable<TProductionRuleCode> visitedProductionRules = null)
+			{
+				_productionRuleCode = productionRuleCode;
+				_terminals = (terminals ?? _emptyAtomCodeArray);
+				_visitedProductionRules = (visitedProductionRules ?? visitedProductionRules);
+			}
+
+			public static bool operator ==(ProductionRuleTerminals left, ProductionRuleTerminals right)
+			{
+				return left.Equals(right);
+			}
+			public static bool operator ==(ProductionRuleTerminals left, object right)
+			{
+				return left.Equals(right);
+			}
+			public static bool operator ==(ProductionRuleTerminals left, ValueType right)
+			{
+				return left.Equals(right);
+			}
+			public static bool operator ==(ProductionRuleTerminals left, IEquatable<ProductionRuleTerminals> right)
+			{
+				return left.Equals(right);
+			}
+			public static bool operator ==(object left, ProductionRuleTerminals right)
+			{
+				return right.Equals(left);
+			}
+			public static bool operator ==(ValueType left, ProductionRuleTerminals right)
+			{
+				return right.Equals(left);
+			}
+			public static bool operator ==(IEquatable<ProductionRuleTerminals> left, ProductionRuleTerminals right)
+			{
+				return right.Equals(left);
+			}
+			public static bool operator !=(ProductionRuleTerminals left, ProductionRuleTerminals right)
+			{
+				return !(left == right);
+			}
+			public static bool operator !=(ProductionRuleTerminals left, object right)
+			{
+				return !(left == right);
+			}
+			public static bool operator !=(ProductionRuleTerminals left, ValueType right)
+			{
+				return !(left == right);
+			}
+			public static bool operator !=(ProductionRuleTerminals left, IEquatable<ProductionRuleTerminals> right)
+			{
+				return !(left == right);
+			}
+			public static bool operator !=(object left, ProductionRuleTerminals right)
+			{
+				return !(left == right);
+			}
+			public static bool operator !=(ValueType left, ProductionRuleTerminals right)
+			{
+				return !(left == right);
+			}
+			public static bool operator !=(IEquatable<ProductionRuleTerminals> left, ProductionRuleTerminals right)
+			{
+				return !(left == right);
+			}
+
+			#region IEquatable<ProductionRuleTerminals> Members
+			public bool Equals(ProductionRuleTerminals other)
+			{
+				return (_productionRuleCode.Equals(other._productionRuleCode)
+						&& _terminals.SequenceEqual(other._terminals)
+						&& _visitedProductionRules.SequenceEqual(other._visitedProductionRules));
+			}
+			#endregion
+			public override bool Equals(object obj)
+			{
+				return (obj is ProductionRuleTerminals && Equals((ProductionRuleTerminals)obj));
+			}
+			public override int GetHashCode()
+			{
+				return (_productionRuleCode.GetHashCode()
+						^ _terminals.Aggregate(0, (hashCode, terminal) => (hashCode ^ terminal.GetHashCode()))
+						^ _visitedProductionRules.Aggregate(0, (hashCode, productionRuleCode) => (hashCode ^ productionRuleCode.GetHashCode())));
+			}
+			public override string ToString()
+			{
+				return string.Format("{0}, terminals: {{{1}}}, visited production rules: {{{2}}}",
+									 _productionRuleCode.ToString(),
+									 string.Join(", ", _terminals.Select(atomCode => atomCode.ToString())),
+									 string.Join(", ", _visitedProductionRules.Select(productionRuleCode => productionRuleCode.ToString())));
+			}
+			public TProductionRuleCode ProductionRuleCode
+			{
+				get
+				{
+					return _productionRuleCode;
+				}
+			}
+			public IReadOnlyList<TAtomCode> Terminals
+			{
+				get
+				{
+					return _terminals;
+				}
+			}
+			public IEnumerable<TProductionRuleCode> VisitedProductionRules
+			{
+				get
+				{
+					return _visitedProductionRules;
+				}
+			}
+
+			private readonly TProductionRuleCode _productionRuleCode;
+			private readonly IReadOnlyList<TAtomCode> _terminals;
+			private readonly IEnumerable<TProductionRuleCode> _visitedProductionRules;
 		}
 	}
 }
